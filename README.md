@@ -61,4 +61,3 @@ that is the presentation of the templates and the dashboard
 I will be in charge of making the home page, the blog landing pages.
 
 almost at the end of the project we will also have to integrate a membership system using paypal and recurring payments
-
