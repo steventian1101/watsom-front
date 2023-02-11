@@ -90,7 +90,7 @@ function DropdownHelp({
                 <li key={`lang-${option.value}`}>
                   <Link
                     className={selected === index ? "font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3" :  "font-medium text-sm hover:text-indigo-600 flex items-center py-1 px-3"}
-                    to="#0"
+                    to="#"
                     onClick={() => {
                       setDropdownOpen(!dropdownOpen);
                       setSelected(index);

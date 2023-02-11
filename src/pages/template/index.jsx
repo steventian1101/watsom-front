@@ -1,6 +1,7 @@
 import React from 'react';
-import Header from '../../components/Dashboard/Header';
-import Sidebar from '../../components/Dashboard/Sidebar';
+import Header from '../../components/Template/Header';
+import Sidebar from '../../components/Template/Sidebar';
+import Content from '../../components/Template/Content';
 
 import { useTranslation } from "react-i18next";
 
@@ -15,12 +16,12 @@ export default function Index() {
           {t("future")} of WatSom 🎉
         </div>
 
-        <div className='flex w-full h-full'>
-          <div>
+        <div className='grid grid-cols-12'>
+          <div className='col-span-2'>
             <Sidebar/>
           </div>
-        <div>
-
+          <div className='col-span-10'>
+            <Content />
           </div>
         </div>
 
