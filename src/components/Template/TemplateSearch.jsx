@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useTranslation } from "react-i18next";
 import { Card, TextInput } from 'flowbite-react';
-import { HiOutlineSearch } from "react-icons/hi";
-import { HiOutlineSquares2X2 } from "react-icons/hi2";
+import { HiOutlineSearch, HiOutlineHashtag, HiOutlineMail } from "react-icons/hi";
+import { HiOutlineSquares2X2, HiOutlineComputerDesktop } from "react-icons/hi2";
+import { ImBlog } from "react-icons/im"
+import { FcAdvertising } from "react-icons/fc"
 
 function TemplateSearch({
 }) {
@@ -52,35 +54,35 @@ function TemplateSearch({
             <div className='pt-2 font-bold'>All</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
-            <HiOutlineSquares2X2 
+            <HiOutlineHashtag 
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 1 ? "bg-blue-700 text-white" : "bg-white"}`}
               onClick={()=>setIconActive(1)}
             />
             <div className='pt-2 font-bold'>Social Media</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
-            <HiOutlineSquares2X2 
+            <ImBlog 
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 2 ? "bg-blue-700 text-white" : "bg-white"}`}
               onClick={()=>setIconActive(2)}
             />
             <div className='pt-2 font-bold'>Blog</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
-            <HiOutlineSquares2X2 
+            <HiOutlineComputerDesktop 
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 3 ? "bg-blue-700 text-white" : "bg-white"}`}
               onClick={()=>setIconActive(3)}
             />
             <div className='pt-2 font-bold'>Website copy</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
-            <HiOutlineSquares2X2 
+            <HiOutlineMail 
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 4 ? "bg-blue-700 text-white" : "bg-white"}`}
               onClick={()=>setIconActive(4)}
             />
             <div className='pt-2 font-bold'>Email</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
-            <HiOutlineSquares2X2 
+            <FcAdvertising 
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 5 ? "bg-blue-700 text-white" : "bg-white"}`}
               onClick={()=>setIconActive(5)}
             />
