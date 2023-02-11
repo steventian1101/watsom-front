@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        {/* <Route path = "/" element ={<Navigate to = "/"/>} /> */}
+        <Route path = "/" element ={<Navigate to = "/template"/>} />
         <Route path = "/template" element = {<Dashboard/>} />
       </Routes>
     </div>

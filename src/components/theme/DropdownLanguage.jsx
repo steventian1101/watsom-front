@@ -11,8 +11,8 @@ function DropdownHelp({
 }) {
   const options = [
     {value: 'en', lang: 'English'},
-    {value: 'it', lang: 'Italy'},
-    {value: 'sp', lang: 'Spain'},
+    {value: 'fr', lang: 'French'},
+    {value: 'sp', lang: 'Spanish'},
   ];
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selected, setSelected] = useState(0);
