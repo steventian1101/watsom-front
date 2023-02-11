@@ -1,23 +1,25 @@
 import React from 'react';
-import  { TextField, Button } from '@material-ui/core'
-import { Link } from 'react-router-dom'
 import Header from '../../components/Dashboard/Header';
-import LeftBar from '../../components/Dashboard/LeftBar';
+import Sidebar from '../../components/Dashboard/Sidebar';
+
+import { useTranslation } from "react-i18next";
 
 export default function Index() {
+  const { t } = useTranslation();
+
   return (
       <div>
         <Header />
 
-        <div className='h-6 bg-blue-700 text-white text-center text-sm font-bold'>
-          Future of WatSom 🎉
+        <div className='h-6 bg-blue-700 text-white text-center text-sm font-bold w-full'>
+          {t("future")} of WatSom 🎉
         </div>
 
-        <div className='flex w-full'>
-          <div className='w-1/5'>
-            <LeftBar/>
+        <div className='flex w-full h-full'>
+          <div>
+            <Sidebar/>
           </div>
-          <div className='w-4/5'>
+        <div>
 
           </div>
         </div>

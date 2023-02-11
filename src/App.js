@@ -1,5 +1,6 @@
 import { Routes, Route,  Navigate } from 'react-router-dom';
 import Dashboard from './pages/dashboard';
+import "./i18n";
 
 function App() {
   return (
