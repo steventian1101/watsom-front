@@ -121,18 +121,18 @@ function Sidebar({
             </h3>
             <ul className="mt-3">
               {/*  */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('') && 'bg-slate-900'}`}>
+              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('subscription') && 'bg-slate-900'}`}>
                 <NavLink
                   end
                   to="/"
                   className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-                    pathname.includes('') && 'hover:text-slate-200'
+                    pathname.includes('subscription') && 'hover:text-slate-200'
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="grow flex items-center">
-                      <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                        Try WatSom Pro
+                      <span className="text-lg font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      ✨Try WatSom Pro
                       </span>
                     </div>
                     {/* Badge */}
@@ -143,7 +143,7 @@ function Sidebar({
                 </NavLink>
               </li>
               {/* dashboard */}
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('dashboard') && 'bg-slate-900'}`}>
+              <li className={`px-3 py-4 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('dashboard') && 'bg-slate-900'}`}>
                 <NavLink
                   end
                   to="/"
@@ -152,7 +152,7 @@ function Sidebar({
                   }`}
                 >
                   <div className="flex items-center">
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Template</span>
+                    <span className="text-md font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Template</span>
                   </div>
                 </NavLink>
               </li>
