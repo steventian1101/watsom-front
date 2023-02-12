@@ -1,0 +1,10 @@
+.rdw-editor-toolbar.toolbarClassName{
+    justify-content: center;
+    height: 3rem;
+    margin-bottom: 0;
+    border-bottom-color: rgb(209,213,219);
+}
+
+.DraftEditor-root{
+    height: auto;
+}

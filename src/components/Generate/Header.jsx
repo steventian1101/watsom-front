@@ -7,7 +7,7 @@ function Header({
   const { t } = useTranslation();
 
   return (
-    <div style={{textAlign:"-webkit-center"}} className="pt-4 border-b-2 border-gray-400">
+    <div style={{textAlign:"-webkit-center", height:"5rem", borderBottomWidth: "1px"}} className="pt-4 border-gray-300">
       <div className='w-11/12 text-start'>
         <h5 className="text-xl pb-2 font-bold tracking-tight text-gray-900">
           {title}

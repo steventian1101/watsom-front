@@ -6,6 +6,7 @@ import { TextInput } from 'flowbite-react';
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "./style.css"
 
 export default function DocEditor() {
   const { t } = useTranslation()
@@ -16,7 +17,7 @@ export default function DocEditor() {
     setEditorState(value);
   }
 
-  const [doc_name, setDocName] = useState("New Document");   //documen name 
+  const [doc_name, setDocName] = useState("Untitled Document");   //documen name 
 
   const changeSearch = (e) => {
     setDocName(e.target.value);
@@ -32,28 +33,24 @@ export default function DocEditor() {
 
   const editorStyle = {
     position: 'relative',
-    border: '1px solid black',
     padding: '5px',
     borderRadius: '2px',
-    height: '100%',
+    height: 'calc(100vh - 7rem)',
     width: '100%',
-    
   };
 
   return (
-    <div className='h-full'>
+    <div className='h-screen'>
       {/* document name */}
-      <div>
-        <div className='border-b-2 border-gray-300 py-2'>
-          <input 
-            placeholder="New Document"
-            required={true}
-            value={doc_name}
-            onChange={(e) => changeSearch(e)}
-            onKeyDown={(e) => keyDownSearch(e)}
-            className="w-1/3 self-center border-none ml-2"
-          />
-        </div>
+      <div className='border-gray-300' style={{borderBottomWidth: "1px", height: "2rem"}}>
+        <input 
+          placeholder="Document Name"
+          required={true}
+          value={doc_name}
+          onChange={(e) => changeSearch(e)}
+          onKeyDown={(e) => keyDownSearch(e)}
+          className="w-1/3 self-center border-none ml-2 text-site_dark-100 text-sm my-1"
+        />
       </div>
 
       {/* wysi editor */}
@@ -85,8 +82,8 @@ export default function DocEditor() {
       </div>
 
       <div>
-        <div className='border-t-2 border-gray-300 py-2'>
-          Words Characters
+        <div className='border-gray-300 my-2 text-sm pl-2' style={{borderTopWidth: "1px", height: "2rem"}}>
+          Words • Characters
         </div>
       </div>
   </div>

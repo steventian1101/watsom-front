@@ -18,12 +18,12 @@ export default function Index() {
         </div>
         <div className='col-span-10'>
           <div className='grid grid-cols-5'>
-            <div className='col-span-3 border-r-2 '>
+            <div className='col-span-3 border-gray-300' style={{borderRightWidth: "1px"}}>
               <Header 
                 title="Complete long from article"
                 content="Get a summarized version from a piece of content."
               />
-              <Content />
+              {/* <Content /> */}
             </div>
             <div className='col-span-2'>
               <DocEditor />
