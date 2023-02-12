@@ -5,6 +5,10 @@ import { TextInput } from 'flowbite-react';
 
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from 'draft-js';
+import draftToMarkdown from 'draftjs-to-markdown';
+import { convertToRaw } from 'draft-js';
+import wordsCounter from 'word-counting'
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./style.css"
 
@@ -12,9 +16,11 @@ export default function DocEditor() {
   const { t } = useTranslation()
 
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
+  const [markDownString, setMarkDownString] = useState("")
 
   const onEditorStateChange = value => {
     setEditorState(value);
+    setMarkDownString(draftToMarkdown(convertToRaw(editorState.getCurrentContent())));
   }
 
   const [doc_name, setDocName] = useState("Untitled Document");   //documen name 
@@ -33,7 +39,7 @@ export default function DocEditor() {
 
   const editorStyle = {
     position: 'relative',
-    padding: '5px',
+    padding: '1rem',
     borderRadius: '2px',
     height: 'calc(100vh - 7rem)',
     width: '100%',
@@ -83,7 +89,7 @@ export default function DocEditor() {
 
       <div>
         <div className='border-gray-300 my-2 text-sm pl-2' style={{borderTopWidth: "1px", height: "2rem"}}>
-          Words • Characters
+          {wordsCounter(markDownString).wordsCount} Words • {markDownString.length} Characters
         </div>
       </div>
   </div>
