@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 
 import { useTranslation } from "react-i18next";
-import { TextInput } from 'flowbite-react';
 
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from 'draft-js';
+import { convertToRaw, EditorState } from 'draft-js';
 import draftToMarkdown from 'draftjs-to-markdown';
-import { convertToRaw } from 'draft-js';
 import wordsCounter from 'word-counting'
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
