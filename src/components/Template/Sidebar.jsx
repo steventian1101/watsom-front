@@ -52,12 +52,12 @@ function Sidebar({
   return (
     <div>
       {/* Sidebar backdrop (mobile only) */}
-      <div
+      {/* <div
         className={`fixed inset-0 bg-slate-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
           sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden="true"
-      ></div>
+      ></div> */}
 
       {/* Sidebar */}
       <div
@@ -70,7 +70,7 @@ function Sidebar({
         {/* Sidebar header */}
         <div className="flex justify-between mb-10 pr-3 sm:px-2">
           {/* Close button */}
-          <button
+          {/* <button
             ref={trigger}
             className="lg:hidden text-slate-500 hover:text-slate-400"
             onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -81,7 +81,7 @@ function Sidebar({
             <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
             </svg>
-          </button>
+          </button> */}
           {/* Logo */}
           <NavLink end to="/" className="flex gap-4">
             <svg width="32" height="32" viewBox="0 0 32 32">
@@ -114,11 +114,11 @@ function Sidebar({
         <div className="space-y-8">
           {/* Pages group */}
           <div>
-            <h3 className="text-xs uppercase text-slate-500 font-semibold pl-3">
+            {/* <h3 className="text-xs uppercase text-slate-500 font-semibold pl-3">
               <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6" aria-hidden="true">
                 •••
               </span>
-            </h3>
+            </h3> */}
             <ul className="mt-3">
               {/*  */}
               <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('subscription') && 'bg-slate-900'}`}>
@@ -131,7 +131,7 @@ function Sidebar({
                 >
                   <div className="flex items-center justify-between">
                     <div className="grow flex items-center">
-                      <span className="text-lg font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      <span className="text-lg font-medium ml-3">
                       ✨Try WatSom Pro
                       </span>
                     </div>
@@ -152,7 +152,7 @@ function Sidebar({
                   }`}
                 >
                   <div className="flex items-center">
-                    <span className="text-md font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Template</span>
+                    <span className="text-md font-medium ml-3">Template</span>
                   </div>
                 </NavLink>
               </li>
@@ -184,7 +184,7 @@ function Sidebar({
         </div>
 
         {/* Expand / collapse button */}
-        <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
+        {/* <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
           <div className="px-3 py-2">
             <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
               <span className="sr-only">Expand / collapse sidebar</span>
@@ -194,7 +194,7 @@ function Sidebar({
               </svg>
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
