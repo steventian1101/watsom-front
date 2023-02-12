@@ -2,7 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import { useTranslation } from "react-i18next";
+import { useNavigate } from 'react-router-dom'
 import UserMenu from '../theme/DropdownProfile';
+
+import { TextInput } from 'flowbite-react';
+import TreeView from '@material-ui/lab/TreeView';
+import TreeItem from '@material-ui/lab/TreeItem';
+import { MdOutlineExpandMore, MdOutlineChevronRight } from "react-icons/md"
+import { HiOutlineSearch } from 'react-icons/hi';
 
 function Sidebar({
   sidebarOpen,
@@ -17,8 +24,10 @@ function Sidebar({
 
   const storedSidebarExpanded = localStorage.getItem('sidebar-expanded');
   const [sidebarExpanded, setSidebarExpanded] = useState(storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true');
+  const [search, setSearch] = useState("");   //search bar text 
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   // close on click outside
   useEffect(() => {
@@ -49,6 +58,18 @@ function Sidebar({
       document.querySelector('body').classList.remove('sidebar-expanded');
     }
   }, [sidebarExpanded]);
+
+  const changeSearch = (e) => {
+    setSearch(e.target.value);
+  }
+
+  const keyDownSearch = (e) => {
+    if (e.keyCode === 13) {
+      if (search.trim()) {
+        
+      }
+    }
+  }
 
   return (
     <div>
@@ -161,10 +182,40 @@ function Sidebar({
                   </div>
                 </NavLink>
               </li> */}
+
             </ul>
           </div>
         </div>
 
+        <TextInput
+          id="searchProduct"
+          type="search"
+          sizing="md"
+          placeholder="Search the template you are looking for"
+          required={true}
+          icon={HiOutlineSearch}
+          value={search}
+          onChange={(e) => changeSearch(e)}
+          onKeyDown={(e) => keyDownSearch(e)}
+          className="w-full py-8"
+        />
+
+        <div className='text-white'>
+          <TreeView
+            aria-label="file system navigator"
+            defaultCollapseIcon={<MdOutlineExpandMore />}
+            defaultExpandIcon={<MdOutlineChevronRight />}
+            defaultExpanded={['1']}
+            sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+          >
+            <TreeItem nodeId="1" label="Templates">
+              <TreeItem nodeId="2" label="Long Article" onClick={() => navigate('/template/long_article')} />
+              <TreeItem nodeId="3" label="Content Improver" onClick={() => navigate('/template/content_improver')} />
+            </TreeItem>
+          </TreeView>
+        </div>
+
+        
         {/* Expand / collapse button */}
         <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
           <div className="px-3 py-2">
