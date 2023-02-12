@@ -5,11 +5,13 @@ import React, { useState } from 'react';
 import Language from '../theme/DropdownLanguage';
 import UserMenu from '../theme/DropdownProfile';
 import Subscription from './Subscription';
+import { useTranslation } from "react-i18next";
 
 function Header({
   sidebarOpen,
   setSidebarOpen
 }) {
+  const { t } = useTranslation();
 
   const [searchModalOpen, setSearchModalOpen] = useState(false)
 

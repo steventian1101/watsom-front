@@ -31,13 +31,13 @@ function Content({
             <TemplateCard 
               title="Complete long from article"
               content="Get a summarized version from a piece of content."
-              link="article"
+              link="long_article"
               icon="all"
             />
             <TemplateCard 
               title="Content Improver"
               content="Take a piece of content and rewrite it to make it more interesting, creative, and engaging."
-              link="content"
+              link="content_improver"
               icon="all"
             />
           </div>
