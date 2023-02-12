@@ -20,7 +20,7 @@ export default function DocEditor() {
 
   const onEditorStateChange = value => {
     setEditorState(value);
-    setMarkDownString(draftToMarkdown(convertToRaw(editorState.getCurrentContent())));
+    setMarkDownString(draftToMarkdown(convertToRaw(value.getCurrentContent())));
   }
 
   const [doc_name, setDocName] = useState("Untitled Document");   //documen name 
