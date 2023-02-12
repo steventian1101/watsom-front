@@ -67,7 +67,7 @@ export default function DocEditor() {
           onEditorStateChange={(value) => onEditorStateChange(value)}
           editorStyle={editorStyle}
           toolbar={{
-            options: ['history', 'blockType', 'inline', 'list', 'emoji', ],
+            options: ['history', 'blockType', 'emoji', 'inline', 'list'],
             inline: { 
               inDropdown: false,    
               options: ['bold', 'italic', 'underline', 'strikethrough'],

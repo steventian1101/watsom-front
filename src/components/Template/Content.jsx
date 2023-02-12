@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from "react-i18next";
-import { Card} from 'flowbite-react';
 import TemplateSearch from './TemplateSearch';
-
-import { HiOutlineSearch, HiOutlineHashtag, HiOutlineMail } from "react-icons/hi";
-import { HiOutlineSquares2X2, HiOutlineComputerDesktop } from "react-icons/hi2";
-import { ImBlog } from "react-icons/im"
-import { FcAdvertising } from "react-icons/fc"
 import TemplateCard from './TemplateCard';
 
 function Content({

@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from '../../../components/Generate/Header';
 import Sidebar from '../../../components/Generate/Sidebar';
-import Content from '../../../components/Template/Content';
+import LongArticle from '../../../components/Generate/LongArticle';
 import DocEditor from '../../../components/Generate/DocEditor'
+import Footer from '../../../components/Generate/Footer';
 
 import { useTranslation } from "react-i18next";
 
@@ -23,7 +24,8 @@ export default function Index() {
                 title="Complete long from article"
                 content="Get a summarized version from a piece of content."
               />
-              {/* <Content /> */}
+              <LongArticle />
+              <Footer />
             </div>
             <div className='col-span-2'>
               <DocEditor />
