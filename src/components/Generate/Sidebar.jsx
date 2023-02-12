@@ -209,8 +209,8 @@ function Sidebar({
             sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
           >
             <TreeItem nodeId="1" label="Templates">
-              <TreeItem nodeId="2" label="Long Article" onClick={() => navigate('/template/long_article')} />
-              <TreeItem nodeId="3" label="Content Improver" onClick={() => navigate('/template/content_improver')} />
+              <TreeItem nodeId="2" label={<div className={`${pathname.includes('long_article') && "bg-site_light-100"}`}>Long Article</div>} onClick={() => navigate('/template/long_article')} />
+              <TreeItem nodeId="3" label={<div className={`${pathname.includes('content_improver') && "bg-site_light-100"}`}>Content Improver</div>} onClick={() => navigate('/template/content_improver')} />
             </TreeItem>
           </TreeView>
         </div>
