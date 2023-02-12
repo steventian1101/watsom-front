@@ -18,7 +18,7 @@ function TemplateCard({title, content, link, icon}) {
 
   return (
     <div className="col-span-1" style={{minHeight: "50px"}}>
-      <Card className="text-start cursor-pointer h-full" href="" onClick={()=>navigate(`/template/${link}`)}>
+      <Card className="text-start cursor-pointer h-full" onClick={()=>navigate(`/template/${link}`)}>
         {
           icon == "all" ? 
           <HiOutlineSquares2X2 

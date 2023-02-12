@@ -18,7 +18,7 @@ function Content({
 
 
   return (
-    <div>
+    <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden" style={{height: " calc(100vh - 5.5rem) "}}>
       <TemplateSearch setTemplateGroup = {setTemplateGroup} />
 
       <div style={{textAlign: "-webkit-center"}}>

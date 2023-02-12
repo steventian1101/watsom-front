@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <div>
 
-      <div className='grid grid-cols-12'>
+      <div className='grid grid-cols-12 h-full'>
         <div className='col-span-2'>
           <Sidebar/>
         </div>
