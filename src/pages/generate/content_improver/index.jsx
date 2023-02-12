@@ -1,30 +1,40 @@
 import React from 'react';
-import Header from '../../components/Template/Header';
-import Sidebar from '../../components/Template/Sidebar';
-import Content from '../../components/Template/Content';
+import Header from '../../../components/Generate/Header';
+import Sidebar from '../../../components/Generate/Sidebar';
+import DocEditor from '../../../components/Generate/DocEditor'
+import Footer from '../../../components/Generate/Footer';
 
+import ContentImprover from '../../../components/Generate/ContentImprover';
 import { useTranslation } from "react-i18next";
 
 export default function Index() {
   const { t } = useTranslation();
 
   return (
-      <div>
-        <Header />
+    <div>
 
-        <div className='h-6 bg-site_light-100 text-white text-center text-sm font-bold w-full'>
-          {t("future")} of WatSom 🎉
+      <div className='grid grid-cols-12 h-full'>
+        <div className='col-span-2'>
+          <Sidebar/>
         </div>
+        <div className='col-span-10'>
+          <div className='grid grid-cols-5'>
+            <div className='col-span-3 border-gray-300' style={{borderRightWidth: "1px"}}>
+              <Header 
+                title="Content Improver"
+                content="Take a piece of content and rewrite it to make it more interesting, creative, and engaging."
+              />
+              <ContentImprover />
+              <Footer />
+            </div>
+            <div className='col-span-2'>
+              <DocEditor />
+            </div>
+          </div>
 
-        <div className='grid grid-cols-12'>
-          <div className='col-span-2'>
-            <Sidebar/>
-          </div>
-          <div className='col-span-10'>
-            <Content />
-          </div>
         </div>
-
       </div>
+
+  </div>
   );
 }

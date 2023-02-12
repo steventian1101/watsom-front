@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../../../components/Generate/Header';
 import Sidebar from '../../../components/Generate/Sidebar';
-import LongArticle from '../../../components/Generate/LongArticle';
 import DocEditor from '../../../components/Generate/DocEditor'
 import Footer from '../../../components/Generate/Footer';
 
+import LongArticle from '../../../components/Generate/LongArticle';
 import { useTranslation } from "react-i18next";
 
 export default function Index() {
