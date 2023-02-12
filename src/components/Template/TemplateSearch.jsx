@@ -52,42 +52,42 @@ function TemplateSearch(props) {
         <div className='grid grid-cols-6 self-center gap-2 w-1/2'>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <HiOutlineSquares2X2 
-              className={`w-12 h-12 p-2 rounded-full ${icon_active == 0 ? "bg-blue-700 text-white" : "bg-white"}`}
+              className={`w-12 h-12 p-2 rounded-full ${icon_active == 0 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(0)}
             />
             <div className='pt-2 font-bold'>All</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <HiOutlineHashtag 
-              className={`w-12 h-12 p-2 rounded-full ${icon_active == 1 ? "bg-blue-700 text-white" : "bg-white"}`}
+              className={`w-12 h-12 p-2 rounded-full ${icon_active == 1 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(1)}
             />
             <div className='pt-2 font-bold'>Social Media</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <ImBlog 
-              className={`w-12 h-12 p-2 rounded-full ${icon_active == 2 ? "bg-blue-700 text-white" : "bg-white"}`}
+              className={`w-12 h-12 p-2 rounded-full ${icon_active == 2 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(2)}
             />
             <div className='pt-2 font-bold'>Blog</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <HiOutlineComputerDesktop 
-              className={`w-12 h-12 p-2 rounded-full ${icon_active == 3 ? "bg-blue-700 text-white" : "bg-white"}`}
+              className={`w-12 h-12 p-2 rounded-full ${icon_active == 3 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(3)}
             />
             <div className='pt-2 font-bold'>Website copy</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <HiOutlineMail 
-              className={`w-12 h-12 p-2 rounded-full ${icon_active == 4 ? "bg-blue-700 text-white" : "bg-white"}`}
+              className={`w-12 h-12 p-2 rounded-full ${icon_active == 4 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(4)}
             />
             <div className='pt-2 font-bold'>Email</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <FcAdvertising 
-              className={`w-12 h-12 p-2 rounded-full ${icon_active == 5 ? "bg-blue-700 text-white" : "bg-white"}`}
+              className={`w-12 h-12 p-2 rounded-full ${icon_active == 5 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(5)}
             />
             <div className='pt-2 font-bold'>Ads</div>

@@ -12,7 +12,7 @@ export default function Index() {
       <div>
         <Header />
 
-        <div className='h-6 bg-blue-700 text-white text-center text-sm font-bold w-full'>
+        <div className='h-6 bg-site_light-100 text-white text-center text-sm font-bold w-full'>
           {t("future")} of WatSom 🎉
         </div>
 

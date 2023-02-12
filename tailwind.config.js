@@ -7,7 +7,12 @@ module.exports = {
   ],
   important: true,
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        site_light: {"100":"#0057ff"},
+        site_dark: {"100":"#222"}
+      },
+    },
   },
   plugins: [
     // eslint-disable-next-line global-require
