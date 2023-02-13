@@ -15,8 +15,8 @@ function DropdownHelp({
     {value: 'sp', lang: 'Spanish'},
   ];
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selected, setSelected] = useState(0);
-  const [language, setLanguage] = useState("en");
+  const [selected, setSelected] = useState(2);
+  const [language, setLanguage] = useState("sp");
   const { i18n } = useTranslation();
 
   const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import { openSnackBar } from "./snackBarReducer";
 export const globalSlice = createSlice({
     name: "global",
     initialState: {
-        language: "en",
+        language: "sp",
         setLanguageState: false,
     },
     reducers: {

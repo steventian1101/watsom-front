@@ -33,7 +33,7 @@ function TemplateSearch(props) {
     <div style={{textAlign: "-webkit-center"}} className="pt-8">
       <Card className="w-11/12 text-center bg-sky-100 cursor-default">
         <h4 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-          What template are you looking for?
+          {t("what_template_serach")}
         </h4>
 
         <TextInput
