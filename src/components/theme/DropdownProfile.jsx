@@ -4,10 +4,13 @@ import Transition from '../../utils/Transition';
 
 import UserAvatar from '../../images/user-avatar-32.png';
 
+import { useTranslation } from "react-i18next";
+
 function DropdownProfile({
   align,
   removeText
 }) {
+  const { t } = useTranslation();
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -82,7 +85,7 @@ function DropdownProfile({
                 to="/settings"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                Subscription
+                {t("subscription")}
               </Link>
             </li>
             <li>
@@ -91,7 +94,7 @@ function DropdownProfile({
                 to="/signin"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                Sign Out
+                {t("sign_out")}
               </Link>
             </li>
           </ul>

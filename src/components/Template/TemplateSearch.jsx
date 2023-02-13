@@ -40,7 +40,7 @@ function TemplateSearch(props) {
           id="searchProduct"
           type="search"
           sizing="lg"
-          placeholder="Search the template you are looking for"
+          placeholder={t("search_template")}
           required={true}
           icon={HiOutlineSearch}
           value={search}
@@ -55,42 +55,42 @@ function TemplateSearch(props) {
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 0 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(0)}
             />
-            <div className='pt-2 font-bold'>All</div>
+            <div className='pt-2 font-bold'>{t("group_all")}</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <HiOutlineHashtag 
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 1 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(1)}
             />
-            <div className='pt-2 font-bold'>Social Media</div>
+            <div className='pt-2 font-bold'>{t("group_social_media")}</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <ImBlog 
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 2 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(2)}
             />
-            <div className='pt-2 font-bold'>Blog</div>
+            <div className='pt-2 font-bold'>{t("group_blog")}</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <HiOutlineComputerDesktop 
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 3 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(3)}
             />
-            <div className='pt-2 font-bold'>Website copy</div>
+            <div className='pt-2 font-bold'>{t("group_website_copy")}</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <HiOutlineMail 
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 4 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(4)}
             />
-            <div className='pt-2 font-bold'>Email</div>
+            <div className='pt-2 font-bold'>{t("group_email")}</div>
           </div>
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <FcAdvertising 
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 5 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(5)}
             />
-            <div className='pt-2 font-bold'>Ads</div>
+            <div className='pt-2 font-bold'>{t("group_ads")}</div>
           </div>
         </div>
       </Card>                     

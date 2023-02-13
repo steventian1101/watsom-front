@@ -106,7 +106,7 @@ function Sidebar({
                 fill="url(#logo-b)"
               />
             </svg>
-            <div className='text-white self-center'>Free Plan</div>
+            <div className='text-white self-center'>{t("free_plan")}</div>
           </NavLink>
         </div>
 
@@ -132,7 +132,7 @@ function Sidebar({
                   <div className="flex items-center justify-between">
                     <div className="grow flex items-center">
                       <span className="text-lg font-medium ml-3">
-                      ✨Try WatSom Pro
+                      ✨{t("try")} WatSom {t("pro")}
                       </span>
                     </div>
                     {/* Badge */}
@@ -152,7 +152,7 @@ function Sidebar({
                   }`}
                 >
                   <div className="flex items-center">
-                    <span className="text-md font-medium ml-3">Template</span>
+                    <span className="text-md font-medium ml-3">{t("template")}</span>
                   </div>
                 </NavLink>
               </li>

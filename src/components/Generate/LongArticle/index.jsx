@@ -35,7 +35,7 @@ function LongArticle({
       setFirstOutline("")
       func_SetFirstOutline("")
     }else{
-      dispatch(openSnackBar({ message: "Please Input the Outline!", status: 'error' }));
+      dispatch(openSnackBar({ message: t("msg_please_input_outline"), status: 'error' }));
     }
   }
 
@@ -82,10 +82,10 @@ function LongArticle({
         <div>
           <div className='text-center px-4 py-8'>
             <div className='text-2xl'>
-              Step1: Tell us what you want to create
+              {t("long_blog_step1")}
             </div>
             <div className='italic'>
-              The more details you input, the better your generated content will be.
+              {t("long_blog_step1_sub")}
             </div>
           </div>
 
@@ -93,7 +93,7 @@ function LongArticle({
             <div className='w-2/3 text-start'>
               <div className='grid grid-cols-12 pb-4'>
                 <div className='col-span-3'>
-                  Blog Title / Topic
+                  {t("blog_title_topic")}
                 </div>
                 <div className='col-span-9'>
                   <TextInput 
@@ -101,14 +101,14 @@ function LongArticle({
                     onChange={(e) => changeTitle(e.target.value)}
                   />
                   <div className='underline text-gray-400'>
-                    Minimum of 10 characters
+                    {t("minimum_10_character")}
                   </div>
                 </div>
               </div>
 
               <div className='grid grid-cols-12 pb-4'>
                 <div className='col-span-3'>
-                  Keywords
+                  {t("keywords")}
                 </div>
                 <div className='col-span-9'>
                   <TextInput 
@@ -116,14 +116,14 @@ function LongArticle({
                     onChange={(e) => changeKeywords(e.target.value)}
                   />
                   <div className='underline text-gray-400'>
-                    Separate keywords with ","
+                    {t("separate_keywords_with")} ","
                   </div>
                 </div>
               </div>
               
               <div className='grid grid-cols-12 pb-4'>
                 <div className='col-span-3'>
-                  Tone
+                  {t("tone")}
                 </div>
                 <div className='col-span-9'>
                   <ToneSelect 
@@ -138,10 +138,10 @@ function LongArticle({
         <div>
           <div className='text-center pb-4'>
             <div className='text-2xl'>
-              Step2: Review your outline
+              {t("long_blog_step2")}
             </div>
             <div className='italic'>
-              Customize the headings below to create the perfect ouline.
+              {t("long_blog_step2_sub")}
             </div>
           </div>
           
@@ -149,7 +149,7 @@ function LongArticle({
             {/* intro cosmetic */}
             <div className='w-2/3 text-start py-2'>
               <div className='border-dotted p-2 border-gray-400 border-2 text-gray-400'>
-                A Blog Intro will be added here
+                {t("blog_intro_will_added")}
               </div>
             </div>
 
@@ -196,7 +196,7 @@ function LongArticle({
                 onClick={()=>newOutline()}
                 className='underline text-site_light-100 self-center'
               >
-                + Generate more outline
+                + {t("generate_more_outline")}
               </div>
               <div>
                 <div className="flex items-center">
@@ -204,7 +204,7 @@ function LongArticle({
                     onClick={()=>regenerateAll()}
                     className="w-full font-medium p-1  text-sm inline-flex items-center justify-center border-2 border-transparent rounded-lg leading-5 shadow-sm transition duration-150 ease-in-out bg-site_light-100 hover:!bg-site_light-100 text-white cursor-pointer"
                   >
-                    <span className="hidden md:block py-1 px-2">ReGenerate All</span>
+                    <span className="hidden md:block py-1 px-2">{t("regenerate_all")}</span>
                   </div>
                 </div>
               </div>
@@ -212,7 +212,7 @@ function LongArticle({
 
             <div className='w-2/3 text-start py-2'>
               <div className='border-dotted p-2 border-gray-400 border-2 text-gray-400'>
-                A Blog Conclusion will be added here
+                {t("blog_intro_will_added")}
               </div>
             </div>
           </div>

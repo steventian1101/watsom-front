@@ -7,7 +7,7 @@ function ToneSelect({
   const { t } = useTranslation();
 
   const [showTone, setShowTone] = useState(0);
-  const output_tone = ["Friendly","Bold","Professional","Casual","Luxury","Witty","Adventurous","Persuasive","Empathetic"];
+  const output_tone = [t("tone_friendly"),t("tone_bold"),t("tone_professional"),t("tone_casual"),t("tone_luxury"),t("tone_witty"),t("tone_adventurous"),t("tone_persuasive"),t("tone_empathetic")];
   
   const changeSelect = (index) => {
     setShowTone(index);

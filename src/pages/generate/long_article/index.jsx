@@ -24,10 +24,10 @@ export default function Index() {
     const {title, keywords, outline} = data
 
     if(!title){
-      dispatch(openSnackBar({ message: "Please Input the Title!", status: 'error' }));
+      dispatch(openSnackBar({ message: t("please_input_title"), status: 'error' }));
       return false;
     }else if(!keywords){
-      dispatch(openSnackBar({ message: "Please Input the Keywords!", status: 'error' }));
+      dispatch(openSnackBar({ message: t("please_input_keywords"), status: 'error' }));
       return false;
     }else{
       if(outline){
@@ -39,15 +39,15 @@ export default function Index() {
           })
 
           if(cnt_outline == 0){
-            dispatch(openSnackBar({ message: "Please Input the Outline!", status: 'error' }));
+            dispatch(openSnackBar({ message: t("please_input_outline"), status: 'error' }));
             return false;    
           }
         }else{
-          dispatch(openSnackBar({ message: "Please Input the Outline!", status: 'error' }));
+          dispatch(openSnackBar({ message: t("please_input_outline"), status: 'error' }));
           return false;  
         }
       }else{
-        dispatch(openSnackBar({ message: "Please Input the Outline!", status: 'error' }));
+        dispatch(openSnackBar({ message: t("please_input_outline"), status: 'error' }));
         return false;
       }
     }
@@ -89,8 +89,8 @@ export default function Index() {
           <div className='grid grid-cols-5'>
             <div className='col-span-3 border-gray-300' style={{borderRightWidth: "1px"}}>
               <Header 
-                title="Complete long from article"
-                content="Get a summarized version from a piece of content."
+                title={t("long_article_title")}
+                content={t("long_article_content")}
               />
               <LongArticle 
                 func_SetTitle = {setTitle}

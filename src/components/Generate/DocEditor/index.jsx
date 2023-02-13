@@ -21,7 +21,7 @@ export default function DocEditor() {
     setMarkDownString(draftToMarkdown(convertToRaw(value.getCurrentContent())));
   }
 
-  const [doc_name, setDocName] = useState("Untitled Document");   //documen name 
+  const [doc_name, setDocName] = useState(t("untitled_document"));   //documen name 
 
   const changeSearch = (e) => {
     setDocName(e.target.value);
@@ -87,7 +87,7 @@ export default function DocEditor() {
 
       <div>
         <div className='border-gray-300 my-2 text-sm pl-2' style={{borderTopWidth: "1px", height: "2rem"}}>
-          {wordsCounter(markDownString).wordsCount} Words • {markDownString.length} Characters
+          {wordsCounter(markDownString).wordsCount} {t("words")} • {markDownString.length} {t("characters")}
         </div>
       </div>
   </div>

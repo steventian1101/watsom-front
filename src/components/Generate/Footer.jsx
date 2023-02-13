@@ -20,7 +20,7 @@ function Footer({
       <div className='w-11/12 flex justify-between items-center'>
         <div className="flex gap-4">
           <div className="text-xl p-2 font-bold tracking-tight text-gray-900">
-            OutPut
+            {t("output")}
           </div>
 
           <select className='rounded-lg w-24' defaultValue={showCount}>
@@ -36,7 +36,7 @@ function Footer({
           <div
               className="w-full font-medium p-1  text-sm inline-flex items-center justify-center border-2 border-transparent rounded-lg leading-5 shadow-sm transition duration-150 ease-in-out bg-site_light-100 hover:!bg-site_light-100 text-white cursor-pointer"
           >
-            <div className="text-lg hidden md:block py-1 px-16" onClick={() => clickGenerate()}>Generate</div>
+            <div className="text-lg hidden md:block py-1 px-16" onClick={() => clickGenerate()}>{t("generate")}</div>
           </div>
         </div>
       </div>

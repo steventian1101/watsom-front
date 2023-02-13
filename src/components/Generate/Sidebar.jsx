@@ -135,7 +135,7 @@ function Sidebar({
                   <div className="flex items-center justify-between">
                     <div className="grow flex items-center">
                       <span className="text-lg font-medium ml-3">
-                      ✨Try WatSom Pro
+                      ✨{t("try")} WatSom {t("pro")}
                       </span>
                     </div>
                     {/* Badge */}
@@ -155,7 +155,7 @@ function Sidebar({
                   }`}
                 >
                   <div className="flex items-center">
-                    <span className="text-md font-medium ml-3">Template</span>
+                    <span className="text-md font-medium ml-3">{t("template")}</span>
                   </div>
                 </NavLink>
               </li>
@@ -191,7 +191,7 @@ function Sidebar({
           id="searchProduct"
           type="search"
           sizing="md"
-          placeholder="Search the template you are looking for"
+          placeholder={t("search_template")}
           required={true}
           icon={HiOutlineSearch}
           value={search}
@@ -208,9 +208,9 @@ function Sidebar({
             defaultExpanded={['1']}
             sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
           >
-            <TreeItem nodeId="1" label="Templates">
-              <TreeItem nodeId="2" label={<div className={`${pathname.includes('long_article') && "bg-site_light-100"}`}>Long Article</div>} onClick={() => navigate('/template/long_article')} />
-              <TreeItem nodeId="3" label={<div className={`${pathname.includes('content_improver') && "bg-site_light-100"}`}>Content Improver</div>} onClick={() => navigate('/template/content_improver')} />
+            <TreeItem nodeId="1" label={t("templates")}>
+              <TreeItem nodeId="2" label={<div className={`${pathname.includes('long_article') && "bg-site_light-100"}`}>{t("long_article")}</div>} onClick={() => navigate('/template/long_article')} />
+              <TreeItem nodeId="3" label={<div className={`${pathname.includes('content_improver') && "bg-site_light-100"}`}>{t("content_improver")}</div>} onClick={() => navigate('/template/content_improver')} />
             </TreeItem>
           </TreeView>
         </div>

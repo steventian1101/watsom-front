@@ -22,7 +22,7 @@ export default function Index() {
     const {contents} = data
 
     if(!contents){
-      dispatch(openSnackBar({ message: "Please Input the Contents!", status: 'error' }));
+      dispatch(openSnackBar({ message: t("msg_please_input_contents"), status: 'error' }));
       return false;
     }
     return true;
@@ -63,8 +63,8 @@ export default function Index() {
           <div className='grid grid-cols-5'>
             <div className='col-span-3 border-gray-300' style={{borderRightWidth: "1px"}}>
               <Header 
-                title="Content Improver"
-                content="Take a piece of content and rewrite it to make it more interesting, creative, and engaging."
+                title={t("content_improver")}
+                content={t("content_improver_intro")}
               />
               <ContentImprover 
                 func_SetContents={setContents}

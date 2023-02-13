@@ -25,7 +25,7 @@ function ContentImprover({
       <div style={{textAlign: "-webkit-center"}}>
         <div className='w-2/3 text-start py-2'>
           <div className='font-bold py-2'>
-            Content to Improve
+            {t("content_to_improve")}
           </div>
           <Textarea 
             className='bg-white w-full'
@@ -36,7 +36,7 @@ function ContentImprover({
         </div>
         <div className='w-2/3 text-start py-2'>
           <div className='font-bold py-2'>
-            Tone
+            {t("tone")}
           </div>
           <ToneSelect 
             selectTone = {selectTone}
