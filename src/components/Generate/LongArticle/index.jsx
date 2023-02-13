@@ -7,16 +7,33 @@ import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";
 
 function LongArticle({
+  func_SetTitle, func_SetKeywords, func_SetTone, func_SetFirstOutline, func_setOutline
 }) {
   const { t } = useTranslation();
+
+  const [title, setTitle] = useState("");
+  const [keywords, setKeywords] = useState("");
   const [outline, setOutline] = useState([])
   const [firstOutline, setFirstOutline] = useState("")
   const dispatch = useDispatch();
 
+  // outline list begin
+  const changeFirstOutline = (value) => {
+    setFirstOutline(value)
+    func_SetFirstOutline(value)
+  }
+
+  const removeFirstOutline = () => {
+    setFirstOutline("")
+    func_SetFirstOutline("")
+  }
+
   const newOutline = () => {
     if(firstOutline){
       setOutline([...outline, firstOutline])
+      func_setOutline([...outline, firstOutline])
       setFirstOutline("")
+      func_SetFirstOutline("")
     }else{
       dispatch(openSnackBar({ message: "Please Input the Outline!", status: 'error' }));
     }
@@ -25,16 +42,38 @@ function LongArticle({
   const regenerateAll = () => {
     setFirstOutline("")
     setOutline([])
+    func_SetFirstOutline("")
+    func_setOutline([])
   }
 
   const setExistOutline = (index, value) => {
     outline[index] = value;
     setOutline([...outline]);
+    func_setOutline([...outline]);
   }
 
   const removeExist = (index) => {
     outline.splice(index, 1);
     setOutline([...outline]);
+    func_setOutline([...outline]);
+  }
+  // outline list end
+
+  // title
+  const changeTitle = (value) => {
+    setTitle(value);
+    func_SetTitle(value);
+  }
+
+  // keywords
+  const changeKeywords = (value) => {
+    setKeywords(value);
+    func_SetKeywords(value);
+  }
+
+  // tone
+  const selectTone = (value) => {
+    func_SetTone(value)
   }
 
   return (
@@ -57,8 +96,11 @@ function LongArticle({
                   Blog Title / Topic
                 </div>
                 <div className='col-span-9'>
-                  <TextInput />
-                  <div className='underline'>
+                  <TextInput 
+                    value={title}
+                    onChange={(e) => changeTitle(e.target.value)}
+                  />
+                  <div className='underline text-gray-400'>
                     Minimum of 10 characters
                   </div>
                 </div>
@@ -69,8 +111,11 @@ function LongArticle({
                   Keywords
                 </div>
                 <div className='col-span-9'>
-                  <TextInput />
-                  <div className='underline'>
+                  <TextInput 
+                    value={keywords}
+                    onChange={(e) => changeKeywords(e.target.value)}
+                  />
+                  <div className='underline text-gray-400'>
                     Separate keywords with ","
                   </div>
                 </div>
@@ -81,7 +126,9 @@ function LongArticle({
                   Tone
                 </div>
                 <div className='col-span-9'>
-                  <ToneSelect />
+                  <ToneSelect 
+                    selectTone = {selectTone}
+                  />
                 </div>
               </div>
             </div>
@@ -133,13 +180,13 @@ function LongArticle({
                 <TextInput
                   sizing="lg"
                   value={firstOutline}
-                  onChange={(e) => setFirstOutline(e.target.value)}
+                  onChange={(e) => changeFirstOutline(e.target.value)}
                 />
               </div>
               <div className='col-span-1 self-center'>
                 <AiOutlineCloseCircle 
                   className='w-8 h-8' 
-                  onClick={()=>setFirstOutline("")}
+                  onClick={()=>removeFirstOutline()}
                 />
               </div>
             </div>
