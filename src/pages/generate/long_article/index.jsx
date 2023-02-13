@@ -7,7 +7,7 @@ import Footer from '../../../components/Generate/Footer';
 import LongArticle from '../../../components/Generate/LongArticle';
 import { useTranslation } from "react-i18next";
 import { openSnackBar } from '../../../redux/snackBarReducer';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function Index() {
   const { t } = useTranslation();
