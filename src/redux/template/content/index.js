@@ -6,36 +6,36 @@ import { contentService } from '../../../services/content.service'
 export const contentSlice = createSlice({
     name: "content",
     initialState: {
-        contentImproveState: false,
+        contentImproverState: false,
     },
     reducers: {
-        contentImproveRequest: state => {
-            state.contentImproveState = true
+        contentImproverRequest: state => {
+            state.contentImproverState = true
         },
-        contentImproveSuccess: (state, action) => {
-            state.contentImproveState = false;
+        contentImproverSuccess: (state, action) => {
+            state.contentImproverState = false;
             state.result = action.payload.result;
         },
-        contentImproveFailed: (state, action) => {
-            state.contentImproveState = false;
+        contentImproverFailed: (state, action) => {
+            state.contentImproverState = false;
         },
     }
 });
 
 const {
-    contentImproveFailed, contentImproveRequest, contentImproveSuccess
+    contentImproverFailed, contentImproverRequest, contentImproverSuccess
 } = contentSlice.actions;
 
-export const contentImprove = (data) => async (dispatch) => {
+export const contentImprover = (data) => async (dispatch) => {
 
-    dispatch(contentImproveRequest());
+    dispatch(contentImproverRequest());
 
     try {
-        var payload = await contentService.contentImprove(data);
-        dispatch(contentImproveSuccess(payload));
+        var payload = await contentService.contentImprover(data);
+        dispatch(contentImproverSuccess(payload));
         return payload;
     } catch (error) {
-        dispatch(contentImproveFailed());
+        dispatch(contentImproverFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;

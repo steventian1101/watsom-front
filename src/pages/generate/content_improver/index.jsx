@@ -4,6 +4,8 @@ import Sidebar from '../../../components/Generate/Sidebar';
 import DocEditor from '../../../components/Generate/DocEditor'
 import Footer from '../../../components/Generate/Footer';
 
+import { contentImprover } from '../../../redux/template/content';
+
 import ContentImprover from '../../../components/Generate/ContentImprover';
 import { useTranslation } from "react-i18next";
 import { openSnackBar } from '../../../redux/snackBarReducer';
@@ -33,6 +35,19 @@ export default function Index() {
       const { contents, tone } = data;
       console.log("contents", contents)
       console.log("tone", tone)
+
+      const sendData = {
+        action:"create",
+        output:count,
+        templateId:"content-improver",
+        values:{
+          textarea1:contents,
+          tone:"Friendly"
+        }	
+      }
+
+      let res = dispatch(contentImprover(sendData));
+      console.log("res", res);
     }
 
   }
