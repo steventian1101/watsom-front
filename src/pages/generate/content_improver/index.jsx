@@ -37,13 +37,10 @@ export default function Index() {
       console.log("tone", tone)
 
       const sendData = {
-        action:"create",
         output:count,
-        templateId:"content-improver",
-        values:{
-          textarea1:contents,
-          tone:"Friendly"
-        }	
+        type:type,
+        content:contents,
+        tone:tone
       }
 
       let res = dispatch(contentImprover(sendData));

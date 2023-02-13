@@ -12,7 +12,7 @@ const contentImprover = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = fetch(`https://app.flowmind.ai/api/template`, requestOptions);
+    const response = fetch(`${API_BASE}/template/content_improver`, requestOptions);
     return await handleResponse(response);
 }
 
