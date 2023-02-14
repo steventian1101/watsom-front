@@ -2,6 +2,7 @@ import { Textarea } from 'flowbite-react';
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from "react-i18next";
 import ToneSelect from '../ToneSelect';
+import EditButtonGroup from '../EditButtonGroup';
 
 import TextareaAutosize from 'react-textarea-autosize';
 
@@ -32,7 +33,12 @@ function ContentImprover({
     temp[index] = value;
     setContentResult([...temp])
     // const textRowCount = textArea ? textArea.value.split("\n").length : 0
+  }
 
+  const removeContent = (index) => {
+    let temp = [...content_result];
+    temp.splice(index,1)
+    setContentResult([...temp])
   }
 
   return (
@@ -69,6 +75,11 @@ function ContentImprover({
               className='bg-white w-full outline-none border-none focus:bg-gray-100 overflow-hidden'
               value={data}
               onChange={(e) => changeResult(index, e.target.value)}
+            />
+            <EditButtonGroup 
+              content={data}
+              index={index}
+              removeContent={removeContent}
             />
             {/* <Textarea 
               rows={data.split("\n").length+1}
