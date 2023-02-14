@@ -34,29 +34,30 @@ export default function Index() {
   }
 
   const generate = async (data, count, type) => {
-    let is_valid = validate(data);
+    if(!contentImproverState){
+      let is_valid = validate(data);
 
-    if(is_valid){
-      const { contents, tone } = data;
-      console.log("contents", contents)
-      console.log("tone", tone)
+      if(is_valid){
+        const { contents, tone } = data;
+        console.log("contents", contents)
+        console.log("tone", tone)
 
-      const sendData = {
-        output:count,
-        type:type,
-        content:contents,
-        tone:tone
-      }
+        const sendData = {
+          output:count,
+          type:type,
+          content:contents,
+          tone:tone
+        }
 
-      let res = await dispatch(contentImprover(sendData));
-      if(res != false){
-        console.log("res", res);
-        setResult(res.result)
-      }else{
-        dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+        let res = await dispatch(contentImprover(sendData));
+        if(res != false){
+          console.log("res", res);
+          setResult(res.result)
+        }else{
+          dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+        }
       }
     }
-
   }
 
   return (
