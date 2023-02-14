@@ -24,10 +24,10 @@ export default function Index() {
     const {title, keywords, outline} = data
 
     if(!title){
-      dispatch(openSnackBar({ message: t("please_input_title"), status: 'error' }));
+      dispatch(openSnackBar({ message: t("msg_please_input_title"), status: 'error' }));
       return false;
     }else if(!keywords){
-      dispatch(openSnackBar({ message: t("please_input_keywords"), status: 'error' }));
+      dispatch(openSnackBar({ message: t("msg_please_input_keywords"), status: 'error' }));
       return false;
     }else{
       if(outline){
@@ -39,15 +39,15 @@ export default function Index() {
           })
 
           if(cnt_outline == 0){
-            dispatch(openSnackBar({ message: t("please_input_outline"), status: 'error' }));
+            dispatch(openSnackBar({ message: t("msg_please_input_outline"), status: 'error' }));
             return false;    
           }
         }else{
-          dispatch(openSnackBar({ message: t("please_input_outline"), status: 'error' }));
+          dispatch(openSnackBar({ message: t("msg_please_input_outline"), status: 'error' }));
           return false;  
         }
       }else{
-        dispatch(openSnackBar({ message: t("please_input_outline"), status: 'error' }));
+        dispatch(openSnackBar({ message: t("msg_please_input_outline"), status: 'error' }));
         return false;
       }
     }
