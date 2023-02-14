@@ -5,6 +5,7 @@ import { FiCopy } from "react-icons/fi"
 import { AiOutlineFileAdd, AiOutlineCloseCircle } from 'react-icons/ai';
 import copy from 'copy-to-clipboard';
 import { openSnackBar } from '../../redux/snackBarReducer';
+import { setCurrentDocument } from '../../redux/globalReducer';
 import { useDispatch, useSelector } from "react-redux";
 
 function EditButtonGroup({
@@ -19,6 +20,10 @@ function EditButtonGroup({
     dispatch(openSnackBar({ message: "Success Copied", status: 'success' }));
   }
 
+  const addDocument = () => {
+    dispatch(setCurrentDocument(content))
+  }
+
   const remove = () => {
     removeContent(index)
   }
@@ -29,7 +34,7 @@ function EditButtonGroup({
         <FiCopy className='mr-2' />
         Copy  
       </Button>
-      <Button size="sm" color="white" className='border-2 border-gray-200'>
+      <Button onClick={()=>addDocument()} size="sm" color="white" className='border-2 border-gray-200'>
         <AiOutlineFileAdd className='mr-2' />
         Add to Document
       </Button>

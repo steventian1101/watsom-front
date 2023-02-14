@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import { useTranslation } from "react-i18next";
 
@@ -6,12 +6,19 @@ import { Editor } from "react-draft-wysiwyg";
 import { convertToRaw, EditorState } from 'draft-js';
 import draftToMarkdown from 'draftjs-to-markdown';
 import wordsCounter from 'word-counting'
+import { useDispatch, useSelector } from "react-redux";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./style.css"
 
 export default function DocEditor() {
   const { t } = useTranslation()
+  const { globalState } = useSelector((state) => state);
+  const { current_document } = globalState;
+
+  useEffect(() => {
+    console.log("current:", current_document)
+  }, [current_document]);
 
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
   const [markDownString, setMarkDownString] = useState("")

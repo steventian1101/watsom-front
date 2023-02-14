@@ -6,6 +6,8 @@ export const globalSlice = createSlice({
     initialState: {
         language: "sp",
         setLanguageState: false,
+        current_document: "",
+        setCurrentDocumentState: false
     },
     reducers: {
         setLanguageRequest: state => {
@@ -18,11 +20,22 @@ export const globalSlice = createSlice({
         setLanguageFailed: (state, action) => {
             state.setLanguageState = false;
         },
+        setCurrentDocumentRequest: state => {
+            state.setCurrentDocumentState = true
+        },
+        setCurrentDocumentSuccess: (state, action) => {
+            state.setCurrentDocumentState = false;
+            state.current_document = action.payload;
+        },
+        setCurrentDocumentFailed: (state, action) => {
+            state.setCurrentDocumentState = false;
+        },
     }
 });
 
 const {
     setLanguageFailed, setLanguageRequest, setLanguageSuccess,
+    setCurrentDocumentFailed, setCurrentDocumentRequest, setCurrentDocumentSuccess
 } = globalSlice.actions;
 
 export const setCurrentLanguage = (lang) => async (dispatch) => {
@@ -33,6 +46,19 @@ export const setCurrentLanguage = (lang) => async (dispatch) => {
         dispatch(setLanguageSuccess(lang));
     } catch (error) {
         dispatch(setLanguageFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        throw new Error(error);
+    }
+}
+
+export const setCurrentDocument = (doc) => async (dispatch) => {
+
+    dispatch(setCurrentDocumentRequest());
+
+    try {
+        dispatch(setCurrentDocumentSuccess(doc));
+    } catch (error) {
+        dispatch(setCurrentDocumentFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         throw new Error(error);
     }
