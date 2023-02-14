@@ -7,6 +7,7 @@ import copy from 'copy-to-clipboard';
 import { openSnackBar } from '../../redux/snackBarReducer';
 import { setCurrentDocument } from '../../redux/globalReducer';
 import { useDispatch, useSelector } from "react-redux";
+import wordsCounter from 'word-counting'
 
 function EditButtonGroup({
   content, index, removeContent
@@ -30,18 +31,21 @@ function EditButtonGroup({
 
   return (
     <div className='flex gap-4'>
-      <Button onClick={()=>copyContent()} size="sm" color="white" className='border-2 border-gray-200'>
+      <Button onClick={()=>copyContent()} size="xs" color="white" className='border-2 border-gray-200'>
         <FiCopy className='mr-2' />
         Copy  
       </Button>
-      <Button onClick={()=>addDocument()} size="sm" color="white" className='border-2 border-gray-200'>
+      <Button onClick={()=>addDocument()} size="xs" color="white" className='border-2 border-gray-200'>
         <AiOutlineFileAdd className='mr-2' />
         Add to Document
       </Button>
-      <Button onClick={()=>remove()} size="sm" color="white" className='border-2 border-gray-200'>
+      <Button onClick={()=>remove()} size="xs" color="white" className='border-2 border-gray-200'>
         <AiOutlineCloseCircle className='mr-2' />
         Remove
       </Button>
+      <div className='text-xs text-gray-300 self-center'>
+        {wordsCounter(content).wordsCount} {t("words")} • {content.length} {t("characters")}
+      </div>
     </div>
   );
 }
