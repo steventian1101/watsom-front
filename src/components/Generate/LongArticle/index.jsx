@@ -1,4 +1,4 @@
-import { TextInput } from 'flowbite-react';
+import { Button, TextInput } from 'flowbite-react';
 import React, { useState } from 'react';
 import { useTranslation } from "react-i18next";
 import { AiOutlineCloseCircle } from 'react-icons/ai'
@@ -6,15 +6,21 @@ import ToneSelect from '../ToneSelect';
 import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";
 
+import { generateOutline } from '../../../redux/template/blog';
+
 function LongArticle({
   func_SetTitle, func_SetKeywords, func_SetTone, func_SetFirstOutline, func_setOutline
 }) {
+  const { blogState } = useSelector((state) => state);
+  const { generateOutlineState } = blogState;
   const { t } = useTranslation();
 
   const [title, setTitle] = useState("");
   const [keywords, setKeywords] = useState("");
+  const [tone, setTone] = useState(0);
   const [outline, setOutline] = useState([])
   const [firstOutline, setFirstOutline] = useState("")
+  const [showStep2, setShowStep2] = useState(false)
   const dispatch = useDispatch();
 
   // outline list begin
@@ -74,6 +80,41 @@ function LongArticle({
   // tone
   const selectTone = (value) => {
     func_SetTone(value)
+    setTone(value)
+  }
+
+  const validate = (data) => {
+    if(!title){
+      dispatch(openSnackBar({ message: t("msg_please_input_title"), status: 'error' }));
+      return false;
+    }else if(!keywords){
+      dispatch(openSnackBar({ message: t("msg_please_input_keywords"), status: 'error' }));
+      return false;
+    }
+    return true;
+  }
+
+  const nextOutline = async () => {
+    if(!generateOutlineState){
+      let is_valid = validate()
+
+      if(is_valid){
+        const sendData = {
+          title: title,
+          keywords: keywords,
+          tone: tone
+        }
+
+        let res = await dispatch(generateOutline(sendData))
+        if(res != false){
+          console.log("res", res);
+          // setResult(res.result)
+          setShowStep2(true)
+        }else{
+          dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+        }
+      }
+    }
   }
 
   return (
@@ -132,91 +173,99 @@ function LongArticle({
                 </div>
               </div>
             </div>
+
+            <Button onClick={()=>nextOutline()} className='w-1/3 px-4'>
+              Next: Outline
+            </Button>
           </div>
+
         </div>
 
-        <div>
-          <div className='text-center pb-4'>
-            <div className='text-2xl'>
-              {t("long_blog_step2")}
-            </div>
-            <div className='italic'>
-              {t("long_blog_step2_sub")}
-            </div>
-          </div>
-          
-          <div style={{textAlign: "-webkit-center"}}>
-            {/* intro cosmetic */}
-            <div className='w-2/3 text-start py-2'>
-              <div className='border-dotted p-2 border-gray-400 border-2 text-gray-400'>
-                {t("blog_intro_will_added")}
+        {
+          showStep2 &&
+          <div>
+            <div className='text-center py-4'>
+              <div className='text-2xl'>
+                {t("long_blog_step2")}
+              </div>
+              <div className='italic'>
+                {t("long_blog_step2_sub")}
               </div>
             </div>
-
-            {/* outline list */}
-            {
-              outline.length > 0 && outline.map((data,index) => 
-                <div key={index} className='w-2/3 grid grid-cols-12 py-2'>
-                  <div className='col-span-11'>
-                    <TextInput
-                      sizing="lg"
-                      value={data}
-                      onChange={(e) => setExistOutline(index, e.target.value)}
-                    />
-                  </div>
-                  <div className='col-span-1 self-center'>
-                    <AiOutlineCloseCircle 
-                      className='w-8 h-8' 
-                      onClick={()=>removeExist(index)}
-                    />
-                  </div>
-                </div>
-              )
-            }
-
-            {/* outline first */}
-            <div className='w-2/3 grid grid-cols-12 py-2'>
-              <div className='col-span-11'>
-                <TextInput
-                  sizing="lg"
-                  value={firstOutline}
-                  onChange={(e) => changeFirstOutline(e.target.value)}
-                />
-              </div>
-              <div className='col-span-1 self-center'>
-                <AiOutlineCloseCircle 
-                  className='w-8 h-8' 
-                  onClick={()=>removeFirstOutline()}
-                />
-              </div>
-            </div>
-
-            <div className='flex justify-between w-2/3 py-2'>
-              <div 
-                onClick={()=>newOutline()}
-                className='underline text-site_light-100 self-center'
-              >
-                + {t("generate_more_outline")}
-              </div>
-              <div>
-                <div className="flex items-center">
-                  <div
-                    onClick={()=>regenerateAll()}
-                    className="w-full font-medium p-1  text-sm inline-flex items-center justify-center border-2 border-transparent rounded-lg leading-5 shadow-sm transition duration-150 ease-in-out bg-site_light-100 hover:!bg-site_light-100 text-white cursor-pointer"
-                  >
-                    <span className="hidden md:block py-1 px-2">{t("regenerate_all")}</span>
-                  </div>
+            
+            <div style={{textAlign: "-webkit-center"}}>
+              {/* intro cosmetic */}
+              <div className='w-2/3 text-start py-2'>
+                <div className='border-dotted p-2 border-gray-400 border-2 text-gray-400'>
+                  {t("blog_intro_will_added")}
                 </div>
               </div>
-            </div>
 
-            <div className='w-2/3 text-start py-2'>
-              <div className='border-dotted p-2 border-gray-400 border-2 text-gray-400'>
-                {t("blog_intro_will_added")}
+              {/* outline list */}
+              {
+                outline.length > 0 && outline.map((data,index) => 
+                  <div key={index} className='w-2/3 grid grid-cols-12 py-2'>
+                    <div className='col-span-11'>
+                      <TextInput
+                        sizing="lg"
+                        value={data}
+                        onChange={(e) => setExistOutline(index, e.target.value)}
+                      />
+                    </div>
+                    <div className='col-span-1 self-center'>
+                      <AiOutlineCloseCircle 
+                        className='w-8 h-8' 
+                        onClick={()=>removeExist(index)}
+                      />
+                    </div>
+                  </div>
+                )
+              }
+
+              {/* outline first */}
+              <div className='w-2/3 grid grid-cols-12 py-2'>
+                <div className='col-span-11'>
+                  <TextInput
+                    sizing="lg"
+                    value={firstOutline}
+                    onChange={(e) => changeFirstOutline(e.target.value)}
+                  />
+                </div>
+                <div className='col-span-1 self-center'>
+                  <AiOutlineCloseCircle 
+                    className='w-8 h-8' 
+                    onClick={()=>removeFirstOutline()}
+                  />
+                </div>
+              </div>
+
+              <div className='flex justify-between w-2/3 py-2'>
+                <div 
+                  onClick={()=>newOutline()}
+                  className='underline text-site_light-100 self-center'
+                >
+                  + {t("generate_more_outline")}
+                </div>
+                <div>
+                  <div className="flex items-center">
+                    <div
+                      onClick={()=>regenerateAll()}
+                      className="w-full font-medium p-1  text-sm inline-flex items-center justify-center border-2 border-transparent rounded-lg leading-5 shadow-sm transition duration-150 ease-in-out bg-site_light-100 hover:!bg-site_light-100 text-white cursor-pointer"
+                    >
+                      <span className="hidden md:block py-1 px-2">{t("regenerate_all")}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className='w-2/3 text-start py-2'>
+                <div className='border-dotted p-2 border-gray-400 border-2 text-gray-400'>
+                  {t("blog_intro_will_added")}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        }
       </div>
     </div>
   );
