@@ -6,14 +6,14 @@ import ToneSelect from '../ToneSelect';
 import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";
 
-import { generateOutline } from '../../../redux/template/blog';
+import { generateOutline, generateOneOutline } from '../../../redux/template/blog';
 import Loading from '../../Loading';
 
 function LongArticle({
   func_SetTitle, func_SetKeywords, func_SetTone, func_SetFirstOutline, func_setOutline
 }) {
   const { blogState } = useSelector((state) => state);
-  const { generateOutlineState } = blogState;
+  const { generateOutlineState, generateOneOutlineState } = blogState;
   const { t } = useTranslation();
 
   const [title, setTitle] = useState("");
@@ -35,15 +35,69 @@ function LongArticle({
     func_SetFirstOutline("")
   }
 
-  const newOutline = () => {
-    if(firstOutline){
-      setOutline([...outline, firstOutline])
-      func_setOutline([...outline, firstOutline])
-      setFirstOutline("")
-      func_SetFirstOutline("")
-    }else{
-      dispatch(openSnackBar({ message: t("msg_please_input_outline"), status: 'error' }));
+  const newOutline = async () => {
+    // if(!generateOneOutlineState){
+    //   let is_valid = validate()
+
+    //   if(is_valid){
+    //     const sendData = {
+    //       title: title,
+    //       keywords: keywords,
+    //       tone: tone,
+    //       outline: outline
+    //     }
+
+    //     let res = await dispatch(generateOneOutline(sendData))
+    //     if(res != false){
+    //       console.log("res", res);
+    //       const { result } = res
+
+    //       let temp = [...outline];
+    //       setOutline([...temp, result])
+    //       func_setOutline([...temp, result]);
+    //     }else{
+    //       dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+    //     }
+    //   }
+    // }
+
+    if(!generateOutlineState){
+      let is_valid = validate()
+
+      if(is_valid){
+        const sendData = {
+          title: title,
+          keywords: keywords,
+          tone: tone
+        }
+
+        let res = await dispatch(generateOutline(sendData))
+        if(res != false){
+          console.log("res", res);
+          const { result } = res
+          
+          let temp = [...outline];
+          if(outline.length == 0){
+            temp = [...temp, result[0]]
+          }else{
+            temp = [...temp, result[2]]
+          }
+          setOutline([...temp])
+          func_setOutline([...temp]);
+        }else{
+          dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+        }
+      }
     }
+
+    // if(firstOutline){
+    //   setOutline([...outline, firstOutline])
+    //   func_setOutline([...outline, firstOutline])
+    //   setFirstOutline("")
+    //   func_SetFirstOutline("")
+    // }else{
+    //   dispatch(openSnackBar({ message: t("msg_please_input_outline"), status: 'error' }));
+    // }
   }
 
   const regenerateAll = () => {
@@ -114,6 +168,7 @@ function LongArticle({
           const { result } = res
 
           setOutline(result)
+          func_setOutline(result)
 
           setShowStep2(true)
         }else{
@@ -126,7 +181,7 @@ function LongArticle({
   return (
     <>
       {
-        generateOutlineState && <Loading />
+        (generateOutlineState || generateOneOutlineState) && <Loading />
       }
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-gray-100" style={{height: " calc(100vh - 10rem) "}}>
         <div>
@@ -213,7 +268,7 @@ function LongArticle({
 
                 {/* outline list */}
                 {
-                  outline.length > 0 && outline.map((data,index) => 
+                  outline.length > 0 && outline.map((data,index) => data &&
                     <div key={index} className='w-2/3 grid grid-cols-12 py-2'>
                       <div className='col-span-11'>
                         <Textarea
@@ -254,7 +309,7 @@ function LongArticle({
                 <div className='flex justify-between w-2/3 py-2'>
                   <div 
                     onClick={()=>newOutline()}
-                    className='underline text-site_light-100 self-center'
+                    className='underline text-site_light-100 self-center cursor-pointer hover:text-blue-800'
                   >
                     + {t("generate_more_outline")}
                   </div>
@@ -262,7 +317,7 @@ function LongArticle({
                     <div className="flex items-center">
                       <div
                         onClick={()=>nextOutline()}//regenerateAll()
-                        className="w-full font-medium p-1  text-sm inline-flex items-center justify-center border-2 border-transparent rounded-lg leading-5 shadow-sm transition duration-150 ease-in-out bg-site_light-100 hover:!bg-site_light-100 text-white cursor-pointer"
+                        className="w-full font-medium p-1  text-sm inline-flex items-center justify-center border-2 border-transparent rounded-lg leading-5 shadow-sm transition duration-150 ease-in-out bg-site_light-100 hover:bg-blue-800 text-white cursor-pointer"
                       >
                         <span className="hidden md:block py-1 px-2">{t("regenerate_all")}</span>
                       </div>

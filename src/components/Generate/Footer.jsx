@@ -34,7 +34,7 @@ function Footer({
 
         <div className="flex items-center">
           <div
-              className="w-full font-medium p-1  text-sm inline-flex items-center justify-center border-2 border-transparent rounded-lg leading-5 shadow-sm transition duration-150 ease-in-out bg-site_light-100 hover:!bg-blue-500 text-white cursor-pointer"
+              className="w-full font-medium p-1  text-sm inline-flex items-center justify-center border-2 border-transparent rounded-lg leading-5 shadow-sm transition duration-150 ease-in-out bg-site_light-100 hover:!bg-blue-800 text-white cursor-pointer"
           >
             <div className="text-lg hidden md:block py-1 px-16" onClick={() => clickGenerate()}>{t("generate")}</div>
           </div>
