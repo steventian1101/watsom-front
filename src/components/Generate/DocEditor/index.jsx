@@ -3,8 +3,8 @@ import React, {useState, useEffect} from 'react';
 import { useTranslation } from "react-i18next";
 
 import { Editor } from "react-draft-wysiwyg";
-import { convertToRaw, EditorState } from 'draft-js';
-import draftToMarkdown from 'draftjs-to-markdown';
+import { convertToRaw, EditorState, convertFromRaw  } from 'draft-js';
+import {draftToMarkdown, markdownToDraft } from 'markdown-draft-js';
 import wordsCounter from 'word-counting'
 import { useDispatch, useSelector } from "react-redux";
 
@@ -18,6 +18,11 @@ export default function DocEditor() {
 
   useEffect(() => {
     console.log("current:", current_document)
+    if(current_document){
+      let rawObject = markdownToDraft(current_document);
+      let contentState = convertFromRaw(rawObject);
+      setEditorState(EditorState.createWithContent(contentState))
+    }
   }, [current_document]);
 
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
