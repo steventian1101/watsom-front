@@ -8,6 +8,7 @@ export const blogSlice = createSlice({
     initialState: {
         generateOutlineState: false,
         generateOneOutlineState: false,
+        generateLongArticle: false,
         outline: [],
         oneOutline: "",
     },
@@ -32,12 +33,22 @@ export const blogSlice = createSlice({
         generateOneOutlineFailed: (state, action) => {
             state.generateOneOutlineState = false;
         },
+        generateLongArticleRequest: state => {
+            state.generateLongArticleState = true
+        },
+        generateLongArticleSuccess: (state, action) => {
+            state.generateLongArticleState = false;
+        },
+        generateLongArticleFailed: (state, action) => {
+            state.generateLongArticleState = false;
+        },
     }
 });
 
 const {
     generateOutlineFailed, generateOutlineRequest, generateOutlineSuccess,
-    generateOneOutlineFailed, generateOneOutlineRequest, generateOneOutlineSuccess
+    generateOneOutlineFailed, generateOneOutlineRequest, generateOneOutlineSuccess,
+    generateLongArticleFailed, generateLongArticleRequest, generateLongArticleSuccess
 } = blogSlice.actions;
 
 export const generateOutline = (data) => async (dispatch) => {
@@ -66,6 +77,22 @@ export const generateOneOutline = (data) => async (dispatch) => {
         return payload;
     } catch (error) {
         dispatch(generateOneOutlineFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return false;
+    }
+}
+
+export const generateLongArticle = (data) => async (dispatch) => {
+
+    dispatch(generateLongArticleRequest());
+
+    try {
+        var payload = await blogService.generateLongArticle(data);
+        dispatch(generateLongArticleSuccess(payload));
+        return payload;
+    } catch (error) {
+        dispatch(generateLongArticleFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;
