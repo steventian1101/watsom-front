@@ -122,6 +122,7 @@ export default function Index() {
                 type = "long_article"
                 data = {{title: title, keywords: keywords, tone: tone, outline: [...outline, firstOutline]}}
                 generate = {generate}
+                count_disable = {true}
               />
             </div>
             <div className='col-span-2'>

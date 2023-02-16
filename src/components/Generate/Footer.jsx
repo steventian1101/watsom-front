@@ -4,7 +4,8 @@ import { useTranslation } from "react-i18next";
 function Footer({
   type,
   data,
-  generate
+  generate,
+  count_disable
 }) {
   const { t } = useTranslation();
 
@@ -23,7 +24,7 @@ function Footer({
             {t("output")}
           </div>
 
-          <select className='rounded-lg w-24' onChange={(e)=>setShowCount(e.target.value)} defaultValue={showCount}>
+          <select className='rounded-lg w-24 disabled:cursor-not-allowed' onChange={(e)=>setShowCount(e.target.value)} defaultValue={count_disable ? 1 : showCount} disabled = {count_disable} >
             {
               output_count.map((data,index)=>
                 <option value={data} key={index}>{data}</option>

@@ -86,6 +86,7 @@ export default function Index() {
                   type = "content_improver"
                   data = {{contents: contents, tone: tone}}
                   generate = {generate}
+                  count_disable = {false}
                 />
                 <Footer />
               </div>
