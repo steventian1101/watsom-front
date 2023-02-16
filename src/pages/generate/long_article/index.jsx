@@ -82,10 +82,19 @@ export default function Index() {
           dispatch(setLoading(false));
           console.log("res", res);
           // setResult(res.result)
-          const {intro, conclusion, outline} = res
+          const {intro, conclusion, outline_content} = res
           let content = "# Introduction\n"
           content += intro + "\n";
-          content += outline + "\n";
+
+          if(outline.length > 0){
+            if(outline_content.length > 0){
+              outline_content.map((data, index)=>{
+                content += "## " + outline[index] + "\n"
+                content += data + "\n"
+              })
+            }
+          }
+
           content += "# Conclusion\n"
           content += conclusion;
 
