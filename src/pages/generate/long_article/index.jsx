@@ -10,6 +10,7 @@ import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";
 import { generateLongArticle } from '../../../redux/template/blog';
 import Loading from '../../../components/Loading';
+import { setCurrentDocument } from '../../../redux/globalReducer';
 
 export default function Index() {
   const { blogState } = useSelector((state) => state);
@@ -79,6 +80,14 @@ export default function Index() {
         if(res != false){
           console.log("res", res);
           // setResult(res.result)
+          const {intro, conclusion, outline} = res
+          let content = "# Introduction\n"
+          content += intro + "\n";
+          content += outline + "\n";
+          content += "# Conclusion\n"
+          content += conclusion;
+
+          dispatch(setCurrentDocument(content))
         }else{
           dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
         }
