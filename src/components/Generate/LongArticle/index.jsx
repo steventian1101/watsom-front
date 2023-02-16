@@ -7,13 +7,14 @@ import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";
 
 import { generateOutline, generateOneOutline } from '../../../redux/template/blog';
-import Loading from '../../Loading';
+import { setLoading } from '../../../redux/globalReducer';
 
 function LongArticle({
   func_SetTitle, func_SetKeywords, func_SetTone, func_SetFirstOutline, func_setOutline
 }) {
-  const { blogState } = useSelector((state) => state);
+  const { blogState, globalState } = useSelector((state) => state);
   const { generateOutlineState, generateOneOutlineState } = blogState;
+  const { loading } = globalState;
   const { t } = useTranslation();
 
   const [title, setTitle] = useState("");
@@ -40,6 +41,7 @@ function LongArticle({
     //   let is_valid = validate()
 
     //   if(is_valid){
+    //     dispatch(setLoading(true));
     //     const sendData = {
     //       title: title,
     //       keywords: keywords,
@@ -49,6 +51,7 @@ function LongArticle({
 
     //     let res = await dispatch(generateOneOutline(sendData))
     //     if(res != false){
+    //       dispatch(setLoading(false));
     //       console.log("res", res);
     //       const { result } = res
 
@@ -56,15 +59,18 @@ function LongArticle({
     //       setOutline([...temp, result])
     //       func_setOutline([...temp, result]);
     //     }else{
+    //       dispatch(setLoading(false));
     //       dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
     //     }
     //   }
     // }
 
-    if(!generateOutlineState){
+    if(!loading){
       let is_valid = validate()
 
       if(is_valid){
+        dispatch(setLoading(true));
+
         const sendData = {
           title: title,
           keywords: keywords,
@@ -73,6 +79,7 @@ function LongArticle({
 
         let res = await dispatch(generateOutline(sendData))
         if(res != false){
+          dispatch(setLoading(false));
           console.log("res", res);
           const { result } = res
           
@@ -85,6 +92,7 @@ function LongArticle({
           setOutline([...temp])
           func_setOutline([...temp]);
         }else{
+          dispatch(setLoading(false));
           dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
         }
       }
@@ -152,10 +160,12 @@ function LongArticle({
   }
 
   const nextOutline = async () => {
-    if(!generateOutlineState){
+    if(!loading){
       let is_valid = validate()
 
       if(is_valid){
+        dispatch(setLoading(true));
+
         const sendData = {
           title: title,
           keywords: keywords,
@@ -164,6 +174,7 @@ function LongArticle({
 
         let res = await dispatch(generateOutline(sendData))
         if(res != false){
+          dispatch(setLoading(false));
           console.log("res", res);
           const { result } = res
 
@@ -172,6 +183,7 @@ function LongArticle({
 
           setShowStep2(true)
         }else{
+          dispatch(setLoading(false));
           dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
         }
       }
@@ -180,9 +192,6 @@ function LongArticle({
 
   return (
     <>
-      {
-        (generateOutlineState || generateOneOutlineState) && <Loading />
-      }
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-gray-100" style={{height: " calc(100vh - 10rem) "}}>
         <div>
           <div>

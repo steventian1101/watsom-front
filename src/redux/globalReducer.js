@@ -7,7 +7,9 @@ export const globalSlice = createSlice({
         language: "sp",
         setLanguageState: false,
         current_document: "",
-        setCurrentDocumentState: false
+        setCurrentDocumentState: false,
+        setLoadingState: false,
+        loading: false
     },
     reducers: {
         setLanguageRequest: state => {
@@ -30,12 +32,23 @@ export const globalSlice = createSlice({
         setCurrentDocumentFailed: (state, action) => {
             state.setCurrentDocumentState = false;
         },
+        setLoadingRequest: state => {
+            state.setLoadingState = true
+        },
+        setLoadingSuccess: (state, action) => {
+            state.setLoadingState = false;
+            state.loading = action.payload;
+        },
+        setLoadingFailed: (state, action) => {
+            state.setLoadingState = false;
+        },
     }
 });
 
 const {
     setLanguageFailed, setLanguageRequest, setLanguageSuccess,
-    setCurrentDocumentFailed, setCurrentDocumentRequest, setCurrentDocumentSuccess
+    setCurrentDocumentFailed, setCurrentDocumentRequest, setCurrentDocumentSuccess,
+    setLoadingFailed, setLoadingRequest, setLoadingSuccess
 } = globalSlice.actions;
 
 export const setCurrentLanguage = (lang) => async (dispatch) => {
@@ -59,6 +72,19 @@ export const setCurrentDocument = (doc) => async (dispatch) => {
         dispatch(setCurrentDocumentSuccess(doc));
     } catch (error) {
         dispatch(setCurrentDocumentFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        throw new Error(error);
+    }
+}
+
+export const setLoading = (state) => async (dispatch) => {
+
+    dispatch(setLoadingRequest());
+
+    try {
+        dispatch(setLoadingSuccess(state));
+    } catch (error) {
+        dispatch(setLoadingFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         throw new Error(error);
     }

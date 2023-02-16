@@ -3,7 +3,6 @@ import Header from '../../../components/Generate/Header';
 import Sidebar from '../../../components/Generate/Sidebar';
 import DocEditor from '../../../components/Generate/DocEditor'
 import Footer from '../../../components/Generate/Footer';
-import Loading from '../../../components/Loading';
 
 import { contentImprover } from '../../../redux/template/content';
 
@@ -11,13 +10,15 @@ import ContentImprover from '../../../components/Generate/ContentImprover';
 import { useTranslation } from "react-i18next";
 import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from '../../../redux/globalReducer';
 
 export default function Index() {
-  const { contentState } = useSelector((state) => state);
+  const { contentState, globalState } = useSelector((state) => state);
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const { contentImproverState } = contentState;
+  const { loading } = globalState;
 
   const [contents, setContents] = useState("")
   const [tone, setTone] = useState(0);
@@ -34,10 +35,12 @@ export default function Index() {
   }
 
   const generate = async (data, count, type) => {
-    if(!contentImproverState){
+    if(!loading){
       let is_valid = validate(data);
 
       if(is_valid){
+        dispatch(setLoading(true));
+
         const { contents, tone } = data;
         console.log("contents", contents)
         console.log("tone", tone)
@@ -51,9 +54,11 @@ export default function Index() {
 
         let res = await dispatch(contentImprover(sendData));
         if(res != false){
+          dispatch(setLoading(false));
           console.log("res", res);
           setResult(res.result)
         }else{
+          dispatch(setLoading(false));
           dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
         }
       }
@@ -62,9 +67,6 @@ export default function Index() {
 
   return (
     <>
-      {
-        contentImproverState && <Loading />
-      }
       <div>
         <div className='grid grid-cols-12 h-full'>
           <div className='col-span-2'>

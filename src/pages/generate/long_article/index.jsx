@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { lazy, useState } from 'react';
 import Header from '../../../components/Generate/Header';
 import Sidebar from '../../../components/Generate/Sidebar';
 import DocEditor from '../../../components/Generate/DocEditor'
@@ -9,12 +9,12 @@ import { useTranslation } from "react-i18next";
 import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";
 import { generateLongArticle } from '../../../redux/template/blog';
-import Loading from '../../../components/Loading';
-import { setCurrentDocument } from '../../../redux/globalReducer';
+import { setLoading, setCurrentDocument } from '../../../redux/globalReducer';
 
 export default function Index() {
-  const { blogState } = useSelector((state) => state);
+  const { blogState, globalState } = useSelector((state) => state);
   const { generateLongArticleState } = blogState;
+  const { loading } = globalState;
   const { t } = useTranslation();
 
   const [title, setTitle] = useState("");
@@ -61,10 +61,11 @@ export default function Index() {
   }
 
   const generate = async (data, count, type) => {
-    if(!generateLongArticleState){
+    if(!loading){
       let is_valid = validate(data);
   
       if(is_valid){
+        dispatch(setLoading(true));
         const { title, keywords, outline, tone } = data;
         
         const sendData = {
@@ -78,6 +79,7 @@ export default function Index() {
   
         let res = await dispatch(generateLongArticle(sendData));
         if(res != false){
+          dispatch(setLoading(false));
           console.log("res", res);
           // setResult(res.result)
           const {intro, conclusion, outline} = res
@@ -89,6 +91,7 @@ export default function Index() {
 
           dispatch(setCurrentDocument(content))
         }else{
+          dispatch(setLoading(false));
           dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
         }
       }
@@ -97,9 +100,6 @@ export default function Index() {
 
   return (
     <div>
-      {
-        generateLongArticleState && <Loading />
-      }
       <div className='grid grid-cols-12 h-full'>
         <div className='col-span-2'>
           <Sidebar/>
