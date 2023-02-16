@@ -83,7 +83,8 @@ export default function Index() {
           console.log("res", res);
           // setResult(res.result)
           const {intro, conclusion, outline_content} = res
-          let content = "# Introduction\n"
+          let content = "# " + title + "\n"
+          content += "## Introduction\n"
           content += intro + "\n";
 
           if(outline.length > 0){
@@ -95,7 +96,7 @@ export default function Index() {
             }
           }
 
-          content += "# Conclusion\n"
+          content += "## Conclusion\n"
           content += conclusion;
 
           dispatch(setCurrentDocument(content))
