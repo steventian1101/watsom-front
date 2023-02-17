@@ -212,24 +212,24 @@ function Sidebar({
             sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
           >
             <TreeItem nodeId="youtube" label={t("group_youtube")}>
-              <TreeItem nodeId="2" label={<div className={`${pathname.includes('youtube_description') && "bg-site_light-100"}`}>{t("youtube_description")}</div>} onClick={() => navigate('/template/youtube_description')} />
-              <TreeItem nodeId="3" label={<div className={`${pathname.includes('youtube_introduction') && "bg-site_light-100"}`}>{t("youtube_introduction")}</div>} onClick={() => navigate('/template/youtube_introduction')} />
-              <TreeItem nodeId="4" label={<div className={`${pathname.includes('youtube_title') && "bg-site_light-100"}`}>{t("youtube_title")}</div>} onClick={() => navigate('/template/youtube_title')} />
+              <TreeItem nodeId="youtube_1" label={<div className={`${pathname.includes('youtube_description') && "bg-site_light-100"} text-sm`}>{t("youtube_description")}</div>} onClick={() => navigate('/template/youtube_description')} />
+              <TreeItem nodeId="youtube_2" label={<div className={`${pathname.includes('youtube_introduction') && "bg-site_light-100"} text-sm`}>{t("youtube_introduction")}</div>} onClick={() => navigate('/template/youtube_introduction')} />
+              <TreeItem nodeId="youtube_3" label={<div className={`${pathname.includes('youtube_title') && "bg-site_light-100"} text-sm`}>{t("youtube_title")}</div>} onClick={() => navigate('/template/youtube_title')} />
             </TreeItem>
             <TreeItem nodeId="blog" label={t("group_blog")}>
-              <TreeItem nodeId="12" label={<div className={`${pathname.includes('long_article') && "bg-site_light-100"}`}>{t("long_article")}</div>} onClick={() => navigate('/template/long_article')} />
-              <TreeItem nodeId="13" label={<div className={`${pathname.includes('content_improver') && "bg-site_light-100"}`}>{t("content_improver")}</div>} onClick={() => navigate('/template/content_improver')} />
+              <TreeItem nodeId="blog_1" label={<div className={`${pathname.includes('long_article') && "bg-site_light-100"} text-sm`}>{t("long_article")}</div>} onClick={() => navigate('/template/long_article')} />
+              <TreeItem nodeId="blog_2" label={<div className={`${pathname.includes('content_improver') && "bg-site_light-100"} text-sm`}>{t("content_improver")}</div>} onClick={() => navigate('/template/content_improver')} />
             </TreeItem>
             <TreeItem nodeId="amazon" label={t("group_amazon")}>
-              <TreeItem nodeId="22" label={<div className={`${pathname.includes('amazon_sponsor_brand_headline') && "bg-site_light-100"}`}>{t("amazon_sponsor_brand_headline")}</div>} onClick={() => navigate('/template/amazon_sponsor_brand_headline')} />
-              <TreeItem nodeId="23" label={<div className={`${pathname.includes('amazon_product_feature') && "bg-site_light-100"}`}>{t("amazon_product_feature")}</div>} onClick={() => navigate('/template/amazon_product_feature')} />
-              <TreeItem nodeId="24" label={<div className={`${pathname.includes('amazon_product_title') && "bg-site_light-100"}`}>{t("amazon_product_title")}</div>} onClick={() => navigate('/template/amazon_product_title')} />
-              <TreeItem nodeId="25" label={<div className={`${pathname.includes('amazon_product_description') && "bg-site_light-100"}`}>{t("amazon_product_description")}</div>} onClick={() => navigate('/template/amazon_product_description')} />
+              <TreeItem nodeId="amazon_1" label={<div className={`${pathname.includes('amazon_sponsor_brand_headline') && "bg-site_light-100"} text-sm`}>{t("amazon_sponsor_brand_headline")}</div>} onClick={() => navigate('/template/amazon_sponsor_brand_headline')} />
+              <TreeItem nodeId="amazon_2" label={<div className={`${pathname.includes('amazon_product_feature') && "bg-site_light-100"} text-sm`}>{t("amazon_product_feature")}</div>} onClick={() => navigate('/template/amazon_product_feature')} />
+              <TreeItem nodeId="amazon_3" label={<div className={`${pathname.includes('amazon_product_title') && "bg-site_light-100"} text-sm`}>{t("amazon_product_title")}</div>} onClick={() => navigate('/template/amazon_product_title')} />
+              <TreeItem nodeId="amazon_4" label={<div className={`${pathname.includes('amazon_product_description') && "bg-site_light-100"} text-sm`}>{t("amazon_product_description")}</div>} onClick={() => navigate('/template/amazon_product_description')} />
             </TreeItem>
             <TreeItem nodeId="ads" label={t("group_ads")}>
-              <TreeItem nodeId="32" label={<div className={`${pathname.includes('tiktok_ads_description') && "bg-site_light-100"}`}>{t("tiktok_ads_description")}</div>} onClick={() => navigate('/template/tiktok_ads_description')} />
-              <TreeItem nodeId="33" label={<div className={`${pathname.includes('facebook_ads') && "bg-site_light-100"}`}>{t("facebook_ads")}</div>} onClick={() => navigate('/template/facebook_ads')} />
-              <TreeItem nodeId="34" label={<div className={`${pathname.includes('google_ads_title') && "bg-site_light-100"}`}>{t("google_ads_title")}</div>} onClick={() => navigate('/template/google_ads_title')} />
+              <TreeItem nodeId="ads_1" label={<div className={`${pathname.includes('tiktok_ads_description') && "bg-site_light-100"} text-sm`}>{t("tiktok_ads_description")}</div>} onClick={() => navigate('/template/tiktok_ads_description')} />
+              <TreeItem nodeId="ads_2" label={<div className={`${pathname.includes('facebook_ads') && "bg-site_light-100"} text-sm`}>{t("facebook_ads")}</div>} onClick={() => navigate('/template/facebook_ads')} />
+              <TreeItem nodeId="ads_3" label={<div className={`${pathname.includes('google_ads_title') && "bg-site_light-100"} text-sm`}>{t("google_ads_title")}</div>} onClick={() => navigate('/template/google_ads_title')} />
             </TreeItem>
           </TreeView>
         </div>

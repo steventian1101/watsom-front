@@ -90,7 +90,6 @@ export default function Index() {
                   generate = {generate}
                   count_disable = {false}
                 />
-                <Footer />
               </div>
               <div className='col-span-2'>
                 <DocEditor />

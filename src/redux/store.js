@@ -5,6 +5,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import globalReducer from './globalReducer';
 import contentReducer from './template/content';
 import blogReducer from './template/blog';
+import youtubeReducer from './template/youtube';
 
 const rootReducer = combineReducers({
     authState: authReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     globalState: globalReducer,
     contentState: contentReducer,
     blogState: blogReducer,
+    youtubeState: youtubeReducer,
 })
 
 
