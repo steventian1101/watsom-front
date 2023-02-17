@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useTranslation } from "react-i18next";
 import TemplateSearch from './TemplateSearch';
 import TemplateCard from './TemplateCard';
+import { templateData } from './TemplateData';
 
 function Content({
 }) {
   const { t } = useTranslation();
 
   const [template_group, setTemplateGroup] = useState(0);  
-  const group_name = [t("group_all"), t("group_social_media"), t("group_blog"), t("group_website_copy"), t("group_email"), t("group_ads")];
+  const group_name = [t("group_all"), t("group_youtube"), t("group_blog"), t("group_amazon"), t("group_ads")];
 
 
   return (
@@ -22,18 +23,29 @@ function Content({
           </div>
 
           <div className='grid grid-cols-3 gap-8 pt-8'>
-            <TemplateCard 
+            {
+              templateData.map((data, index) => (template_group == 0 || data.group == template_group) &&
+                <TemplateCard 
+                  key={index}
+                  title={t(data.title)}
+                  content={t(data.content)}
+                  link={data.link}
+                  icon={data.icon}
+                />
+              )
+            }
+            {/* <TemplateCard 
               title={t("long_article_title")}
               content={t("long_article_content")}
               link="long_article"
-              icon="all"
+              icon="blog"
             />
             <TemplateCard 
               title={t("content_improver")}
               content={t("content_improver_intro")}
               link="content_improver"
-              icon="all"
-            />
+              icon="blog"
+            /> */}
           </div>
         </div>
       </div>
