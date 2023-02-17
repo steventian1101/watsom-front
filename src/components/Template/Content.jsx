@@ -42,7 +42,7 @@ function Content({
             />
             <TemplateCard 
               title={t("content_improver")}
-              content={t("content_improver_intro")}
+              content={t("content_improver_content")}
               link="content_improver"
               icon="blog"
             /> */}

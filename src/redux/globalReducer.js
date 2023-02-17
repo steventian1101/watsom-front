@@ -9,7 +9,9 @@ export const globalSlice = createSlice({
         current_document: "",
         setCurrentDocumentState: false,
         setLoadingState: false,
-        loading: false
+        loading: false,
+        setExpandGroupState: false,
+        current_expanded_group: ""
     },
     reducers: {
         setLanguageRequest: state => {
@@ -42,13 +44,24 @@ export const globalSlice = createSlice({
         setLoadingFailed: (state, action) => {
             state.setLoadingState = false;
         },
+        setExpandGroupRequest: state => {
+            state.setExpandGroupState = true
+        },
+        setExpandGroupSuccess: (state, action) => {
+            state.setExpandGroupState = false;
+            state.current_expanded_group = action.payload;
+        },
+        setExpandGroupFailed: (state, action) => {
+            state.setExpandGroupState = false;
+        },
     }
 });
 
 const {
     setLanguageFailed, setLanguageRequest, setLanguageSuccess,
     setCurrentDocumentFailed, setCurrentDocumentRequest, setCurrentDocumentSuccess,
-    setLoadingFailed, setLoadingRequest, setLoadingSuccess
+    setLoadingFailed, setLoadingRequest, setLoadingSuccess,
+    setExpandGroupFailed, setExpandGroupRequest, setExpandGroupSuccess
 } = globalSlice.actions;
 
 export const setCurrentLanguage = (lang) => async (dispatch) => {
@@ -85,6 +98,19 @@ export const setLoading = (state) => async (dispatch) => {
         dispatch(setLoadingSuccess(state));
     } catch (error) {
         dispatch(setLoadingFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        throw new Error(error);
+    }
+}
+
+export const setExpandGroup = (state) => async (dispatch) => {
+
+    dispatch(setExpandGroupRequest());
+
+    try {
+        dispatch(setExpandGroupSuccess(state));
+    } catch (error) {
+        dispatch(setExpandGroupFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         throw new Error(error);
     }

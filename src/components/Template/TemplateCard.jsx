@@ -10,16 +10,24 @@ import { ImBlog } from "react-icons/im"
 import { FcAdvertising } from "react-icons/fc"
 import { AiOutlineAmazon, AiOutlineYoutube } from "react-icons/ai"
 
+import { setExpandGroup } from '../../redux/globalReducer';
+import { useDispatch } from "react-redux";
 // icon : all, blog, ads, youtube, amazon
 
 function TemplateCard({title, content, link, icon}) {
   const { t } = useTranslation();
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const clickCard = (link, icon) => {
+    dispatch(setExpandGroup(icon))
+    navigate(`/template/${link}`)
+  }
 
   return (
     <div className="col-span-1" style={{minHeight: "50px"}}>
-      <Card className="text-start cursor-pointer h-full" onClick={()=>navigate(`/template/${link}`)}>
+      <Card className="text-start cursor-pointer h-full" onClick={()=>clickCard(link, icon)}>
         {
           icon == "all" ? 
           <HiOutlineSquares2X2 

@@ -77,7 +77,7 @@ export default function Index() {
               <div className='col-span-3 border-gray-300' style={{borderRightWidth: "1px"}}>
                 <Header 
                   title={t("content_improver")}
-                  content={t("content_improver_intro")}
+                  content={t("content_improver_content")}
                 />
                 <ContentImprover 
                   func_SetContents={setContents}
