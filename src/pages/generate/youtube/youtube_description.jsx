@@ -48,14 +48,14 @@ export default function Index() {
           title:title,
           keywords:keywords,
           tone:tone,
-          count:count,
+          output:count,
         }
   
         let res = await dispatch(generateYoutubeDescription(sendData));
         if(res != false){
           dispatch(setLoading(false));
           console.log("res", res);
-          
+          setResult(res.result)
         }else{
           dispatch(setLoading(false));
           dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));

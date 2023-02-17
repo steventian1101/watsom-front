@@ -33,6 +33,8 @@ export default function DocEditor() {
 
   useEffect(() => {
     dispatch(setCurrentDocument(""))
+    setEditorState(EditorState.createEmpty());
+    setMarkDownString("")
     // console.log("path changed")
   }, [pathname]);
 
