@@ -4,14 +4,14 @@ import Sidebar from '../../../components/Generate/Sidebar';
 import DocEditor from '../../../components/Generate/DocEditor'
 import Footer from '../../../components/Generate/Footer';
 
-import YouTubeDescription from '../../../components/Generate/Youtube/YoutubeDescription';
+import YouTubeHookIntroduction from '../../../components/Generate/Youtube/YoutubeHookIntroduction';
 import { useTranslation } from "react-i18next";
 import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";
-import { generateYoutubeDescription } from '../../../redux/template/youtube';
+import { generateYoutubeHookIntroduction } from '../../../redux/template/youtube';
 import { setLoading, setCurrentDocument } from '../../../redux/globalReducer';
 
-export default function YoutubeDescription() {
+export default function YoutubeHookIntroduction() {
   const { globalState } = useSelector((state) => state);
   const { loading } = globalState;
   const { t } = useTranslation();
@@ -51,7 +51,7 @@ export default function YoutubeDescription() {
           output:count,
         }
   
-        let res = await dispatch(generateYoutubeDescription(sendData));
+        let res = await dispatch(generateYoutubeHookIntroduction(sendData));
         if(res != false){
           dispatch(setLoading(false));
           console.log("res", res);
@@ -77,14 +77,14 @@ export default function YoutubeDescription() {
                 title={t("youtube_description")}
                 content={t("youtube_description_content")}
               />
-              <YouTubeDescription 
+              <YouTubeHookIntroduction 
                 func_SetTitle = {setTitle}
                 func_SetKeywords = {setKeywords}
                 func_SetTone = {setTone}
                 result = {result}
               />
               <Footer 
-                type = "youtube_description"
+                type = "youtube_introduction"
                 data = {{title: title, keywords: keywords, tone: tone}}
                 generate = {generate}
               />
