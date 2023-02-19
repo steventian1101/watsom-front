@@ -7,6 +7,7 @@ import contentReducer from './template/content';
 import blogReducer from './template/blog';
 import youtubeReducer from './template/youtube';
 import socialReducer from './template/social_media';
+import amazonReducer from './template/amazon';
 
 const rootReducer = combineReducers({
     authState: authReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     blogState: blogReducer,
     youtubeState: youtubeReducer,
     socialState: socialReducer,
+    amazonState: amazonReducer,
 })
 
 

@@ -78,5 +78,9 @@
     "pinterest_title_description": "Título y descripción de Pinterest",
     "pinterest_title_description_content": "Crea descripciones atractivas de interés.",
     "short_description": "Descripción corta",
-    "msg_please_input_short_description": "Ingrese la descripción breve."
+    "msg_please_input_short_description": "Ingrese la descripción breve.",
+    "msg_please_input_product_name": "Ingrese el nombre del producto.",
+    "msg_please_input_product_info": "Ingrese la información del producto.",
+    "product_info": "Información del producto",
+    "product_name": "Nombre del producto"
 }
