@@ -12,7 +12,7 @@ const generatePinterestTitleDescription = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = fetch(`${API_BASE}/template/social/generate_title_description`, requestOptions);
+    const response = fetch(`${API_BASE}/template/social/pinterest_generate_title_description`, requestOptions);
     return await handleResponse(response);
 }
 
