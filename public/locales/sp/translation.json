@@ -74,5 +74,9 @@
     "facebook_ads_content": "Crea una copia de alta conversión para la sección 'Títulos' de tus anuncios de Facebook",
     "google_ads_title": "Anuncios Google - Titulares",
     "google_ads_title_content": "Cree una copia de alta conversión para la sección 'Títulos' de sus anuncios de Google",
-    "youtube_about": "¿De qué trata el vídeo?"
+    "youtube_about": "¿De qué trata el vídeo?",
+    "pinterest_title_description": "Título y descripción de Pinterest",
+    "pinterest_title_description_content": "Crea descripciones atractivas de interés.",
+    "short_description": "Descripción corta",
+    "msg_please_input_short_description": "Ingrese la descripción breve."
 }

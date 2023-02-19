@@ -74,5 +74,9 @@
     "facebook_ads_content": "Create high converting copy for the 'Headlines' section of your Facebook Ads",
     "google_ads_title": "Google Ads - Headlines",
     "google_ads_title_content": "Create high converting copy for the 'Headlines' section of your Google Ads",
-    "youtube_about": "What is the video about?"
+    "youtube_about": "What is the video about?",
+    "pinterest_title_description": "Pinterest Title & Description",
+    "pinterest_title_description_content": "Create compelling pinterest descriptions.",
+    "short_description": "Short Description",
+    "msg_please_input_short_description": "Please Input the Short Descripcion."
 }

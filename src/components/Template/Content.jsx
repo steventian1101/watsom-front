@@ -9,7 +9,7 @@ function Content({
   const { t } = useTranslation();
 
   const [template_group, setTemplateGroup] = useState(0);  
-  const group_name = [t("group_all"), t("group_youtube"), t("group_blog"), t("group_amazon"), t("group_ads")];
+  const group_name = [t("group_all"), t("group_youtube"), t("group_blog"), t("group_amazon"), t("group_ads"), t("group_social_media")];
 
 
   return (

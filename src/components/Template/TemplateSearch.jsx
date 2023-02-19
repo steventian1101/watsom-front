@@ -79,19 +79,19 @@ function TemplateSearch(props) {
             />
             <div className='pt-2 font-bold'>{t("group_amazon")}</div>
           </div>
-          {/* <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
-            <HiOutlineMail 
-              className={`w-12 h-12 p-2 rounded-full ${icon_active == 4 ? "bg-site_light-100 text-white" : "bg-white"}`}
-              onClick={()=>clickIcon(4)}
-            />
-            <div className='pt-2 font-bold'>{t("group_email")}</div>
-          </div> */}
           <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
             <FcAdvertising 
               className={`w-12 h-12 p-2 rounded-full ${icon_active == 4 ? "bg-site_light-100 text-white" : "bg-white"}`}
               onClick={()=>clickIcon(4)}
-            />
+              />
             <div className='pt-2 font-bold'>{t("group_ads")}</div>
+          </div>
+          <div style={{textAlign: "-webkit-center"}} className="cursor-pointer col-span-1">
+            <HiOutlineHashtag 
+              className={`w-12 h-12 p-2 rounded-full ${icon_active == 5 ? "bg-site_light-100 text-white" : "bg-white"}`}
+              onClick={()=>clickIcon(5)}
+            />
+            <div className='pt-2 font-bold'>{t("group_social_media")}</div>
           </div>
         </div>
       </Card>                     

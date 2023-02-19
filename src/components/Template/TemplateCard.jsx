@@ -41,8 +41,11 @@ function TemplateCard({title, content, link, icon}) {
           /> : icon == "amazon" ?
           <AiOutlineAmazon 
             className="w-12 h-12"
-          /> : icon == "ads" &&
+          /> : icon == "ads" ?
           <FcAdvertising 
+            className="w-12 h-12"
+          /> : icon == "social_media" &&
+          <HiOutlineHashtag 
             className="w-12 h-12"
           />
         }

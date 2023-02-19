@@ -35,13 +35,6 @@ export const templateData = [
     "group": "2"
   },
   {
-    "title": "amazon_sponsor_brand_headline",
-    "content": "amazon_sponsor_brand_headline_content",
-    "link": "amazon_sponsor_brand_headline",
-    "icon": "amazon",
-    "group": "3"
-  },
-  {
     "title": "amazon_product_feature",
     "content": "amazon_product_feature_content",
     "link": "amazon_product_feature",
@@ -82,5 +75,12 @@ export const templateData = [
     "link": "google_ads_title",
     "icon": "ads",
     "group": "4"
+  },
+  {
+    "title": "pinterest_title_description",
+    "content": "pinterest_title_description_content",
+    "link": "pinterest_title_description",
+    "icon": "social_media",
+    "group": "5"
   },
 ]

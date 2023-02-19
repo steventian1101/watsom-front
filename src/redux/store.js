@@ -6,6 +6,7 @@ import globalReducer from './globalReducer';
 import contentReducer from './template/content';
 import blogReducer from './template/blog';
 import youtubeReducer from './template/youtube';
+import socialReducer from './template/social_media';
 
 const rootReducer = combineReducers({
     authState: authReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     contentState: contentReducer,
     blogState: blogReducer,
     youtubeState: youtubeReducer,
+    socialState: socialReducer,
 })
 
 

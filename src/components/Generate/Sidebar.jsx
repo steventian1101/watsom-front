@@ -205,15 +205,17 @@ function Sidebar({
               <TreeItem nodeId="blog_2" label={<div className={`${pathname.includes('content_improver') && "bg-site_light-100"} text-sm`}>{t("content_improver")}</div>} onClick={() => selectTemplate("blog",'/template/content_improver')} />
             </TreeItem>
             <TreeItem nodeId="amazon" label={t("group_amazon")}>
-              <TreeItem nodeId="amazon_1" label={<div className={`${pathname.includes('amazon_sponsor_brand_headline') && "bg-site_light-100"} text-sm`}>{t("amazon_sponsor_brand_headline")}</div>} onClick={() => selectTemplate("amazon",'/template/amazon_sponsor_brand_headline')} />
-              <TreeItem nodeId="amazon_2" label={<div className={`${pathname.includes('amazon_product_feature') && "bg-site_light-100"} text-sm`}>{t("amazon_product_feature")}</div>} onClick={() => selectTemplate("amazon",'/template/amazon_product_feature')} />
-              <TreeItem nodeId="amazon_3" label={<div className={`${pathname.includes('amazon_product_title') && "bg-site_light-100"} text-sm`}>{t("amazon_product_title")}</div>} onClick={() => selectTemplate("amazon",'/template/amazon_product_title')} />
-              <TreeItem nodeId="amazon_4" label={<div className={`${pathname.includes('amazon_product_description') && "bg-site_light-100"} text-sm`}>{t("amazon_product_description")}</div>} onClick={() => selectTemplate("amazon",'/template/amazon_product_description')} />
+              <TreeItem nodeId="amazon_1" label={<div className={`${pathname.includes('amazon_product_feature') && "bg-site_light-100"} text-sm`}>{t("amazon_product_feature")}</div>} onClick={() => selectTemplate("amazon",'/template/amazon_product_feature')} />
+              <TreeItem nodeId="amazon_2" label={<div className={`${pathname.includes('amazon_product_title') && "bg-site_light-100"} text-sm`}>{t("amazon_product_title")}</div>} onClick={() => selectTemplate("amazon",'/template/amazon_product_title')} />
+              <TreeItem nodeId="amazon_3" label={<div className={`${pathname.includes('amazon_product_description') && "bg-site_light-100"} text-sm`}>{t("amazon_product_description")}</div>} onClick={() => selectTemplate("amazon",'/template/amazon_product_description')} />
             </TreeItem>
             <TreeItem nodeId="ads" label={t("group_ads")}>
               <TreeItem nodeId="ads_1" label={<div className={`${pathname.includes('tiktok_ads_description') && "bg-site_light-100"} text-sm`}>{t("tiktok_ads_description")}</div>} onClick={() => selectTemplate("ads",'/template/tiktok_ads_description')} />
               <TreeItem nodeId="ads_2" label={<div className={`${pathname.includes('facebook_ads') && "bg-site_light-100"} text-sm`}>{t("facebook_ads")}</div>} onClick={() => selectTemplate("ads",'/template/facebook_ads')} />
               <TreeItem nodeId="ads_3" label={<div className={`${pathname.includes('google_ads_title') && "bg-site_light-100"} text-sm`}>{t("google_ads_title")}</div>} onClick={() => selectTemplate("ads",'/template/google_ads_title')} />
+            </TreeItem>
+            <TreeItem nodeId="social_media" label={t("group_social_media")}>
+              <TreeItem nodeId="social_media_1" label={<div className={`${pathname.includes('pinterest_title_description') && "bg-site_light-100"} text-sm`}>{t("pinterest_title_description")}</div>} onClick={() => selectTemplate("social_media",'/template/pinterest_title_description')} />
             </TreeItem>
           </TreeView>
         </div>

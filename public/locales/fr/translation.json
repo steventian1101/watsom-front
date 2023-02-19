@@ -74,5 +74,9 @@
     "facebook_ads_content": "Créez une copie à fort taux de conversion pour la section 'Titres' de vos publicités Facebook",
     "google_ads_title": "Google Ads - Titres",
     "google_ads_title_content": "Créez une copie à fort taux de conversion pour la section 'Titres' de vos annonces Google",
-    "youtube_about": "De quoi parle la vidéo ?"
+    "youtube_about": "De quoi parle la vidéo ?",
+    "pinterest_title_description": "Titre et description de Pinterest",
+    "pinterest_title_description_content": "Créez des descriptions pinterest attrayantes.",
+    "short_description": "Description courte",
+    "msg_please_input_short_description": "Veuillez saisir la courte description."
 }
