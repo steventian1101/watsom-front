@@ -82,5 +82,6 @@
     "msg_please_input_product_name": "Please Input the Product Name.",
     "msg_please_input_product_info": "Please Input the Product Info.",
     "product_info": "Product Info",
-    "product_name": "Product Name"
+    "product_name": "Product Name",
+    "amazon_product_about": "What is the product about?"
 }
