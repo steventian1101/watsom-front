@@ -8,6 +8,7 @@ import YoutubeTitle from './pages/generate/youtube/youtube_title';
 import PinterestTitleDescriptionPage from './pages/generate/social_media/pinterest_title_description';
 import AmazonProductFeaturePage from './pages/generate/amazon/amazon_product_feature';
 import AmazonProductTitlePage from './pages/generate/amazon/amazon_product_title';
+import AmazonProductDescriptionPage from './pages/generate/amazon/amazon_product_description';
 import "./i18n";
 import Loading from './components/Loading';
 import { useSelector } from "react-redux";
@@ -30,6 +31,7 @@ function App() {
         <Route path = "/template/pinterest_title_description" element = {<PinterestTitleDescriptionPage/>} />
         <Route path = "/template/amazon_product_feature" element = {<AmazonProductFeaturePage/>} />
         <Route path = "/template/amazon_product_title" element = {<AmazonProductTitlePage/>} />
+        <Route path = "/template/amazon_product_description" element = {<AmazonProductDescriptionPage/>} />
       </Routes>
     </div>
   );

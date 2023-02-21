@@ -7,7 +7,8 @@ export const amazonSlice = createSlice({
     name: "amazon",
     initialState: {
         generateAmazonProductFeatureState: false,
-        generateYoutubeDescriptionState: false
+        generateAmazonProductTitleState: false,
+        generateAmazonProductDescriptionState: false,
     },
     reducers: {
         generateAmazonProductFeatureRequest: state => {
@@ -20,7 +21,7 @@ export const amazonSlice = createSlice({
             state.generateAmazonProductFeatureState = false;
         },
         generateAmazonProductTitleRequest: state => {
-            state.generateYoutubeDescriptionState = true
+            state.generateAmazonProductTitleState = true
         },
         generateAmazonProductTitleSuccess: (state, action) => {
             state.generateAmazonProductTitleState = false;
@@ -28,12 +29,22 @@ export const amazonSlice = createSlice({
         generateAmazonProductTitleFailed: (state, action) => {
             state.generateAmazonProductTitleState = false;
         },
+        generateAmazonProductDescriptionRequest: state => {
+            state.generateAmazonProductDescriptionState = true
+        },
+        generateAmazonProductDescriptionSuccess: (state, action) => {
+            state.generateAmazonProductDescriptionState = false;
+        },
+        generateAmazonProductDescriptionFailed: (state, action) => {
+            state.generateAmazonProductDescriptionState = false;
+        },
     }
 });
 
 const {
     generateAmazonProductFeatureFailed, generateAmazonProductFeatureRequest, generateAmazonProductFeatureSuccess,
-    generateAmazonProductTitleFailed, generateAmazonProductTitleRequest, generateAmazonProductTitleSuccess
+    generateAmazonProductTitleFailed, generateAmazonProductTitleRequest, generateAmazonProductTitleSuccess,
+    generateAmazonProductDescriptionFailed, generateAmazonProductDescriptionRequest, generateAmazonProductDescriptionSuccess
 } = amazonSlice.actions;
 
 export const generateAmazonProductFeature = (data) => async (dispatch) => {
@@ -62,6 +73,22 @@ export const generateAmazonProductTitle = (data) => async (dispatch) => {
         return payload;
     } catch (error) {
         dispatch(generateAmazonProductTitleFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return false;
+    }
+}
+
+export const generateAmazonProductDescription = (data) => async (dispatch) => {
+
+    dispatch(generateAmazonProductDescriptionRequest());
+
+    try {
+        var payload = await amazonService.generateAmazonProductDescription(data);
+        dispatch(generateAmazonProductDescriptionSuccess(payload));
+        return payload;
+    } catch (error) {
+        dispatch(generateAmazonProductDescriptionFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;
