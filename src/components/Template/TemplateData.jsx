@@ -70,9 +70,9 @@ export const templateData = [
     "group": "4"
   },
   {
-    "title": "google_ads_title",
-    "content": "google_ads_title_content",
-    "link": "google_ads_title",
+    "title": "google_ads",
+    "content": "google_ads_content",
+    "link": "google_ads",
     "icon": "ads",
     "group": "4"
   },

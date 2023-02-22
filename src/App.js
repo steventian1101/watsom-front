@@ -10,6 +10,7 @@ import AmazonProductFeaturePage from './pages/generate/amazon/amazon_product_fea
 import AmazonProductTitlePage from './pages/generate/amazon/amazon_product_title';
 import AmazonProductDescriptionPage from './pages/generate/amazon/amazon_product_description';
 import FacebookAdsPage from './pages/generate/ads/facebook_ads';
+import GoogleAdsPage from './pages/generate/ads/google_ads';
 import "./i18n";
 import Loading from './components/Loading';
 import { useSelector } from "react-redux";
@@ -34,6 +35,7 @@ function App() {
         <Route path = "/template/amazon_product_title" element = {<AmazonProductTitlePage/>} />
         <Route path = "/template/amazon_product_description" element = {<AmazonProductDescriptionPage/>} />
         <Route path = "/template/facebook_ads" element = {<FacebookAdsPage/>} />
+        <Route path = "/template/google_ads" element = {<GoogleAdsPage/>} />
       </Routes>
     </div>
   );

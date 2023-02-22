@@ -7,6 +7,7 @@ export const adsSlice = createSlice({
     name: "ads",
     initialState: {
         generateFacebookAdsState: false,
+        generateGoogleAdsState: false,
     },
     reducers: {
         generateFacebookAdsRequest: state => {
@@ -18,11 +19,21 @@ export const adsSlice = createSlice({
         generateFacebookAdsFailed: (state, action) => {
             state.generateFacebookAdsState = false;
         },
+        generateGoogleAdsRequest: state => {
+            state.generateGoogleAdsState = true
+        },
+        generateGoogleAdsSuccess: (state, action) => {
+            state.generateGoogleAdsState = false;
+        },
+        generateGoogleAdsFailed: (state, action) => {
+            state.generateGoogleAdsState = false;
+        },
     }
 });
 
 const {
     generateFacebookAdsFailed, generateFacebookAdsRequest, generateFacebookAdsSuccess,
+    generateGoogleAdsFailed, generateGoogleAdsRequest, generateGoogleAdsSuccess
 } = adsSlice.actions;
 
 export const generateFacebookAds = (data) => async (dispatch) => {
@@ -35,6 +46,22 @@ export const generateFacebookAds = (data) => async (dispatch) => {
         return payload;
     } catch (error) {
         dispatch(generateFacebookAdsFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return false;
+    }
+}
+
+export const generateGoogleAds = (data) => async (dispatch) => {
+
+    dispatch(generateGoogleAdsRequest());
+
+    try {
+        var payload = await adsService.generateGoogleAds(data);
+        dispatch(generateGoogleAdsSuccess(payload));
+        return payload;
+    } catch (error) {
+        dispatch(generateGoogleAdsFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;

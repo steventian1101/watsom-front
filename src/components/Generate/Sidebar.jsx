@@ -212,7 +212,7 @@ function Sidebar({
             <TreeItem nodeId="ads" label={t("group_ads")}>
               <TreeItem nodeId="ads_1" label={<div className={`${pathname.includes('tiktok_ads_description') && "bg-site_light-100"} text-sm`}>{t("tiktok_ads_description")}</div>} onClick={() => selectTemplate("ads",'/template/tiktok_ads_description')} />
               <TreeItem nodeId="ads_2" label={<div className={`${pathname.includes('facebook_ads') && "bg-site_light-100"} text-sm`}>{t("facebook_ads")}</div>} onClick={() => selectTemplate("ads",'/template/facebook_ads')} />
-              <TreeItem nodeId="ads_3" label={<div className={`${pathname.includes('google_ads_title') && "bg-site_light-100"} text-sm`}>{t("google_ads_title")}</div>} onClick={() => selectTemplate("ads",'/template/google_ads_title')} />
+              <TreeItem nodeId="ads_3" label={<div className={`${pathname.includes('google_ads') && "bg-site_light-100"} text-sm`}>{t("google_ads")}</div>} onClick={() => selectTemplate("ads",'/template/google_ads')} />
             </TreeItem>
             <TreeItem nodeId="social_media" label={t("group_social_media")}>
               <TreeItem nodeId="social_media_1" label={<div className={`${pathname.includes('pinterest_title_description') && "bg-site_light-100"} text-sm`}>{t("pinterest_title_description")}</div>} onClick={() => selectTemplate("social_media",'/template/pinterest_title_description')} />
