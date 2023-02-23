@@ -56,13 +56,6 @@ export const templateData = [
     "group": "3"
   },
   {
-    "title": "tiktok_ads_description",
-    "content": "tiktok_ads_description_content",
-    "link": "tiktok_ads_description",
-    "icon": "ads",
-    "group": "4"
-  },
-  {
     "title": "facebook_ads",
     "content": "facebook_ads_content",
     "link": "facebook_ads",
@@ -80,6 +73,13 @@ export const templateData = [
     "title": "pinterest_title_description",
     "content": "pinterest_title_description_content",
     "link": "pinterest_title_description",
+    "icon": "social_media",
+    "group": "5"
+  },
+  {
+    "title": "photo_post_caption",
+    "content": "photo_post_caption_content",
+    "link": "photo_post_caption",
     "icon": "social_media",
     "group": "5"
   },

@@ -7,6 +7,7 @@ export const socialSlice = createSlice({
     name: "social",
     initialState: {
         generatePinterestTitleDescriptionState: false,
+        generatePhotoPostCaptionState: false
     },
     reducers: {
         generatePinterestTitleDescriptionRequest: state => {
@@ -18,11 +19,21 @@ export const socialSlice = createSlice({
         generatePinterestTitleDescriptionFailed: (state, action) => {
             state.generatePinterestTitleDescriptionState = false;
         },
+        generatePhotoPostCaptionRequest: state => {
+            state.generatePhotoPostCaptionState = true
+        },
+        generatePhotoPostCaptionSuccess: (state, action) => {
+            state.generatePhotoPostCaptionState = false;
+        },
+        generatePhotoPostCaptionFailed: (state, action) => {
+            state.generatePhotoPostCaptionState = false;
+        },
     }
 });
 
 const {
     generatePinterestTitleDescriptionFailed, generatePinterestTitleDescriptionRequest, generatePinterestTitleDescriptionSuccess,
+    generatePhotoPostCaptionFailed, generatePhotoPostCaptionRequest, generatePhotoPostCaptionSuccess
 } = socialSlice.actions;
 
 export const generatePinterestTitleDescription = (data) => async (dispatch) => {
@@ -35,6 +46,22 @@ export const generatePinterestTitleDescription = (data) => async (dispatch) => {
         return payload;
     } catch (error) {
         dispatch(generatePinterestTitleDescriptionFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return false;
+    }
+}
+
+export const generatePhotoPostCaption = (data) => async (dispatch) => {
+
+    dispatch(generatePhotoPostCaptionRequest());
+
+    try {
+        var payload = await socialService.generatePhotoPostCaption(data);
+        dispatch(generatePhotoPostCaptionSuccess(payload));
+        return payload;
+    } catch (error) {
+        dispatch(generatePhotoPostCaptionFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;
