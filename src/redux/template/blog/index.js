@@ -11,6 +11,7 @@ export const blogSlice = createSlice({
         generateLongArticle: false,
         outline: [],
         oneOutline: "",
+        contentImproverState: false,
     },
     reducers: {
         generateOutlineRequest: state => {
@@ -42,13 +43,24 @@ export const blogSlice = createSlice({
         generateLongArticleFailed: (state, action) => {
             state.generateLongArticleState = false;
         },
+        contentImproverRequest: state => {
+            state.contentImproverState = true
+        },
+        contentImproverSuccess: (state, action) => {
+            state.contentImproverState = false;
+            state.result = action.payload.result;
+        },
+        contentImproverFailed: (state, action) => {
+            state.contentImproverState = false;
+        },
     }
 });
 
 const {
     generateOutlineFailed, generateOutlineRequest, generateOutlineSuccess,
     generateOneOutlineFailed, generateOneOutlineRequest, generateOneOutlineSuccess,
-    generateLongArticleFailed, generateLongArticleRequest, generateLongArticleSuccess
+    generateLongArticleFailed, generateLongArticleRequest, generateLongArticleSuccess,
+    contentImproverFailed, contentImproverRequest, contentImproverSuccess
 } = blogSlice.actions;
 
 export const generateOutline = (data) => async (dispatch) => {
@@ -93,6 +105,22 @@ export const generateLongArticle = (data) => async (dispatch) => {
         return payload;
     } catch (error) {
         dispatch(generateLongArticleFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return false;
+    }
+}
+
+export const contentImprover = (data) => async (dispatch) => {
+
+    dispatch(contentImproverRequest());
+
+    try {
+        var payload = await blogService.contentImprover(data);
+        dispatch(contentImproverSuccess(payload));
+        return payload;
+    } catch (error) {
+        dispatch(contentImproverFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;

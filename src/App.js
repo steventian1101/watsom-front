@@ -1,7 +1,7 @@
 import { Routes, Route,  Navigate } from 'react-router-dom';
 import Template from './pages/template';
-import LongArticle from './pages/generate/long_article'
-import ContentImprover from './pages/generate/content_improver';
+import LongArticle from './pages/generate/blog/long_article'
+import ContentImprover from './pages/generate/blog/content_improver';
 import YoutubeDescription from './pages/generate/youtube/youtube_description';
 import YoutubeHookIntroduction from './pages/generate/youtube/youtube_hook_introduction';
 import YoutubeTitle from './pages/generate/youtube/youtube_title';

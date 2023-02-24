@@ -4,7 +4,7 @@ import Sidebar from '../../../components/Generate/Sidebar';
 import DocEditor from '../../../components/Generate/DocEditor'
 import Footer from '../../../components/Generate/Footer';
 
-import { contentImprover } from '../../../redux/template/content';
+import { contentImprover } from '../../../redux/template/blog';
 
 import ContentImprover from '../../../components/Generate/ContentImprover';
 import { useTranslation } from "react-i18next";
@@ -13,11 +13,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from '../../../redux/globalReducer';
 
 export default function Index() {
-  const { contentState, globalState } = useSelector((state) => state);
+  const { blogState, globalState } = useSelector((state) => state);
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const { contentImproverState } = contentState;
+  const { contentImproverState } = blogState;
   const { loading } = globalState;
 
   const [contents, setContents] = useState("")
