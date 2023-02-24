@@ -119,6 +119,7 @@ function BlogIdeaOutline({
               content={data}
               index={index}
               removeContent={removeContent}
+              type="blog_idea_outline"
             />
             {/* <Textarea 
               rows={data.split("\n").length+1}
