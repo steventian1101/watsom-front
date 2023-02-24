@@ -203,6 +203,7 @@ function Sidebar({
             <TreeItem nodeId="blog" label={t("group_blog")}>
               <TreeItem nodeId="blog_1" label={<div className={`${pathname.includes('long_article') && "bg-site_light-100"} text-sm`}>{t("long_article")}</div>} onClick={() => selectTemplate("blog",'/template/long_article')} />
               <TreeItem nodeId="blog_2" label={<div className={`${pathname.includes('content_improver') && "bg-site_light-100"} text-sm`}>{t("content_improver")}</div>} onClick={() => selectTemplate("blog",'/template/content_improver')} />
+              <TreeItem nodeId="blog_2" label={<div className={`${pathname.includes('blog_idea_outline') && "bg-site_light-100"} text-sm`}>{t("blog_idea_outline")}</div>} onClick={() => selectTemplate("blog",'/template/blog_idea_outline')} />
             </TreeItem>
             <TreeItem nodeId="amazon" label={t("group_amazon")}>
               <TreeItem nodeId="amazon_1" label={<div className={`${pathname.includes('amazon_product_feature') && "bg-site_light-100"} text-sm`}>{t("amazon_product_feature")}</div>} onClick={() => selectTemplate("amazon",'/template/amazon_product_feature')} />

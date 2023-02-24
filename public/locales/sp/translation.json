@@ -84,5 +84,7 @@
     "msg_please_input_product_info": "Ingrese la información del producto.",
     "product_info": "Información del producto",
     "product_name": "Nombre del producto",
-    "amazon_product_about": "¿De qué se trata el producto?"
+    "amazon_product_about": "¿De qué se trata el producto?",
+    "blog_idea_outline": "Idea y esquema del blog",
+    "blog_idea_outline_content": "Generar ideas y estructura de contenido para artículos."
 }

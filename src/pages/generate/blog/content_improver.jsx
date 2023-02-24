@@ -6,7 +6,7 @@ import Footer from '../../../components/Generate/Footer';
 
 import { contentImprover } from '../../../redux/template/blog';
 
-import ContentImprover from '../../../components/Generate/ContentImprover';
+import ContentImprover from '../../../components/Generate/Blog/ContentImprover';
 import { useTranslation } from "react-i18next";
 import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";

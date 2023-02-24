@@ -12,6 +12,7 @@ export const blogSlice = createSlice({
         outline: [],
         oneOutline: "",
         contentImproverState: false,
+        generateBlogIdeaOutlineState: false
     },
     reducers: {
         generateOutlineRequest: state => {
@@ -53,6 +54,16 @@ export const blogSlice = createSlice({
         contentImproverFailed: (state, action) => {
             state.contentImproverState = false;
         },
+        generateBlogIdeaOutlineRequest: state => {
+            state.generateBlogIdeaOutlineState = true
+        },
+        generateBlogIdeaOutlineSuccess: (state, action) => {
+            state.generateBlogIdeaOutlineState = false;
+            state.result = action.payload.result;
+        },
+        generateBlogIdeaOutlineFailed: (state, action) => {
+            state.generateBlogIdeaOutlineState = false;
+        },
     }
 });
 
@@ -60,7 +71,8 @@ const {
     generateOutlineFailed, generateOutlineRequest, generateOutlineSuccess,
     generateOneOutlineFailed, generateOneOutlineRequest, generateOneOutlineSuccess,
     generateLongArticleFailed, generateLongArticleRequest, generateLongArticleSuccess,
-    contentImproverFailed, contentImproverRequest, contentImproverSuccess
+    contentImproverFailed, contentImproverRequest, contentImproverSuccess,
+    generateBlogIdeaOutlineFailed, generateBlogIdeaOutlineRequest, generateBlogIdeaOutlineSuccess
 } = blogSlice.actions;
 
 export const generateOutline = (data) => async (dispatch) => {
@@ -121,6 +133,22 @@ export const contentImprover = (data) => async (dispatch) => {
         return payload;
     } catch (error) {
         dispatch(contentImproverFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return false;
+    }
+}
+
+export const generateBlogIdeaOutline = (data) => async (dispatch) => {
+
+    dispatch(generateBlogIdeaOutlineRequest());
+
+    try {
+        var payload = await blogService.generateBlogIdeaOutline(data);
+        dispatch(generateBlogIdeaOutlineSuccess(payload));
+        return payload;
+    } catch (error) {
+        dispatch(generateBlogIdeaOutlineFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;

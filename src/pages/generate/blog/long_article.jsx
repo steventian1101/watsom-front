@@ -4,7 +4,7 @@ import Sidebar from '../../../components/Generate/Sidebar';
 import DocEditor from '../../../components/Generate/DocEditor'
 import Footer from '../../../components/Generate/Footer';
 
-import LongArticle from '../../../components/Generate/LongArticle';
+import LongArticle from '../../../components/Generate/Blog/LongArticle';
 import { useTranslation } from "react-i18next";
 import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";

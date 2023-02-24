@@ -57,7 +57,22 @@ const contentImprover = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = fetch(`${API_BASE}/template/content_improver`, requestOptions);
+    const response = fetch(`${API_BASE}/template/blog/content_improver`, requestOptions);
+    return await handleResponse(response);
+}
+
+const generateBlogIdeaOutline = async (data) => {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+        },
+        body: JSON.stringify(data)
+    };
+
+    const response = fetch(`${API_BASE}/template/blog/idea_outline`, requestOptions);
     return await handleResponse(response);
 }
 
@@ -65,5 +80,6 @@ export const blogService = {
     generateOutline,
     generateOneOutline,
     generateLongArticle,
-    contentImprover
+    contentImprover,
+    generateBlogIdeaOutline
 }
