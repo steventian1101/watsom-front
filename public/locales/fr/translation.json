@@ -86,5 +86,9 @@
     "product_name": "Nom du produit",
     "amazon_product_about": "De quoi parle le produit ?",
     "blog_idea_outline": "Idée et aperçu du blog",
-    "blog_idea_outline_content": "Générez des idées et une structure de contenu pour les articles."
+    "blog_idea_outline_content": "Générez des idées et une structure de contenu pour les articles.",
+    "msg_please_input_target_audience": "Veuillez saisir le public cible.",
+    "blog_intro_paragraph": "Paragraphe d'introduction de l'article Blgo",
+    "blog_intro_paragraph_content": "Passez à travers le blocage des écrivains en laissant Jasper écrire votre paragraphe d'ouverture.",
+    "audience": "Public"
 }

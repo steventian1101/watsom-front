@@ -42,6 +42,13 @@ export const templateData = [
     "group": "2"
   },
   {
+    "title": "blog_intro_paragraph",
+    "content": "blog_intro_paragraph_content",
+    "link": "blog_intro_paragraph",
+    "icon": "blog",
+    "group": "2"
+  },
+  {
     "title": "amazon_product_feature",
     "content": "amazon_product_feature_content",
     "link": "amazon_product_feature",

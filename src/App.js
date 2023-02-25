@@ -4,6 +4,7 @@ import Template from './pages/template';
 import LongArticle from './pages/generate/blog/long_article'
 import ContentImprover from './pages/generate/blog/content_improver';
 import BlogIdeaOutlinePage from './pages/generate/blog/blog_idea_outline';
+import BlogIntroParagraphPage from './pages/generate/blog/blog_intro_paragraph';
 
 import YoutubeDescription from './pages/generate/youtube/youtube_description';
 import YoutubeHookIntroduction from './pages/generate/youtube/youtube_hook_introduction';
@@ -36,6 +37,7 @@ function App() {
         <Route path = "/template/long_article" element = {<LongArticle/>} />
         <Route path = "/template/content_improver" element = {<ContentImprover/>} />
         <Route path = "/template/blog_idea_outline" element = {<BlogIdeaOutlinePage/>} />
+        <Route path = "/template/blog_intro_paragraph" element = {<BlogIntroParagraphPage/>} />
 
         <Route path = "/template/youtube_description" element = {<YoutubeDescription/>} />
         <Route path = "/template/youtube_introduction" element = {<YoutubeHookIntroduction/>} />

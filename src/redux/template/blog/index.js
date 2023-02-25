@@ -12,7 +12,8 @@ export const blogSlice = createSlice({
         outline: [],
         oneOutline: "",
         contentImproverState: false,
-        generateBlogIdeaOutlineState: false
+        generateBlogIdeaOutlineState: false,
+        generateBlogIntroParagraphState: false
     },
     reducers: {
         generateOutlineRequest: state => {
@@ -64,6 +65,16 @@ export const blogSlice = createSlice({
         generateBlogIdeaOutlineFailed: (state, action) => {
             state.generateBlogIdeaOutlineState = false;
         },
+        generateBlogIntroParagraphRequest: state => {
+            state.generateBlogIntroParagraphState = true
+        },
+        generateBlogIntroParagraphSuccess: (state, action) => {
+            state.generateBlogIntroParagraphState = false;
+            state.result = action.payload.result;
+        },
+        generateBlogIntroParagraphFailed: (state, action) => {
+            state.generateBlogIntroParagraphState = false;
+        },
     }
 });
 
@@ -72,7 +83,8 @@ const {
     generateOneOutlineFailed, generateOneOutlineRequest, generateOneOutlineSuccess,
     generateLongArticleFailed, generateLongArticleRequest, generateLongArticleSuccess,
     contentImproverFailed, contentImproverRequest, contentImproverSuccess,
-    generateBlogIdeaOutlineFailed, generateBlogIdeaOutlineRequest, generateBlogIdeaOutlineSuccess
+    generateBlogIdeaOutlineFailed, generateBlogIdeaOutlineRequest, generateBlogIdeaOutlineSuccess,
+    generateBlogIntroParagraphFailed, generateBlogIntroParagraphRequest, generateBlogIntroParagraphSuccess
 } = blogSlice.actions;
 
 export const generateOutline = (data) => async (dispatch) => {
@@ -149,6 +161,22 @@ export const generateBlogIdeaOutline = (data) => async (dispatch) => {
         return payload;
     } catch (error) {
         dispatch(generateBlogIdeaOutlineFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return false;
+    }
+}
+
+export const generateBlogIntroParagraph = (data) => async (dispatch) => {
+
+    dispatch(generateBlogIntroParagraphRequest());
+
+    try {
+        var payload = await blogService.generateBlogIntroParagraph(data);
+        dispatch(generateBlogIntroParagraphSuccess(payload));
+        return payload;
+    } catch (error) {
+        dispatch(generateBlogIntroParagraphFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;

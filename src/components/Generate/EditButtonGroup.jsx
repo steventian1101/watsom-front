@@ -25,7 +25,6 @@ function EditButtonGroup({
     let tmp_content = content
 
     if(type == "blog_idea_outline"){
-      console.log("11")
       tmp_content = tmp_content.replace("Title:\n", "**Title:**\n## ")
       tmp_content = tmp_content.replace("Outline:", "**Outline:**")
       tmp_content = tmp_content.replace(/keywords: /g, "*keywords:* ")
@@ -34,7 +33,6 @@ function EditButtonGroup({
       tmp_content = tmp_content.replace("3. ", "### 3. ")
       tmp_content = tmp_content.replace("4. ", "### 4. ")
       tmp_content = tmp_content.replace("5. ", "### 5. ")
-      console.log(tmp_content)
     }
 
     dispatch(setCurrentDocument(tmp_content))
