@@ -4,6 +4,7 @@ export const templateData = [
     "content": "youtube_description_content",
     "link": "youtube_description",
     "icon": "youtube",
+    "search": "",
     "group": "1"
   },
   {
@@ -11,6 +12,7 @@ export const templateData = [
     "content": "youtube_introduction_content",
     "link": "youtube_introduction",
     "icon": "youtube",
+    "search": "",
     "group": "1"
   },
   {
@@ -18,6 +20,7 @@ export const templateData = [
     "content": "youtube_title_content",
     "link": "youtube_title",
     "icon": "youtube",
+    "search": "",
     "group": "1"
   },
   {
@@ -25,6 +28,7 @@ export const templateData = [
     "content": "long_article_content",
     "link": "long_article",
     "icon": "blog",
+    "search": "",
     "group": "2"
   },
   {
@@ -32,6 +36,7 @@ export const templateData = [
     "content": "content_improver_content",
     "link": "content_improver",
     "icon": "blog",
+    "search": "",
     "group": "2"
   },
   {
@@ -39,6 +44,7 @@ export const templateData = [
     "content": "blog_idea_outline_content",
     "link": "blog_idea_outline",
     "icon": "blog",
+    "search": "",
     "group": "2"
   },
   {
@@ -46,6 +52,7 @@ export const templateData = [
     "content": "blog_intro_paragraph_content",
     "link": "blog_intro_paragraph",
     "icon": "blog",
+    "search": "",
     "group": "2"
   },
   {
@@ -53,6 +60,7 @@ export const templateData = [
     "content": "amazon_product_feature_content",
     "link": "amazon_product_feature",
     "icon": "amazon",
+    "search": "",
     "group": "3"
   },
   {
@@ -60,6 +68,7 @@ export const templateData = [
     "content": "amazon_product_title_content",
     "link": "amazon_product_title",
     "icon": "amazon",
+    "search": "",
     "group": "3"
   },
   {
@@ -67,6 +76,7 @@ export const templateData = [
     "content": "amazon_product_description_content",
     "link": "amazon_product_description",
     "icon": "amazon",
+    "search": "",
     "group": "3"
   },
   {
@@ -74,6 +84,7 @@ export const templateData = [
     "content": "facebook_ads_content",
     "link": "facebook_ads",
     "icon": "ads",
+    "search": "",
     "group": "4"
   },
   {
@@ -81,6 +92,7 @@ export const templateData = [
     "content": "google_ads_content",
     "link": "google_ads",
     "icon": "ads",
+    "search": "",
     "group": "4"
   },
   {
@@ -88,6 +100,7 @@ export const templateData = [
     "content": "pinterest_title_description_content",
     "link": "pinterest_title_description",
     "icon": "social_media",
+    "search": "",
     "group": "5"
   },
   {
@@ -95,6 +108,7 @@ export const templateData = [
     "content": "photo_post_caption_content",
     "link": "photo_post_caption",
     "icon": "social_media",
+    "search": "",
     "group": "5"
   },
 ]
