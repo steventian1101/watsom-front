@@ -8,6 +8,7 @@ import { openSnackBar } from '../../redux/snackBarReducer';
 import { setCurrentDocument } from '../../redux/globalReducer';
 import { useDispatch, useSelector } from "react-redux";
 import wordsCounter from 'word-counting'
+import { customizeBlogIntroParagraph } from '../../utils';
 
 function EditButtonGroup({
   content, index, removeContent, type //type is for customize the markdown content
@@ -25,14 +26,7 @@ function EditButtonGroup({
     let tmp_content = content
 
     if(type == "blog_idea_outline"){
-      tmp_content = tmp_content.replace("Title:\n", "**Title:**\n## ")
-      tmp_content = tmp_content.replace("Outline:", "**Outline:**")
-      tmp_content = tmp_content.replace(/keywords: /g, "*keywords:* ")
-      tmp_content = tmp_content.replace("1. ", "### 1. ")
-      tmp_content = tmp_content.replace("2. ", "### 2. ")
-      tmp_content = tmp_content.replace("3. ", "### 3. ")
-      tmp_content = tmp_content.replace("4. ", "### 4. ")
-      tmp_content = tmp_content.replace("5. ", "### 5. ")
+      tmp_content = customizeBlogIntroParagraph(tmp_content)
     }
 
     dispatch(setCurrentDocument(tmp_content))

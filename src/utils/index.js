@@ -1,6 +1,3 @@
-
-
-
 export const authHeader = () => {
     let user = JSON.parse(localStorage.getItem('user'));
 
@@ -32,3 +29,17 @@ export const handleResponse = async (response, onError) => {
     return data;
 }
 
+export const customizeBlogIntroParagraph = (content) => {
+    let tmp_content = content;
+
+    tmp_content = tmp_content.replace("Title:\n", "**Title:**\n## ")
+    tmp_content = tmp_content.replace("Outline:", "**Outline:**")
+    tmp_content = tmp_content.replace(/keywords: /g, "*keywords:* ")
+    tmp_content = tmp_content.replace("1. ", "### 1. ")
+    tmp_content = tmp_content.replace("2. ", "### 2. ")
+    tmp_content = tmp_content.replace("3. ", "### 3. ")
+    tmp_content = tmp_content.replace("4. ", "### 4. ")
+    tmp_content = tmp_content.replace("5. ", "### 5. ")
+
+    return tmp_content
+}
