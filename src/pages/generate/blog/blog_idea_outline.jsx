@@ -56,6 +56,19 @@ export default function BlogIdeaOutlinePage() {
           dispatch(setLoading(false));
           console.log("res", res);
           setResult(res.result)
+
+          let tmp_content = res.result[0];
+
+          tmp_content = tmp_content.replace("Title:\n", "**Title:**\n## ")
+          tmp_content = tmp_content.replace("Outline:", "**Outline:**")
+          tmp_content = tmp_content.replace(/keywords: /g, "*keywords:* ")
+          tmp_content = tmp_content.replace("1. ", "### 1. ")
+          tmp_content = tmp_content.replace("2. ", "### 2. ")
+          tmp_content = tmp_content.replace("3. ", "### 3. ")
+          tmp_content = tmp_content.replace("4. ", "### 4. ")
+          tmp_content = tmp_content.replace("5. ", "### 5. ")
+      
+          dispatch(setCurrentDocument(tmp_content))
         }else{
           dispatch(setLoading(false));
           dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
