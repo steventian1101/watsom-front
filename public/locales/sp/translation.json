@@ -90,5 +90,7 @@
     "msg_please_input_target_audience": "Ingrese la audiencia objetivo.",
     "blog_intro_paragraph": "Párrafo de introducción de publicación de Blgo",
     "blog_intro_paragraph_content": "Supera el bloqueo de los escritores dejando que Jasper escriba tu párrafo inicial.",
-    "audience": "Audiencia"
+    "audience": "Audiencia",
+    "blog_seo_title_meta_description": "SEO - Publicaciones de blog - Título y metadescripciones",
+    "blog_seo_title_meta_description_content": "Escribe etiquetas de título optimizadas para SEO y meta descripciones para publicaciones de blog que se clasificarán bien en Google."
 }

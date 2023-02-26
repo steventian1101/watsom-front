@@ -13,7 +13,8 @@ export const blogSlice = createSlice({
         oneOutline: "",
         contentImproverState: false,
         generateBlogIdeaOutlineState: false,
-        generateBlogIntroParagraphState: false
+        generateBlogIntroParagraphState: false,
+        generateBlogSeoTitleMetaDescriptionState: false
     },
     reducers: {
         generateOutlineRequest: state => {
@@ -75,6 +76,15 @@ export const blogSlice = createSlice({
         generateBlogIntroParagraphFailed: (state, action) => {
             state.generateBlogIntroParagraphState = false;
         },
+        generateBlogSeoTitleMetaDescriptionRequest: state => {
+            state.generateBlogSeoTitleMetaDescriptionState = true
+        },
+        generateBlogSeoTitleMetaDescriptionSuccess: (state, action) => {
+            state.generateBlogSeoTitleMetaDescriptionState = false;
+        },
+        generateBlogSeoTitleMetaDescriptionFailed: (state, action) => {
+            state.generateBlogSeoTitleMetaDescriptionState = false;
+        },
     }
 });
 
@@ -84,7 +94,8 @@ const {
     generateLongArticleFailed, generateLongArticleRequest, generateLongArticleSuccess,
     contentImproverFailed, contentImproverRequest, contentImproverSuccess,
     generateBlogIdeaOutlineFailed, generateBlogIdeaOutlineRequest, generateBlogIdeaOutlineSuccess,
-    generateBlogIntroParagraphFailed, generateBlogIntroParagraphRequest, generateBlogIntroParagraphSuccess
+    generateBlogIntroParagraphFailed, generateBlogIntroParagraphRequest, generateBlogIntroParagraphSuccess,
+    generateBlogSeoTitleMetaDescriptionFailed, generateBlogSeoTitleMetaDescriptionRequest, generateBlogSeoTitleMetaDescriptionSuccess
 } = blogSlice.actions;
 
 export const generateOutline = (data) => async (dispatch) => {
@@ -177,6 +188,22 @@ export const generateBlogIntroParagraph = (data) => async (dispatch) => {
         return payload;
     } catch (error) {
         dispatch(generateBlogIntroParagraphFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return false;
+    }
+}
+
+export const generateBlogSeoTitleMetaDescription = (data) => async (dispatch) => {
+
+    dispatch(generateBlogSeoTitleMetaDescriptionRequest());
+
+    try {
+        var payload = await blogService.generateBlogSeoTitleMetaDescription(data);
+        dispatch(generateBlogSeoTitleMetaDescriptionSuccess(payload));
+        return payload;
+    } catch (error) {
+        dispatch(generateBlogSeoTitleMetaDescriptionFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;

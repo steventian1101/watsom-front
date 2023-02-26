@@ -90,5 +90,7 @@
     "msg_please_input_target_audience": "Veuillez saisir le public cible.",
     "blog_intro_paragraph": "Paragraphe d'introduction de l'article Blgo",
     "blog_intro_paragraph_content": "Passez à travers le blocage des écrivains en laissant Jasper écrire votre paragraphe d'ouverture.",
-    "audience": "Public"
+    "audience": "Public",
+    "blog_seo_title_meta_description": "SEO - Articles de blog - Titre et méta descriptions",
+    "blog_seo_title_meta_description_content": "Écrivez des balises de titre et des méta descriptions optimisées pour le référencement pour les articles de blog qui seront bien classés sur Google."
 }
