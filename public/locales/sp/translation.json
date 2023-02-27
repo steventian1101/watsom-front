@@ -92,5 +92,11 @@
     "blog_intro_paragraph_content": "Supera el bloqueo de los escritores dejando que Jasper escriba tu párrafo inicial.",
     "audience": "Audiencia",
     "blog_seo_title_meta_description": "SEO - Publicaciones de blog - Título y metadescripciones",
-    "blog_seo_title_meta_description_content": "Escribe etiquetas de título optimizadas para SEO y meta descripciones para publicaciones de blog que se clasificarán bien en Google."
+    "blog_seo_title_meta_description_content": "Escribe etiquetas de título optimizadas para SEO y meta descripciones para publicaciones de blog que se clasificarán bien en Google.",
+    "opinion_piece_column": "Artículo de opinión/Columna",
+    "opinion_piece_column_content": "Escribe un artículo/columna de opinión",
+    "msg_please_input_title_opinion": "Ingrese el título de la opinión.",
+    "msg_please_input_content_opinion": "Ingrese el contenido de la opinión",
+    "title_opinion": "Título de la Opinión",
+    "content_what_main_subject": "Asunto principal"
 }

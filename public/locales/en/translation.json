@@ -92,5 +92,11 @@
     "blog_intro_paragraph_content": "Blast through writers block by letting Jasper write your opening paragraph.",
     "audience": "Audience",
     "blog_seo_title_meta_description": "SEO - Blog Posts - Title and Meta Descriptions",
-    "blog_seo_title_meta_description_content": "Write SEO optimized title tags and meta descriptions for blog posts that will rank well on Google."
+    "blog_seo_title_meta_description_content": "Write SEO optimized title tags and meta descriptions for blog posts that will rank well on Google.",
+    "opinion_piece_column": "Opinion piece / Column",
+    "opinion_piece_column_content": "Write an Opinion piece / Column",
+    "msg_please_input_title_opinion": "Please Input the Opinion Title.",
+    "msg_please_input_content_opinion": "Please Input the Opinion Content",
+    "title_opinion": "Title of the Opinion",
+    "content_what_main_subject": "Main subject"
 }

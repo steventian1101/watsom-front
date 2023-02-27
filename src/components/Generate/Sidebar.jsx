@@ -246,6 +246,7 @@ function Sidebar({
             <TreeItem nodeId="social_media" label={t("group_social_media")}>
               <TreeItem nodeId="social_media_1" label={<div className={`${pathname.includes('pinterest_title_description') && "bg-site_light-100"} text-sm`}>{t("pinterest_title_description")}</div>} onClick={() => selectTemplate("social_media",'/template/pinterest_title_description')} />
               <TreeItem nodeId="social_media_2" label={<div className={`${pathname.includes('photo_post_caption') && "bg-site_light-100"} text-sm`}>{t("photo_post_caption")}</div>} onClick={() => selectTemplate("social_media",'/template/photo_post_caption')} />
+              <TreeItem nodeId="social_media_3" label={<div className={`${pathname.includes('opinion_piece_column') && "bg-site_light-100"} text-sm`}>{t("opinion_piece_column")}</div>} onClick={() => selectTemplate("social_media",'/template/opinion_piece_column')} />
             </TreeItem>
           </TreeView>
         </div>

@@ -13,6 +13,7 @@ import YoutubeTitle from './pages/generate/youtube/youtube_title';
 
 import PinterestTitleDescriptionPage from './pages/generate/social_media/pinterest_title_description';
 import PhotoPostCaptionPage from './pages/generate/social_media/photo_post_caption';
+import OpinionPieceColumnPage from './pages/generate/social_media/opinion_piece_column';
 
 import AmazonProductFeaturePage from './pages/generate/amazon/amazon_product_feature';
 import AmazonProductTitlePage from './pages/generate/amazon/amazon_product_title';
@@ -47,6 +48,7 @@ function App() {
         
         <Route path = "/template/pinterest_title_description" element = {<PinterestTitleDescriptionPage/>} />
         <Route path = "/template/photo_post_caption" element = {<PhotoPostCaptionPage/>} />
+        <Route path = "/template/opinion_piece_column" element = {<OpinionPieceColumnPage/>} />
         
         <Route path = "/template/amazon_product_feature" element = {<AmazonProductFeaturePage/>} />
         <Route path = "/template/amazon_product_title" element = {<AmazonProductTitlePage/>} />

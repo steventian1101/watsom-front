@@ -119,4 +119,12 @@ export const templateData = [
     "search": "",
     "group": "5"
   },
+  {
+    "title": "opinion_piece_column",
+    "content": "opinion_piece_column_content",
+    "link": "opinion_piece_column",
+    "icon": "social_media",
+    "search": "",
+    "group": "5"
+  },
 ]

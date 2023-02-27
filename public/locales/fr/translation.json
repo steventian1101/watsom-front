@@ -92,5 +92,11 @@
     "blog_intro_paragraph_content": "Passez à travers le blocage des écrivains en laissant Jasper écrire votre paragraphe d'ouverture.",
     "audience": "Public",
     "blog_seo_title_meta_description": "SEO - Articles de blog - Titre et méta descriptions",
-    "blog_seo_title_meta_description_content": "Écrivez des balises de titre et des méta descriptions optimisées pour le référencement pour les articles de blog qui seront bien classés sur Google."
+    "blog_seo_title_meta_description_content": "Écrivez des balises de titre et des méta descriptions optimisées pour le référencement pour les articles de blog qui seront bien classés sur Google.",
+    "opinion_piece_column": "Opinion / Chronique",
+    "opinion_piece_column_content": "Écrire un article d'opinion / une colonne",
+    "msg_please_input_title_opinion": "Veuillez saisir le titre de l'avis.",
+    "msg_please_input_content_opinion": "Veuillez saisir le contenu de l'opinion",
+    "title_opinion": "Titre de l'avis",
+    "content_what_main_subject": "Sujet principal"
 }
