@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { generateLongArticle } from '../../../redux/template/blog';
 import { setLoading, setCurrentDocument } from '../../../redux/globalReducer';
 
-export default function Index() {
+export default function LongArticlePage() {
   const { blogState, globalState } = useSelector((state) => state);
   const { generateLongArticleState } = blogState;
   const { loading } = globalState;

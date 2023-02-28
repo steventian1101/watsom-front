@@ -98,5 +98,8 @@
     "msg_please_input_title_opinion": "Ingrese el título de la opinión.",
     "msg_please_input_content_opinion": "Ingrese el contenido de la opinión",
     "title_opinion": "Título de la Opinión",
-    "content_what_main_subject": "Asunto principal"
+    "content_what_main_subject": "Asunto principal",
+    "paraphrasing_rewrite_quillbot": "Parafrasear/Reescribir (Quillbot)",
+    "paraphrasing_rewrite_quillbot_content": "Parafrasear/Reescribir textos",
+    "content_to_rewrite_as_quillbot": "¡El texto que debería ser reescrito, como con Quillbot!"
 }

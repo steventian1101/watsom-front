@@ -4,20 +4,20 @@ import Sidebar from '../../../components/Generate/Sidebar';
 import DocEditor from '../../../components/Generate/DocEditor'
 import Footer from '../../../components/Generate/Footer';
 
-import { contentImprover } from '../../../redux/template/blog';
+import { paraphrasingRewriteQuillbot } from '../../../redux/template/blog';
 
-import ContentImprover from '../../../components/Generate/Blog/ContentImprover';
+import ParaphrasingRewriteQuillbot from '../../../components/Generate/Blog/ParaphrasingRewriteQuillbot';
 import { useTranslation } from "react-i18next";
 import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from '../../../redux/globalReducer';
 
-export default function ContentImproverPage() {
+export default function ParaphrasingRewriteQuillbotPage() {
   const { blogState, globalState } = useSelector((state) => state);
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const { contentImproverState } = blogState;
+  const { paraphrasingRewriteQuillbotState } = blogState;
   const { loading } = globalState;
 
   const [contents, setContents] = useState("")
@@ -52,7 +52,7 @@ export default function ContentImproverPage() {
           tone:tone
         }
 
-        let res = await dispatch(contentImprover(sendData));
+        let res = await dispatch(paraphrasingRewriteQuillbot(sendData));
         if(res != false){
           dispatch(setLoading(false));
           console.log("res", res);
@@ -76,16 +76,16 @@ export default function ContentImproverPage() {
             <div className='grid grid-cols-5'>
               <div className='col-span-3 border-gray-300' style={{borderRightWidth: "1px"}}>
                 <Header 
-                  title={t("content_improver")}
-                  content={t("content_improver_content")}
+                  title={t("paraphrasing_rewrite_quillbot")}
+                  content={t("paraphrasing_rewrite_quillbot_content")}
                 />
-                <ContentImprover 
+                <ParaphrasingRewriteQuillbot 
                   func_SetContents={setContents}
                   func_SetTone = {setTone}
                   result = {result}
                 />
                 <Footer 
-                  type = "content_improver"
+                  type = "paraphrasing_rewrite_quillbot"
                   data = {{contents: contents, tone: tone}}
                   generate = {generate}
                   count_disable = {false}

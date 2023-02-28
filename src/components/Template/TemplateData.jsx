@@ -64,6 +64,14 @@ export const templateData = [
     "group": "2"
   },
   {
+    "title": "paraphrasing_rewrite_quillbot",
+    "content": "paraphrasing_rewrite_quillbot_content",
+    "link": "paraphrasing_rewrite_quillbot",
+    "icon": "blog",
+    "search": "",
+    "group": "2"
+  },
+  {
     "title": "amazon_product_feature",
     "content": "amazon_product_feature_content",
     "link": "amazon_product_feature",

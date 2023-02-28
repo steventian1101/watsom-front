@@ -233,6 +233,7 @@ function Sidebar({
               <TreeItem nodeId="blog_3" label={<div className={`${pathname.includes('blog_idea_outline') && "bg-site_light-100"} text-sm`}>{t("blog_idea_outline")}</div>} onClick={() => selectTemplate("blog",'/template/blog_idea_outline')} />
               <TreeItem nodeId="blog_4" label={<div className={`${pathname.includes('blog_intro_paragraph') && "bg-site_light-100"} text-sm`}>{t("blog_intro_paragraph")}</div>} onClick={() => selectTemplate("blog",'/template/blog_intro_paragraph')} />
               <TreeItem nodeId="blog_5" label={<div className={`${pathname.includes('blog_seo_title_meta_description') && "bg-site_light-100"} text-sm`}>{t("blog_seo_title_meta_description")}</div>} onClick={() => selectTemplate("blog",'/template/blog_seo_title_meta_description')} />
+              <TreeItem nodeId="blog_6" label={<div className={`${pathname.includes('paraphrasing_rewrite_quillbot') && "bg-site_light-100"} text-sm`}>{t("paraphrasing_rewrite_quillbot")}</div>} onClick={() => selectTemplate("blog",'/template/paraphrasing_rewrite_quillbot')} />
             </TreeItem>
             <TreeItem nodeId="amazon" label={t("group_amazon")}>
               <TreeItem nodeId="amazon_1" label={<div className={`${pathname.includes('amazon_product_feature') && "bg-site_light-100"} text-sm`}>{t("amazon_product_feature")}</div>} onClick={() => selectTemplate("amazon",'/template/amazon_product_feature')} />

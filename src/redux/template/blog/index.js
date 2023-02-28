@@ -12,6 +12,7 @@ export const blogSlice = createSlice({
         outline: [],
         oneOutline: "",
         contentImproverState: false,
+        paraphrasingRewriteQuillbotState: false,
         generateBlogIdeaOutlineState: false,
         generateBlogIntroParagraphState: false,
         generateBlogSeoTitleMetaDescriptionState: false
@@ -56,6 +57,16 @@ export const blogSlice = createSlice({
         contentImproverFailed: (state, action) => {
             state.contentImproverState = false;
         },
+        paraphrasingRewriteQuillbotRequest: state => {
+            state.paraphrasingRewriteQuillbotState = true
+        },
+        paraphrasingRewriteQuillbotSuccess: (state, action) => {
+            state.paraphrasingRewriteQuillbotState = false;
+            state.result = action.payload.result;
+        },
+        paraphrasingRewriteQuillbotFailed: (state, action) => {
+            state.paraphrasingRewriteQuillbotState = false;
+        },
         generateBlogIdeaOutlineRequest: state => {
             state.generateBlogIdeaOutlineState = true
         },
@@ -95,7 +106,8 @@ const {
     contentImproverFailed, contentImproverRequest, contentImproverSuccess,
     generateBlogIdeaOutlineFailed, generateBlogIdeaOutlineRequest, generateBlogIdeaOutlineSuccess,
     generateBlogIntroParagraphFailed, generateBlogIntroParagraphRequest, generateBlogIntroParagraphSuccess,
-    generateBlogSeoTitleMetaDescriptionFailed, generateBlogSeoTitleMetaDescriptionRequest, generateBlogSeoTitleMetaDescriptionSuccess
+    generateBlogSeoTitleMetaDescriptionFailed, generateBlogSeoTitleMetaDescriptionRequest, generateBlogSeoTitleMetaDescriptionSuccess,
+    paraphrasingRewriteQuillbotFailed, paraphrasingRewriteQuillbotRequest, paraphrasingRewriteQuillbotSuccess
 } = blogSlice.actions;
 
 export const generateOutline = (data) => async (dispatch) => {
@@ -140,6 +152,22 @@ export const generateLongArticle = (data) => async (dispatch) => {
         return payload;
     } catch (error) {
         dispatch(generateLongArticleFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return false;
+    }
+}
+
+export const paraphrasingRewriteQuillbot = (data) => async (dispatch) => {
+
+    dispatch(paraphrasingRewriteQuillbotRequest());
+
+    try {
+        var payload = await blogService.paraphrasingRewriteQuillbot(data);
+        dispatch(paraphrasingRewriteQuillbotSuccess(payload));
+        return payload;
+    } catch (error) {
+        dispatch(paraphrasingRewriteQuillbotFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;
