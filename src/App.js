@@ -7,6 +7,7 @@ import BlogIdeaOutlinePage from './pages/generate/blog/blog_idea_outline';
 import BlogIntroParagraphPage from './pages/generate/blog/blog_intro_paragraph';
 import BlogSeoTitleMetaDescriptionPage from './pages/generate/blog/blog_seo_title_meta_description';
 import ParaphrasingRewriteQuillbotPage from './pages/generate/blog/paraphrasing_rewrite_quillbot';
+import InterviewQuestionPage from './pages/generate/blog/interview_question';
 
 import YoutubeDescription from './pages/generate/youtube/youtube_description';
 import YoutubeHookIntroduction from './pages/generate/youtube/youtube_hook_introduction';
@@ -43,6 +44,7 @@ function App() {
         <Route path = "/template/blog_intro_paragraph" element = {<BlogIntroParagraphPage/>} />
         <Route path = "/template/blog_seo_title_meta_description" element = {<BlogSeoTitleMetaDescriptionPage/>} />
         <Route path = "/template/paraphrasing_rewrite_quillbot" element = {<ParaphrasingRewriteQuillbotPage/>} />
+        <Route path = "/template/interview_question" element = {<InterviewQuestionPage/>} />
 
         <Route path = "/template/youtube_description" element = {<YoutubeDescription/>} />
         <Route path = "/template/youtube_introduction" element = {<YoutubeHookIntroduction/>} />

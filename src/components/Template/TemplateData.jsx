@@ -72,6 +72,14 @@ export const templateData = [
     "group": "2"
   },
   {
+    "title": "interview_question",
+    "content": "interview_question_content",
+    "link": "interview_question",
+    "icon": "blog",
+    "search": "",
+    "group": "2"
+  },
+  {
     "title": "amazon_product_feature",
     "content": "amazon_product_feature_content",
     "link": "amazon_product_feature",

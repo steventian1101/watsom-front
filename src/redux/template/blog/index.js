@@ -15,7 +15,8 @@ export const blogSlice = createSlice({
         paraphrasingRewriteQuillbotState: false,
         generateBlogIdeaOutlineState: false,
         generateBlogIntroParagraphState: false,
-        generateBlogSeoTitleMetaDescriptionState: false
+        generateBlogSeoTitleMetaDescriptionState: false,
+        generateInterviewQuestionState: false
     },
     reducers: {
         generateOutlineRequest: state => {
@@ -96,6 +97,15 @@ export const blogSlice = createSlice({
         generateBlogSeoTitleMetaDescriptionFailed: (state, action) => {
             state.generateBlogSeoTitleMetaDescriptionState = false;
         },
+        generateInterviewQuestionRequest: state => {
+            state.generateInterviewQuestionState = true
+        },
+        generateInterviewQuestionSuccess: (state, action) => {
+            state.generateInterviewQuestionState = false;
+        },
+        generateInterviewQuestionFailed: (state, action) => {
+            state.generateInterviewQuestionState = false;
+        },
     }
 });
 
@@ -107,7 +117,8 @@ const {
     generateBlogIdeaOutlineFailed, generateBlogIdeaOutlineRequest, generateBlogIdeaOutlineSuccess,
     generateBlogIntroParagraphFailed, generateBlogIntroParagraphRequest, generateBlogIntroParagraphSuccess,
     generateBlogSeoTitleMetaDescriptionFailed, generateBlogSeoTitleMetaDescriptionRequest, generateBlogSeoTitleMetaDescriptionSuccess,
-    paraphrasingRewriteQuillbotFailed, paraphrasingRewriteQuillbotRequest, paraphrasingRewriteQuillbotSuccess
+    paraphrasingRewriteQuillbotFailed, paraphrasingRewriteQuillbotRequest, paraphrasingRewriteQuillbotSuccess,
+    generateInterviewQuestionFailed, generateInterviewQuestionRequest, generateInterviewQuestionSuccess
 } = blogSlice.actions;
 
 export const generateOutline = (data) => async (dispatch) => {
@@ -232,6 +243,22 @@ export const generateBlogSeoTitleMetaDescription = (data) => async (dispatch) =>
         return payload;
     } catch (error) {
         dispatch(generateBlogSeoTitleMetaDescriptionFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return false;
+    }
+}
+
+export const generateInterviewQuestion = (data) => async (dispatch) => {
+
+    dispatch(generateInterviewQuestionRequest());
+
+    try {
+        var payload = await blogService.generateInterviewQuestion(data);
+        dispatch(generateInterviewQuestionSuccess(payload));
+        return payload;
+    } catch (error) {
+        dispatch(generateInterviewQuestionFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;

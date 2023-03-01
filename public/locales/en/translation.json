@@ -31,6 +31,7 @@
     "long_article_content": "Get a summarized version from a piece of content.",
     "content_improver": "Content Improver",
     "content_improver_content": "Take a piece of content and rewrite it to make it more interesting, creative, and engaging.",
+    "tone_convincing": "Convincing",
     "tone_friendly": "Friendly",
     "tone_bold": "Bold",
     "tone_professional": "Professional",
@@ -101,5 +102,11 @@
     "content_what_main_subject": "Main subject",
     "paraphrasing_rewrite_quillbot": "Paraphrasing / Rewriting (Quillbot)",
     "paraphrasing_rewrite_quillbot_content": "Paraphrasing / Rewriting texts",
-    "content_to_rewrite_as_quillbot": "The text that should get rewritten, like with Quillbot!"
+    "content_to_rewrite_as_quillbot": "The text that should get rewritten, like with Quillbot!",
+    "interview_subject": "Interview Subject",
+    "interview_describe": "Describe the Interview",
+    "interview_question": "Interview Questions",
+    "interview_question_content": "Inspiration for Interview Questions",
+    "msg_please_input_interview_subject": "Please Input the Interview Subject.",
+    "msg_please_input_interview_description": "Please Input the Interview Descripcion."
 }
