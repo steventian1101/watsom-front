@@ -8,7 +8,8 @@ export const socialSlice = createSlice({
     initialState: {
         generatePinterestTitleDescriptionState: false,
         generatePhotoPostCaptionState: false,
-        generateOpinionPieceColumnState: false
+        generateOpinionPieceColumnState: false,
+        generateGoogleBusinessPostState: false,
     },
     reducers: {
         generatePinterestTitleDescriptionRequest: state => {
@@ -38,13 +39,23 @@ export const socialSlice = createSlice({
         generateOpinionPieceColumnFailed: (state, action) => {
             state.generateOpinionPieceColumnState = false;
         },
+        generateGoogleBusinessPostRequest: state => {
+            state.generateGoogleBusinessPostState = true
+        },
+        generateGoogleBusinessPostSuccess: (state, action) => {
+            state.generateGoogleBusinessPostState = false;
+        },
+        generateGoogleBusinessPostFailed: (state, action) => {
+            state.generateGoogleBusinessPostState = false;
+        },
     }
 });
 
 const {
     generatePinterestTitleDescriptionFailed, generatePinterestTitleDescriptionRequest, generatePinterestTitleDescriptionSuccess,
     generatePhotoPostCaptionFailed, generatePhotoPostCaptionRequest, generatePhotoPostCaptionSuccess,
-    generateOpinionPieceColumnFailed, generateOpinionPieceColumnRequest, generateOpinionPieceColumnSuccess
+    generateOpinionPieceColumnFailed, generateOpinionPieceColumnRequest, generateOpinionPieceColumnSuccess,
+    generateGoogleBusinessPostFailed, generateGoogleBusinessPostRequest, generateGoogleBusinessPostSuccess
 } = socialSlice.actions;
 
 export const generatePinterestTitleDescription = (data) => async (dispatch) => {
@@ -89,6 +100,22 @@ export const generateOpinionPieceColumn = (data) => async (dispatch) => {
         return payload;
     } catch (error) {
         dispatch(generateOpinionPieceColumnFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return false;
+    }
+}
+
+export const generateGoogleBusinessPost = (data) => async (dispatch) => {
+
+    dispatch(generateGoogleBusinessPostRequest());
+
+    try {
+        var payload = await socialService.generateGoogleBusinessPost(data);
+        dispatch(generateGoogleBusinessPostSuccess(payload));
+        return payload;
+    } catch (error) {
+        dispatch(generateGoogleBusinessPostFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return false;

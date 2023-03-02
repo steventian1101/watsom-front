@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from "react-i18next";
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import ToneSelect from '../ToneSelect';
+import PostTypeSelect from '../PostTypeSelect';
 import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";
 import EditButtonGroup from '../EditButtonGroup';
@@ -10,27 +11,21 @@ import EditButtonGroup from '../EditButtonGroup';
 import { setLoading } from '../../../redux/globalReducer';
 import TextareaAutosize from 'react-textarea-autosize';
 
-function InterviewQuestion({
-  func_SetTitle, func_SetKeywords, func_SetTone, result
+function GoogleBusinessPost({
+  func_SetKeywords, func_SetTone, func_SetPostType, result
 }) {
   const { globalState } = useSelector((state) => state);
   const { loading } = globalState;
   const { t } = useTranslation();
 
-  const [title, setTitle] = useState("");
   const [keywords, setKeywords] = useState("");
   const [tone, setTone] = useState(0);
+  const [post_type, setPostType] = useState(0);
   const [content_result, setContentResult] = useState(result)
 
   useEffect(() => {
     setContentResult(result)
   }, [result]);
-
-  // title
-  const changeTitle = (value) => {
-    setTitle(value);
-    func_SetTitle(value);
-  }
 
   // keywords
   const changeKeywords = (value) => {
@@ -42,6 +37,12 @@ function InterviewQuestion({
   const selectTone = (value) => {
     func_SetTone(value)
     setTone(value)
+  }
+
+  // post_type
+  const selectPostType = (value) => {
+    func_SetPostType(value)
+    setPostType(value)
   }
 
   const changeResult = (index, value) => {
@@ -64,26 +65,23 @@ function InterviewQuestion({
           <div className='w-2/3 text-start'>
             <div className='grid grid-cols-12 py-4'>
               <div className='col-span-3'>
-                {t("interview_subject")}
+                {t("post_type")}
               </div>
               <div className='col-span-9'>
-                <Textarea 
-                  rows={5}
-                  value={keywords}
-                  onChange={(e) => changeKeywords(e.target.value)}
+                <PostTypeSelect 
+                    selectPostType = {selectPostType}
                 />
-                
               </div>
             </div>
 
             <div className='grid grid-cols-12 py-4'>
               <div className='col-span-3'>
-                {t("interview_describe")}
+                {t("short_description")}
               </div>
               <div className='col-span-9'>
                 <TextInput 
-                  value={title}
-                  onChange={(e) => changeTitle(e.target.value)}
+                  value={keywords}
+                  onChange={(e) => changeKeywords(e.target.value)}
                 />
               </div>
             </div>
@@ -128,4 +126,4 @@ function InterviewQuestion({
   );
 }
 
-export default InterviewQuestion;
+export default GoogleBusinessPost;

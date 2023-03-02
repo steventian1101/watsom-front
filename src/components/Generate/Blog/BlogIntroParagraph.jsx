@@ -86,9 +86,6 @@ function BlogIntroParagraph({
                   value={keywords}
                   onChange={(e) => changeKeywords(e.target.value)}
                 />
-                <div className='underline text-gray-400'>
-                  {t("separate_keywords_with")} ","
-                </div>
               </div>
             </div>
             

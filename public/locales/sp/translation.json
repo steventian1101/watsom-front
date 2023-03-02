@@ -108,5 +108,11 @@
     "interview_question": "Preguntas de la entrevista",
     "interview_question_content": "Inspiración para las preguntas de la entrevista",
     "msg_please_input_interview_subject": "Ingrese el asunto de la entrevista.",
-    "msg_please_input_interview_description": "Ingrese la descripción de la entrevista."
+    "msg_please_input_interview_description": "Ingrese la descripción de la entrevista.",
+    "google_business_post": "Google mis Publicaciones Comerciales",
+    "google_business_post_content": "Escribe publicaciones de Google My Business",
+    "post_type": "Tipo de publicación",
+    "post_event": "evento",
+    "post_offer": "oferta",
+    "post_update": "actualizar"
 }

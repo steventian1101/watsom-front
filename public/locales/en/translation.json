@@ -108,5 +108,11 @@
     "interview_question": "Interview Questions",
     "interview_question_content": "Inspiration for Interview Questions",
     "msg_please_input_interview_subject": "Please Input the Interview Subject.",
-    "msg_please_input_interview_description": "Please Input the Interview Descripcion."
+    "msg_please_input_interview_description": "Please Input the Interview Descripcion.",
+    "google_business_post": "Google my Business Posts",
+    "google_business_post_content": "Writes Google My Business posts",
+    "post_type": "Post Type",
+    "post_event": "event",
+    "post_offer": "offer",
+    "post_update": "update"
 }

@@ -143,4 +143,12 @@ export const templateData = [
     "search": "",
     "group": "5"
   },
+  {
+    "title": "google_business_post",
+    "content": "google_business_post_content",
+    "link": "google_business_post",
+    "icon": "social_media",
+    "search": "",
+    "group": "5"
+  },
 ]
