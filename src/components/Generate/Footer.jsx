@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useTranslation } from "react-i18next";
+import { setOutputCurrentLanguage } from '../../redux/globalReducer';
+import { useDispatch } from 'react-redux';
 
 function Footer({
   type,
@@ -7,13 +9,21 @@ function Footer({
   generate,
   count_disable
 }) {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const [showCount, setShowCount] = useState(3);
+  const [showLanguage, setShowLanguage] = useState("French");
   const output_count = [1,2,3,4,5];
+  const output_language = ["French", "English", "Spanish"]
   
   const clickGenerate = () => {
-    generate(data, showCount, type)
+    generate(data, showCount, type, showLanguage)
+  }
+
+  const selectOutputLanguage = (lang) => {
+    setShowLanguage(lang)
+    dispatch(setOutputCurrentLanguage(lang))
   }
 
   return (
@@ -27,6 +37,20 @@ function Footer({
           <select className='rounded-lg w-24 disabled:cursor-not-allowed' onChange={(e)=>setShowCount(e.target.value)} defaultValue={count_disable ? 1 : showCount} disabled = {count_disable} >
             {
               output_count.map((data,index)=>
+                <option value={data} key={index}>{data}</option>
+              )
+            }
+          </select>
+        </div>
+
+        <div className="flex gap-4">
+          <div className="text-xl p-2 font-bold tracking-tight text-gray-900">
+            {t("language")}
+          </div>
+
+          <select className='rounded-lg w-36 disabled:cursor-not-allowed' onChange={(e)=>selectOutputLanguage(e.target.value)} defaultValue={showLanguage}>
+            {
+              output_language.map((data,index)=>
                 <option value={data} key={index}>{data}</option>
               )
             }

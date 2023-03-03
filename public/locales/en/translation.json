@@ -114,5 +114,6 @@
     "post_type": "Post Type",
     "post_event": "event",
     "post_offer": "offer",
-    "post_update": "update"
+    "post_update": "update",
+    "language": "Language"
 }

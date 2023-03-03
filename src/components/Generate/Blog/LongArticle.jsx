@@ -14,7 +14,7 @@ function LongArticle({
 }) {
   const { blogState, globalState } = useSelector((state) => state);
   const { generateOutlineState, generateOneOutlineState } = blogState;
-  const { loading } = globalState;
+  const { loading, output_language } = globalState;
   const { t } = useTranslation();
 
   const [title, setTitle] = useState("");
@@ -74,7 +74,8 @@ function LongArticle({
         const sendData = {
           title: title,
           keywords: keywords,
-          tone: tone
+          tone: tone,
+          lang: output_language
         }
 
         let res = await dispatch(generateOutline(sendData))
@@ -169,7 +170,8 @@ function LongArticle({
         const sendData = {
           title: title,
           keywords: keywords,
-          tone: tone
+          tone: tone,
+          lang: output_language
         }
 
         let res = await dispatch(generateOutline(sendData))

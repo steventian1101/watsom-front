@@ -60,7 +60,7 @@ export default function LongArticlePage() {
     return true;
   }
 
-  const generate = async (data, count, type) => {
+  const generate = async (data, count, type, lang) => {
     if(!loading){
       let is_valid = validate(data);
   
@@ -74,6 +74,7 @@ export default function LongArticlePage() {
           tone:tone,
           outline:outline,
           count:count,
+          lang:lang,
           type:type
         }
   

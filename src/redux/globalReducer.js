@@ -6,6 +6,8 @@ export const globalSlice = createSlice({
     initialState: {
         language: "en",
         setLanguageState: false,
+        output_language: "French",
+        setOutputLanguageState: false,
         current_document: "",
         setCurrentDocumentState: false,
         setLoadingState: false,
@@ -23,6 +25,16 @@ export const globalSlice = createSlice({
         },
         setLanguageFailed: (state, action) => {
             state.setLanguageState = false;
+        },
+        setOutputLanguageRequest: state => {
+            state.setOutputLanguageState = true
+        },
+        setOutputLanguageSuccess: (state, action) => {
+            state.setOutputLanguageState = false;
+            state.output_language = action.payload;
+        },
+        setOutputLanguageFailed: (state, action) => {
+            state.setOutputLanguageState = false;
         },
         setCurrentDocumentRequest: state => {
             state.setCurrentDocumentState = true
@@ -59,6 +71,7 @@ export const globalSlice = createSlice({
 
 const {
     setLanguageFailed, setLanguageRequest, setLanguageSuccess,
+    setOutputLanguageFailed, setOutputLanguageRequest, setOutputLanguageSuccess,
     setCurrentDocumentFailed, setCurrentDocumentRequest, setCurrentDocumentSuccess,
     setLoadingFailed, setLoadingRequest, setLoadingSuccess,
     setExpandGroupFailed, setExpandGroupRequest, setExpandGroupSuccess
@@ -72,6 +85,19 @@ export const setCurrentLanguage = (lang) => async (dispatch) => {
         dispatch(setLanguageSuccess(lang));
     } catch (error) {
         dispatch(setLanguageFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        throw new Error(error);
+    }
+}
+
+export const setOutputCurrentLanguage = (lang) => async (dispatch) => {
+
+    dispatch(setOutputLanguageRequest());
+
+    try {
+        dispatch(setOutputLanguageSuccess(lang));
+    } catch (error) {
+        dispatch(setOutputLanguageFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         throw new Error(error);
     }

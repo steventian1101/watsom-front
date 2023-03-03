@@ -33,7 +33,7 @@ export default function GoogleBusinessPostPage() {
     return true;
   }
 
-  const generate = async (data, count, type) => {
+  const generate = async (data, count, type, lang) => {
     if(!loading){
       let is_valid = validate(data);
   
@@ -46,6 +46,7 @@ export default function GoogleBusinessPostPage() {
           tone:tone,
           post_type:post_type,
           output:count,
+          lang:lang,
         }
   
         let res = await dispatch(generateGoogleBusinessPost(sendData));

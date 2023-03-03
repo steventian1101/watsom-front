@@ -34,7 +34,7 @@ export default function ParaphrasingRewriteQuillbotPage() {
     return true;
   }
 
-  const generate = async (data, count, type) => {
+  const generate = async (data, count, type, lang) => {
     if(!loading){
       let is_valid = validate(data);
 
@@ -47,6 +47,7 @@ export default function ParaphrasingRewriteQuillbotPage() {
 
         const sendData = {
           output:count,
+          lang:lang,
           type:type,
           content:contents,
           tone:tone

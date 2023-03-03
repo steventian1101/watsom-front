@@ -114,5 +114,6 @@
     "post_type": "Tipo de publicación",
     "post_event": "evento",
     "post_offer": "oferta",
-    "post_update": "actualizar"
+    "post_update": "actualizar",
+    "language": "Idioma"
 }

@@ -36,7 +36,7 @@ export default function GoogleAdsPage() {
     return true;
   }
 
-  const generate = async (data, count, type) => {
+  const generate = async (data, count, type, lang) => {
     if(!loading){
       let is_valid = validate(data);
   
@@ -49,6 +49,7 @@ export default function GoogleAdsPage() {
           keywords:keywords,
           tone:tone,
           output:count,
+          lang:lang,
         }
   
         let res = await dispatch(generateGoogleAds(sendData));

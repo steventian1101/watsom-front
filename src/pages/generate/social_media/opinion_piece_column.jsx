@@ -40,7 +40,7 @@ export default function OpinionPieceColumnPage() {
     return true;
   }
 
-  const generate = async (data, count, type) => {
+  const generate = async (data, count, type, lang) => {
     if(!loading){
       let is_valid = validate(data);
   
@@ -54,6 +54,7 @@ export default function OpinionPieceColumnPage() {
           keywords:keywords,
           tone:tone,
           output:count,
+          lang:lang,
         }
   
         let res = await dispatch(generateOpinionPieceColumn(sendData));
