@@ -26,7 +26,7 @@ export const authSlice = createSlice({
             state.userToken = action.payload.api_token;
             state.userInfo = jwt_decode(action.payload.api_token);
         },
-        loginFailure : state => {
+        loginFailed : state => {
             state.loggingIn = false;
             state.loggedIn = false
         },
@@ -36,7 +36,7 @@ export const authSlice = createSlice({
         registerUserSuccess : state => {
             state.registerUserState =  false;
         },
-        registerUserFailure : state => {
+        registerUserFailed : state => {
             state.registerUserState =  false;
         },
         forgotPasswordRequest: state => {
@@ -45,7 +45,7 @@ export const authSlice = createSlice({
         forgotPasswordSuccess : state => {
             state.forgotPasswordState =  false;
         },
-        forgotPasswordFailure : state => {
+        forgotPasswordFailed : state => {
             state.forgotPasswordState =  false;
         },
         logoutRequest: state => {
@@ -58,9 +58,9 @@ export const authSlice = createSlice({
 });
 
 const {  
-    loginRequest, loginSuccess, loginFailure, 
+    loginRequest, loginSuccess, loginFailed, 
     registerUserRequest, registerUserFailed, registerUserSuccess,
-    forgotPasswordFailure, forgotPasswordRequest, forgotPasswordSuccess,
+    forgotPasswordFailed, forgotPasswordRequest, forgotPasswordSuccess,
     logoutRequest
 } = authSlice.actions;
 
@@ -71,10 +71,12 @@ export const login = (email, password) => async (dispatch) => {
     try {
         var payload = await userService.login(email, password);
         dispatch(loginSuccess(payload));
+        return {status: true, result: payload};
     } catch (error) {
-        dispatch(loginFailure());
-        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
-        throw new Error(error);
+        dispatch(loginFailed());
+        // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return {status: false, result: error["message"]};
     }
 }
 
@@ -84,12 +86,12 @@ export const registerUser = (user) => async (dispatch) => {
     try {
         var payload = await userService.registerUser(user);
         dispatch(registerUserSuccess(payload));
-        return payload;
+        return {status: true, result: payload};
     } catch (error) {
         dispatch(registerUserFailed());
-        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
-        return false;
+        return {status: false, result: error["message"]};
     }
 }
 
@@ -99,12 +101,12 @@ export const forgotPassword = (user) => async (dispatch) => {
     try {
         var payload = await userService.forgotPassword(user);
         dispatch(forgotPasswordSuccess(payload));
-        return payload;
+        return {status: true, result: payload};
     } catch (error) {
         dispatch(forgotPasswordFailed());
-        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
-        return false;
+        return {status: false, result: error["message"]};
     }
 }
 

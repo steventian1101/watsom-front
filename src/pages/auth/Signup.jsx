@@ -57,10 +57,10 @@ function Signup() {
 
     if(validate_result){
       let res = await dispatch(registerUser(userData))
-      if(res != false){
+      if(res.status != false){
 
       }else{
-
+        dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
       }
       console.log("success")
     }
