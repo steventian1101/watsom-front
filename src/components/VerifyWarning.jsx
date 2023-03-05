@@ -12,9 +12,9 @@ function VerifyWarning() {
         >
             <span>
                 <span className="font-medium">
-                {t("Confirm Mail")}!
+                {t("confirm_mail")}!
                 </span>
-                {' ' + t("Please Check your InBox.")}.
+                {' ' + t("please_check_your_inbox")}.
             </span>
         </Alert>
     );

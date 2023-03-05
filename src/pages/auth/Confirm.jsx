@@ -25,19 +25,19 @@ function ConfirmMail(props) {
             dispatch(openSnackBar({ status: "success", message: t("confirm_success") }))
             navigate('/template')
           }else{
-            dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
+            dispatch(openSnackBar({ status: "warning", message: t("invalid_token") }))
             navigate('/template')
           }
         }
       } catch (err) {
-        console.log('Error occured when fetching books');
+        console.log('Error occured when fetching data');
       }
     })();
   }, []);
   
   return (
     <main className="bg-white">
-      {t("Confirm Mail")}
+      {t("confirm_mail")}
     </main>
   );
 }
