@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { openSnackBar } from '../../redux/snackBarReducer';
 import { useDispatch, useSelector } from 'react-redux'
 import Validator from 'validator';
 import { useTranslation } from "react-i18next";
 import { forgotPassword } from '../../redux/authReducer';
+import { useNavigate } from 'react-router-dom'
 
 import AuthImage from '../../images/auth-image.jpg';
 import AuthDecoration from '../../images/auth-decoration.png';
@@ -14,6 +15,15 @@ function ResetPassword() {
   const { authState } = useSelector((state) => state);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { loggedIn } = authState;
+
+  useEffect(() => {
+    if(loggedIn){
+      navigate("/template")
+    }
+  });
 
   const [userData, setUserData] = useState({
     email: "",

@@ -4,6 +4,7 @@ import Template from './pages/template';
 import Signin from './pages/auth/Signin'
 import Signup from './pages/auth/Signup'
 import ResetPassword from './pages/auth/ResetPassword';
+import ConfirmMail from './pages/auth/Confirm';
 
 import LongArticlePage from './pages/generate/blog/long_article'
 import ContentImproverPage from './pages/generate/blog/content_improver';
@@ -31,21 +32,27 @@ import GoogleAdsPage from './pages/generate/ads/google_ads';
 
 import "./i18n";
 import Loading from './components/Loading';
+import VerifyWarning from './components/VerifyWarning';
 import { useSelector } from "react-redux";
 
 function App() {
-  const { globalState } = useSelector((state) => state);
+  const { globalState, authState } = useSelector((state) => state);
   const { loading } = globalState;
+  const { userInfo, loggedIn } = authState
 
   return (
     <div className="App">
       {loading && <Loading />}
+      {
+        loggedIn && !userInfo?.is_verified && <div><VerifyWarning /></div>
+      }
       <Routes>
         <Route path = "/" element ={<Navigate to = "/template"/>} />
 
         <Route path = "/signin" element = {<Signin/>} />
         <Route path = "/signup" element = {<Signup/>} />
         <Route path = "/reset-password" element = {<ResetPassword/>} />
+        <Route path = "/confirm/:confirm_token" element = {<ConfirmMail/>} />
 
         <Route path = "/template" element = {<Template/>} />
         <Route path = "/template/long_article" element = {<LongArticlePage/>} />

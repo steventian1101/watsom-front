@@ -14,7 +14,8 @@ export const authSlice = createSlice({
         userToken,
         userInfo,
         registerUserState: false,
-        forgotPasswordState: false
+        forgotPasswordState: false,
+        confirmMailState: false
     },
     reducers:{
         loginRequest: state => {
@@ -39,6 +40,16 @@ export const authSlice = createSlice({
         registerUserFailed : state => {
             state.registerUserState =  false;
         },
+        confirmMailRequest: state => {
+            state.confirmMailState = true;
+        },
+        confirmMailSuccess : state => {
+            state.confirmMailState =  false;
+            state.userInfo.is_verified = true;
+        },
+        confirmMailFailed : state => {
+            state.confirmMailState =  false;
+        },
         forgotPasswordRequest: state => {
             state.forgotPasswordState = true;
         },
@@ -61,6 +72,7 @@ const {
     loginRequest, loginSuccess, loginFailed, 
     registerUserRequest, registerUserFailed, registerUserSuccess,
     forgotPasswordFailed, forgotPasswordRequest, forgotPasswordSuccess,
+    confirmMailFailed, confirmMailRequest, confirmMailSuccess,
     logoutRequest
 } = authSlice.actions;
 
@@ -90,6 +102,21 @@ export const registerUser = (user) => async (dispatch) => {
     } catch (error) {
         dispatch(registerUserFailed());
         // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return {status: false, result: error["message"]};
+    }
+}
+
+export const confirmMail = (token) => async (dispatch) => {
+    dispatch(confirmMailRequest());
+
+    try {
+        var payload = await userService.confirmMail(token);
+        dispatch(confirmMailSuccess(payload));
+        return {status: true, result: payload};
+    } catch (error) {
+        dispatch(confirmMailFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return {status: false, result: error["message"]};
     }

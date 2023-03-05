@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { openSnackBar } from '../../redux/snackBarReducer';
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,6 +16,14 @@ function Signin() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { loggedIn } = authState;
+
+  useEffect(() => {
+    if(loggedIn){
+      navigate("/template")
+    }
+  });
 
   const [userData, setUserData] = useState({
     email: "",

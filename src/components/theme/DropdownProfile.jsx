@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Transition from '../../utils/Transition';
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../redux/authReducer';
+import { openSnackBar } from '../../redux/snackBarReducer';
+import { useNavigate } from 'react-router-dom'
 
 import UserAvatar from '../../images/user-avatar-32.png';
 
@@ -10,7 +14,12 @@ function DropdownProfile({
   align,
   removeText
 }) {
+  const { authState } = useSelector((state) => state);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { loggedIn } = authState
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -37,6 +46,15 @@ function DropdownProfile({
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
   });
+
+  const signout = () => {
+    dispatch(logout())
+    dispatch(openSnackBar({ status: "success", message: t("msg_success_logout") }))
+
+    navigate("/template")
+
+    setDropdownOpen(!dropdownOpen)
+  }
 
   return (
     <div className="relative inline-flex">
@@ -89,13 +107,22 @@ function DropdownProfile({
               </Link>
             </li>
             <li>
-              <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/signin"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                {t("sign_in")}
-              </Link>
+              {
+                loggedIn == false ? 
+                  <Link
+                    className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                    to="/signin"
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                  >
+                    {t("sign_in")}
+                  </Link>
+                : <Link
+                    className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                    onClick={() => signout()}
+                  >
+                    {t("sign_out")}
+                  </Link>
+              }
             </li>
           </ul>
         </div>
