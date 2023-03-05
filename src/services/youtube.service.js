@@ -1,5 +1,5 @@
 import  { authHeader, handleResponse } from '../utils';
-import { API_BASE } from '../config/constants';
+import { GPT_SERVER } from '../config/constants';
 
 const generateYoutubeDescription = async (data) => {
     const requestOptions = {
@@ -12,7 +12,7 @@ const generateYoutubeDescription = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = fetch(`${API_BASE}/template/youtube/generate_description`, requestOptions);
+    const response = fetch(`${GPT_SERVER}/template/youtube/generate_description`, requestOptions);
     return await handleResponse(response);
 }
 
@@ -27,7 +27,7 @@ const generateYoutubeHookIntroduction = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = fetch(`${API_BASE}/template/youtube/generate_introduction`, requestOptions);
+    const response = fetch(`${GPT_SERVER}/template/youtube/generate_introduction`, requestOptions);
     return await handleResponse(response);
 }
 
@@ -42,7 +42,7 @@ const generateYoutubeTitle = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = fetch(`${API_BASE}/template/youtube/generate_title`, requestOptions);
+    const response = fetch(`${GPT_SERVER}/template/youtube/generate_title`, requestOptions);
     return await handleResponse(response);
 }
 

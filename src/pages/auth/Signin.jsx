@@ -1,10 +1,60 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { openSnackBar } from '../../redux/snackBarReducer';
+import { useDispatch, useSelector } from 'react-redux'
+import Validator from 'validator';
+import { useTranslation } from "react-i18next";
+import { login } from '../../redux/authReducer';
 
 import AuthImage from '../../images/auth-image.jpg';
 import AuthDecoration from '../../images/auth-decoration.png';
+import { Button } from 'flowbite-react';
 
 function Signin() {
+  const { authState } = useSelector((state) => state);
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  })
+
+  const handleInputChange = (key, value) => {
+    userData[`${key}`] = value;
+    setUserData({ ...userData });
+  };
+
+  function validate() {
+    const {email, password} = userData;
+
+    if (!email) {
+      dispatch(openSnackBar({ status: "warning", message: t("msg_fill_email") }))
+      return false;
+    } else if (!Validator.isEmail(email)) {
+        dispatch(openSnackBar({ status: "warning", message: t("msg_invalid_email") }))
+        return false;
+    } else if (!password) {
+      dispatch(openSnackBar({ status: "warning", message: t("msg_fill_password") }))
+      return false;
+    }
+    return true;
+  }
+
+  const signin = async () => {
+    var validate_result = validate();
+
+    if(validate_result){
+      let res = await dispatch(login(userData))
+      if(res != false){
+
+      }else{
+
+      }
+      console.log("success")
+    }
+  }
+
   return (
     <main className="bg-white">
 
@@ -46,18 +96,18 @@ function Signin() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="email">Email Address</label>
-                    <input id="email" className="form-input w-full" type="email" />
+                    <input id="email" className="form-input w-full" type="email" value={userData.email} onChange={(e) => handleInputChange("email", e.target.value)} />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="password">Password</label>
-                    <input id="password" className="form-input w-full" type="password" autoComplete="on" />
+                    <input id="password" className="form-input w-full" type="password" autoComplete="on" value={userData.password} onChange={(e) => handleInputChange("password", e.target.value)}/>
                   </div>
                 </div>
                 <div className="flex items-center justify-between mt-6">
                   <div className="mr-1">
                     <Link className="text-sm underline hover:no-underline" to="/reset-password">Forgot Password?</Link>
                   </div>
-                  <Link className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3" to="/">Sign In</Link>
+                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => signin()}>Sign In</Button>
                 </div>
               </form>
               {/* Footer */}

@@ -1,5 +1,5 @@
 import  { authHeader, handleResponse } from '../utils';
-import { API_BASE } from '../config/constants';
+import { GPT_SERVER } from '../config/constants';
 
 const generatePinterestTitleDescription = async (data) => {
     const requestOptions = {
@@ -12,7 +12,7 @@ const generatePinterestTitleDescription = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = fetch(`${API_BASE}/template/social/pinterest_generate_title_description`, requestOptions);
+    const response = fetch(`${GPT_SERVER}/template/social/pinterest_generate_title_description`, requestOptions);
     return await handleResponse(response);
 }
 
@@ -27,7 +27,7 @@ const generatePhotoPostCaption = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = fetch(`${API_BASE}/template/social/photo_post_caption`, requestOptions);
+    const response = fetch(`${GPT_SERVER}/template/social/photo_post_caption`, requestOptions);
     return await handleResponse(response);
 }
 
@@ -42,7 +42,7 @@ const generateOpinionPieceColumn = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = fetch(`${API_BASE}/template/social/generate_opinion_piece_column`, requestOptions);
+    const response = fetch(`${GPT_SERVER}/template/social/generate_opinion_piece_column`, requestOptions);
     return await handleResponse(response);
 }
 
@@ -57,7 +57,7 @@ const generateGoogleBusinessPost = async (data) => {
         body: JSON.stringify(data)
     };
 
-    const response = fetch(`${API_BASE}/template/social/google_business_post`, requestOptions);
+    const response = fetch(`${GPT_SERVER}/template/social/google_business_post`, requestOptions);
     return await handleResponse(response);
 }
 

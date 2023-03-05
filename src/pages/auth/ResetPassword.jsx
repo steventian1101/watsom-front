@@ -1,10 +1,56 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { openSnackBar } from '../../redux/snackBarReducer';
+import { useDispatch, useSelector } from 'react-redux'
+import Validator from 'validator';
+import { useTranslation } from "react-i18next";
+import { forgotPassword } from '../../redux/authReducer';
 
 import AuthImage from '../../images/auth-image.jpg';
 import AuthDecoration from '../../images/auth-decoration.png';
+import { Button } from 'flowbite-react';
 
 function ResetPassword() {
+  const { authState } = useSelector((state) => state);
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const [userData, setUserData] = useState({
+    email: "",
+  })
+
+  const handleInputChange = (key, value) => {
+    userData[`${key}`] = value;
+    setUserData({ ...userData });
+  };
+
+  function validate() {
+    const {email} = userData;
+
+    if (!email) {
+      dispatch(openSnackBar({ status: "warning", message: t("msg_fill_email") }))
+      return false;
+    } else if (!Validator.isEmail(email)) {
+        dispatch(openSnackBar({ status: "warning", message: t("msg_invalid_email") }))
+        return false;
+    }
+    return true;
+  }
+
+  const reset_password = async () => {
+    var validate_result = validate();
+
+    if(validate_result){
+      let res = await dispatch(forgotPassword(userData))
+      if(res != false){
+
+      }else{
+
+      }
+      console.log("success")
+    }
+  }
+
   return (
     <main className="bg-white">
 
@@ -46,11 +92,11 @@ function ResetPassword() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="email">Email Address <span className="text-rose-500">*</span></label>
-                    <input id="email" className="form-input w-full" type="email" />
+                    <input id="email" className="form-input w-full" type="email" value={userData.email} onChange={(e) => handleInputChange("email", e.target.value)} />
                   </div>
                 </div>
                 <div className="flex justify-end mt-6">
-                  <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap">Send Reset Link</button>
+                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => reset_password()}>Send Reset Link</Button>
                 </div>
               </form>
             </div>

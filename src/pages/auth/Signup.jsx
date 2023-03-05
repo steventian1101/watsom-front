@@ -1,10 +1,71 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { openSnackBar } from '../../redux/snackBarReducer';
+import { useDispatch, useSelector } from 'react-redux'
+import Validator from 'validator';
+import { useTranslation } from "react-i18next";
+import { registerUser } from '../../redux/authReducer';
 
 import AuthImage from '../../images/auth-image.jpg';
 import AuthDecoration from '../../images/auth-decoration.png';
+import { Button } from 'flowbite-react';
 
 function Signup() {
+  const { authState } = useSelector((state) => state);
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const [userData, setUserData] = useState({
+    email: "",
+    full_name: "",
+    password1: "",
+    password2: ""
+  })
+
+  const handleInputChange = (key, value) => {
+    userData[`${key}`] = value;
+    setUserData({ ...userData });
+  };
+
+  function validate() {
+    const {email, full_name, password1, password2} = userData;
+
+    if (!email) {
+      dispatch(openSnackBar({ status: "warning", message: t("msg_fill_email") }))
+      return false;
+    } else if (!Validator.isEmail(email)) {
+        dispatch(openSnackBar({ status: "warning", message: t("msg_invalid_email") }))
+        return false;
+    } else if (!full_name) {
+      dispatch(openSnackBar({ status: "warning", message: t("msg_fill_full_name") }))
+      return false;
+    }  else if (!password1) {
+      dispatch(openSnackBar({ status: "warning", message: t("msg_fill_password") }))
+      return false;
+    }  else if (!password2) {
+      dispatch(openSnackBar({ status: "warning", message: t("msg_fill_confirm_password") }))
+      return false;
+    } else if(password1 !== password2){
+      dispatch(openSnackBar({ status: "warning", message: t("msg_match_password") }))
+      return false;
+    }
+    return true;
+  }
+
+  const signup = async () => {
+    var validate_result = validate();
+
+    if(validate_result){
+      let res = await dispatch(registerUser(userData))
+      if(res != false){
+
+      }else{
+
+      }
+      console.log("success")
+    }
+  }
+
   return (
     <main className="bg-white">
 
@@ -46,29 +107,29 @@ function Signup() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="email">Email Address <span className="text-rose-500">*</span></label>
-                    <input id="email" className="form-input w-full" type="email" />
+                    <input id="email" className="form-input w-full" type="email" value={userData.email} onChange={(e) => handleInputChange("email", e.target.value)} />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="name">Full Name <span className="text-rose-500">*</span></label>
-                    <input id="name" className="form-input w-full" type="text" />
+                    <input id="name" className="form-input w-full" type="text" value={userData.full_name} onChange={(e) => handleInputChange("full_name", e.target.value)} />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="password">Password</label>
-                    <input id="password" className="form-input w-full" type="password" autoComplete="on" />
+                    <input id="password" className="form-input w-full" type="password" autoComplete="on" value={userData.password1} onChange={(e) => handleInputChange("password1", e.target.value)} />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-1" htmlFor="password2">Confirm Password</label>
-                    <input id="password2" className="form-input w-full" type="password" autoComplete="on" />
+                    <input id="password2" className="form-input w-full" type="password" autoComplete="on" value={userData.password2} onChange={(e) => handleInputChange("password2", e.target.value)} />
                   </div>
                 </div>
                 <div className="flex items-center justify-between mt-6">
                   <div className="mr-1">
-                    <label className="flex items-center">
+                    {/* <label className="flex items-center">
                       <input type="checkbox" className="form-checkbox" />
                       <span className="text-sm ml-2">Email me about product news.</span>
-                    </label>
+                    </label> */}
                   </div>
-                  <Link className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" to="/">Sign Up</Link>
+                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => signup()}>Sign Up</Button>
                 </div>
               </form>
               {/* Footer */}
