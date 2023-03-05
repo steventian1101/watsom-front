@@ -1,6 +1,10 @@
 import { Routes, Route,  Navigate } from 'react-router-dom';
 import Template from './pages/template';
 
+import Signin from './pages/auth/Signin'
+import Signup from './pages/auth/Signup'
+import ResetPassword from './pages/auth/ResetPassword';
+
 import LongArticlePage from './pages/generate/blog/long_article'
 import ContentImproverPage from './pages/generate/blog/content_improver';
 import BlogIdeaOutlinePage from './pages/generate/blog/blog_idea_outline';
@@ -38,6 +42,11 @@ function App() {
       {loading && <Loading />}
       <Routes>
         <Route path = "/" element ={<Navigate to = "/template"/>} />
+
+        <Route path = "/signin" element = {<Signin/>} />
+        <Route path = "/signup" element = {<Signup/>} />
+        <Route path = "/reset-password" element = {<ResetPassword/>} />
+
         <Route path = "/template" element = {<Template/>} />
         <Route path = "/template/long_article" element = {<LongArticlePage/>} />
         <Route path = "/template/content_improver" element = {<ContentImproverPage/>} />

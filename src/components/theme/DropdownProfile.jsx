@@ -94,7 +94,7 @@ function DropdownProfile({
                 to="/signin"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                {t("sign_out")}
+                {t("sign_in")}
               </Link>
             </li>
           </ul>
