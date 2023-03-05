@@ -64,12 +64,12 @@ const {
     logoutRequest
 } = authSlice.actions;
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (user) => async (dispatch) => {
 
     dispatch(loginRequest());
 
     try {
-        var payload = await userService.login(email, password);
+        var payload = await userService.login(user);
         dispatch(loginSuccess(payload));
         return {status: true, result: payload};
     } catch (error) {

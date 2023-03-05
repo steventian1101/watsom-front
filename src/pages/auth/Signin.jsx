@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Validator from 'validator';
 import { useTranslation } from "react-i18next";
 import { login } from '../../redux/authReducer';
+import { useNavigate } from 'react-router-dom'
 
 import AuthImage from '../../images/auth-image.jpg';
 import AuthDecoration from '../../images/auth-decoration.png';
@@ -14,6 +15,7 @@ function Signin() {
   const { authState } = useSelector((state) => state);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
     email: "",
@@ -46,10 +48,11 @@ function Signin() {
 
     if(validate_result){
       let res = await dispatch(login(userData))
-      if(res != false){
-
+      if(res.status != false){
+        dispatch(openSnackBar({ status: "success", message: t("login_success") }))
+        navigate("/template")
       }else{
-
+        dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
       }
       console.log("success")
     }

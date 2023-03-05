@@ -1,17 +1,17 @@
 import  { authHeader, handleResponse } from '../utils';
 import { API_BASE } from '../config/constants';
 
-const login = async (email, password) => {
+const login = async (user) => {
     const requestOptions = {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({email, password})
+        body: JSON.stringify(user)
     };
 
     const response = await fetch(`${API_BASE}/auth/login`, requestOptions);
-    const user = await handleResponse(response);
-    localStorage.setItem('user', JSON.stringify(user.data));
-    return user;
+    const userInfo = await handleResponse(response);
+    localStorage.setItem('user', JSON.stringify(userInfo.api_token));
+    return userInfo;
 }
 
 const logout = () => {
