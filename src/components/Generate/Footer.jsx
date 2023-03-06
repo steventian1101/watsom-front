@@ -60,7 +60,7 @@ function Footer({
           dispatch(openSnackBar({ status: "warning", message: t("your_acc_was_blocked") }))
         }
       } else{
-        dispatch(openSnackBar({ status: "warning", message: t("confirm_mail") }))
+        dispatch(openSnackBar({ status: "warning", message: t("please_confirm_mail") }))
       }
     }else{
       dispatch(openSnackBar({ status: "warning", message: t("please_sign_in") }))

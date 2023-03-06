@@ -118,16 +118,16 @@ function Signup() {
             </div>
 
             <div className="max-w-sm mx-auto px-4 py-8">
-              <h1 className="text-3xl text-slate-800 font-bold mb-6">Set New Password ✨</h1>
+              <h1 className="text-3xl text-slate-800 font-bold mb-6">{t("set_new_password")} ✨</h1>
               {/* Form */}
               <form>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="password">Password</label>
+                    <label className="block text-sm font-medium mb-1" htmlFor="password">{t("password")}</label>
                     <input id="password" className="form-input w-full" type="password" autoComplete="on" value={userData.password1} onChange={(e) => handleInputChange("password1", e.target.value)} />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="password2">Confirm Password</label>
+                    <label className="block text-sm font-medium mb-1" htmlFor="password2">{t("confirm_password")}</label>
                     <input id="password2" className="form-input w-full" type="password" autoComplete="on" value={userData.password2} onChange={(e) => handleInputChange("password2", e.target.value)} />
                   </div>
                 </div>
@@ -138,7 +138,7 @@ function Signup() {
                       <span className="text-sm ml-2">Email me about product news.</span>
                     </label> */}
                   </div>
-                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => set_pass()}>Set New Password</Button>
+                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => set_pass()}>{t("set_new_password")}</Button>
                 </div>
               </form>
             </div>

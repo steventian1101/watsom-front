@@ -97,17 +97,17 @@ function ResetPassword() {
             </div>
 
             <div className="max-w-sm mx-auto px-4 py-8">
-              <h1 className="text-3xl text-slate-800 font-bold mb-6">Reset your Password ✨</h1>
+              <h1 className="text-3xl text-slate-800 font-bold mb-6">{t("reset_your_password")} ✨</h1>
               {/* Form */}
               <form>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="email">Email Address <span className="text-rose-500">*</span></label>
+                    <label className="block text-sm font-medium mb-1" htmlFor="email">{t("email_address")} <span className="text-rose-500">*</span></label>
                     <input id="email" className="form-input w-full" type="email" value={userData.email} onChange={(e) => handleInputChange("email", e.target.value)} />
                   </div>
                 </div>
                 <div className="flex justify-end mt-6">
-                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => reset_password()}>Send Reset Link</Button>
+                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => reset_password()}>{t("send_reset_link")}</Button>
                 </div>
               </form>
             </div>

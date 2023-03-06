@@ -111,24 +111,24 @@ function Signup() {
             </div>
 
             <div className="max-w-sm mx-auto px-4 py-8">
-              <h1 className="text-3xl text-slate-800 font-bold mb-6">Create your Account ✨</h1>
+              <h1 className="text-3xl text-slate-800 font-bold mb-6">{t("create_your_account")} ✨</h1>
               {/* Form */}
               <form>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="email">Email Address <span className="text-rose-500">*</span></label>
+                    <label className="block text-sm font-medium mb-1" htmlFor="email">{t("email_address")} <span className="text-rose-500">*</span></label>
                     <input id="email" className="form-input w-full" type="email" value={userData.email} onChange={(e) => handleInputChange("email", e.target.value)} />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="name">Full Name <span className="text-rose-500">*</span></label>
+                    <label className="block text-sm font-medium mb-1" htmlFor="name">{t("full_name")} <span className="text-rose-500">*</span></label>
                     <input id="name" className="form-input w-full" type="text" value={userData.full_name} onChange={(e) => handleInputChange("full_name", e.target.value)} />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="password">Password</label>
+                    <label className="block text-sm font-medium mb-1" htmlFor="password">{t("password")}</label>
                     <input id="password" className="form-input w-full" type="password" autoComplete="on" value={userData.password1} onChange={(e) => handleInputChange("password1", e.target.value)} />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="password2">Confirm Password</label>
+                    <label className="block text-sm font-medium mb-1" htmlFor="password2">{t("confirm_password")}</label>
                     <input id="password2" className="form-input w-full" type="password" autoComplete="on" value={userData.password2} onChange={(e) => handleInputChange("password2", e.target.value)} />
                   </div>
                 </div>
@@ -139,13 +139,13 @@ function Signup() {
                       <span className="text-sm ml-2">Email me about product news.</span>
                     </label> */}
                   </div>
-                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => signup()}>Sign Up</Button>
+                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => signup()}>{t("sign_up")}</Button>
                 </div>
               </form>
               {/* Footer */}
               <div className="pt-5 mt-6 border-t border-slate-200">
                 <div className="text-sm">
-                  Have an account? <Link className="font-medium text-indigo-500 hover:text-indigo-600" to="/signin">Sign In</Link>
+                  {t("have_account")} <Link className="font-medium text-indigo-500 hover:text-indigo-600" to="/signin">{t("sign_in")}</Link>
                 </div>
               </div>
             </div>
