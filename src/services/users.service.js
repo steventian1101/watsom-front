@@ -48,6 +48,21 @@ const confirmMail = async (token) => {
     return await handleResponse(response);
 }
 
+const setPassword = async (user) => {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+        },
+        body: JSON.stringify(user)
+    };
+
+    const response = fetch(`${API_BASE}/auth/set_password`, requestOptions);
+    return await handleResponse(response);
+}
+
 const forgotPassword = async (user) => {
     const requestOptions = {
         method: "POST",
@@ -68,5 +83,6 @@ export const userService = {
     logout,
     registerUser,
     forgotPassword,
-    confirmMail
+    confirmMail,
+    setPassword
 }

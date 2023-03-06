@@ -5,6 +5,7 @@ import Signin from './pages/auth/Signin'
 import Signup from './pages/auth/Signup'
 import ResetPassword from './pages/auth/ResetPassword';
 import ConfirmMail from './pages/auth/Confirm';
+import SetPassword from './pages/auth/SetPassword';
 
 import LongArticlePage from './pages/generate/blog/long_article'
 import ContentImproverPage from './pages/generate/blog/content_improver';
@@ -53,6 +54,7 @@ function App() {
         <Route path = "/signup" element = {<Signup/>} />
         <Route path = "/reset-password" element = {<ResetPassword/>} />
         <Route path = "/confirm/:confirm_token" element = {<ConfirmMail/>} />
+        <Route path = "/reset_password/:confirm_token" element = {<SetPassword/>} />
 
         <Route path = "/template" element = {<Template/>} />
         <Route path = "/template/long_article" element = {<LongArticlePage/>} />

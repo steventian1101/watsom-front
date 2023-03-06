@@ -15,7 +15,8 @@ export const authSlice = createSlice({
         userInfo,
         registerUserState: false,
         forgotPasswordState: false,
-        confirmMailState: false
+        confirmMailState: false,
+        setPasswordState: false
     },
     reducers:{
         loginRequest: state => {
@@ -50,6 +51,15 @@ export const authSlice = createSlice({
         confirmMailFailed : state => {
             state.confirmMailState =  false;
         },
+        setPasswordRequest: state => {
+            state.setPasswordState = true;
+        },
+        setPasswordSuccess : state => {
+            state.setPasswordState =  false;
+        },
+        setPasswordFailed : state => {
+            state.setPasswordState =  false;
+        },
         forgotPasswordRequest: state => {
             state.forgotPasswordState = true;
         },
@@ -73,6 +83,7 @@ const {
     registerUserRequest, registerUserFailed, registerUserSuccess,
     forgotPasswordFailed, forgotPasswordRequest, forgotPasswordSuccess,
     confirmMailFailed, confirmMailRequest, confirmMailSuccess,
+    setPasswordFailed, setPasswordRequest,setPasswordSuccess,
     logoutRequest
 } = authSlice.actions;
 
@@ -116,6 +127,21 @@ export const confirmMail = (token) => async (dispatch) => {
         return {status: true, result: payload};
     } catch (error) {
         dispatch(confirmMailFailed());
+        dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return {status: false, result: error["message"]};
+    }
+}
+
+export const setPassword = (user) => async (dispatch) => {
+    dispatch(setPasswordRequest());
+
+    try {
+        var payload = await userService.setPassword(user);
+        dispatch(setPasswordSuccess(payload));
+        return {status: true, result: payload};
+    } catch (error) {
+        dispatch(setPasswordFailed());
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return {status: false, result: error["message"]};

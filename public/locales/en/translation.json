@@ -136,5 +136,6 @@
     "user_already_exist": "User Already Exist.",
     "please_check_your_inbox": "Please Check your InBox.",
     "msg_success_logout": "Success Logout.",
-    "invalid_token": "Invalid Token"
+    "invalid_token": "Invalid Token",
+    "sent_link_success": "Success Sent Reset Password Link. Please Check Your Inbox!"
 }

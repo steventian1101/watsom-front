@@ -136,5 +136,6 @@
     "user_already_exist": "L'utilisateur existe déjà.",
     "Please_check_your_inbox": "Veuillez vérifier votre boîte de réception.",
     "msg_success_logout": "Déconnexion réussie.",
-    "invalid_token": "Jeton invalide"
+    "invalid_token": "Jeton invalide",
+    "sent_link_success": "Le lien de réinitialisation du mot de passe a bien été envoyé. Veuillez vérifier votre boîte de réception !"
 }
