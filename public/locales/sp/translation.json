@@ -137,5 +137,8 @@
     "please_check_your_inbox": "Por favor revisa tu bandeja de entrada.",
     "msg_success_logout": "Cierre de sesión exitoso.",
     "invalid_token": "Token no válido",
-    "sent_link_success": "Éxito enviado para restablecer el enlace de contraseña. ¡Por favor revise su bandeja de entrada!"
+    "sent_link_success": "Éxito enviado para restablecer el enlace de contraseña. ¡Por favor revise su bandeja de entrada!",
+    "words_usage": "Uso de palabras",
+    "of_your_plan": "De tu Plan",
+    "upgrade_to_pro": "Actualizar al Plan Pro"
 }

@@ -137,5 +137,8 @@
     "please_check_your_inbox": "Please Check your InBox.",
     "msg_success_logout": "Success Logout.",
     "invalid_token": "Invalid Token",
-    "sent_link_success": "Success Sent Reset Password Link. Please Check Your Inbox!"
+    "sent_link_success": "Success Sent Reset Password Link. Please Check Your Inbox!",
+    "words_usage": "Words Usage",
+    "of_your_plan": "Of your Plan",
+    "upgrade_to_pro": "Upgrade to Pro Plan"
 }

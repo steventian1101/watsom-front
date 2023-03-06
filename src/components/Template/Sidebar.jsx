@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import WordsUsage from '../WordsUsage';
 
+import { useSelector } from 'react-redux'
 import { useTranslation } from "react-i18next";
 
 function Sidebar({
   sidebarOpen,
   setSidebarOpen
 }) {
-
+  const { authState } = useSelector((state) => state);
   const location = useLocation();
   const { pathname } = location;
+
+  const { userInfo } = authState;
 
   const trigger = useRef(null);
   const sidebar = useRef(null);
@@ -195,6 +199,10 @@ function Sidebar({
             </button>
           </div>
         </div> */}
+        {
+          userInfo?.plan < 2 &&
+          <WordsUsage isMB={true} />
+        }
       </div>
     </div>
   );

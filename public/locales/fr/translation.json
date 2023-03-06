@@ -137,5 +137,8 @@
     "Please_check_your_inbox": "Veuillez vérifier votre boîte de réception.",
     "msg_success_logout": "Déconnexion réussie.",
     "invalid_token": "Jeton invalide",
-    "sent_link_success": "Le lien de réinitialisation du mot de passe a bien été envoyé. Veuillez vérifier votre boîte de réception !"
+    "sent_link_success": "Le lien de réinitialisation du mot de passe a bien été envoyé. Veuillez vérifier votre boîte de réception !",
+    "words_usage": "Utilisation des mots",
+    "of_your_plan": "De votre plan",
+    "upgrade_to_pro": "Passer au forfait Pro"
 }

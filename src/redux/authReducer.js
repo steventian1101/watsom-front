@@ -44,12 +44,15 @@ export const authSlice = createSlice({
         confirmMailRequest: state => {
             state.confirmMailState = true;
         },
-        confirmMailSuccess : state => {
+        confirmMailSuccess : (state, action) => {
             state.confirmMailState =  false;
-            state.userInfo.is_verified = true;
+            state.loggedIn = true;
+            state.userToken = action.payload.api_token;
+            state.userInfo = jwt_decode(action.payload.api_token);
         },
         confirmMailFailed : state => {
             state.confirmMailState =  false;
+            state.loggedIn = false;
         },
         setPasswordRequest: state => {
             state.setPasswordState = true;

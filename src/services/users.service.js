@@ -45,7 +45,9 @@ const confirmMail = async (token) => {
     };
 
     const response = fetch(`${API_BASE}/auth/confirm`, requestOptions);
-    return await handleResponse(response);
+    const userInfo = await handleResponse(response);
+    localStorage.setItem('user', JSON.stringify(userInfo.api_token));
+    return userInfo;
 }
 
 const setPassword = async (user) => {

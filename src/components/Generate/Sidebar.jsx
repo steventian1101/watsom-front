@@ -4,6 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { useNavigate } from 'react-router-dom'
 import UserMenu from '../theme/DropdownProfile';
+import WordsUsage from '../WordsUsage';
 
 import { TextInput } from 'flowbite-react';
 import TreeView from '@material-ui/lab/TreeView';
@@ -21,9 +22,10 @@ function Sidebar({
   setSidebarOpen
 }) {
 
-  const { globalState } = useSelector((state) => state);
+  const { globalState, authState } = useSelector((state) => state);
   const location = useLocation();
   const { pathname } = location;
+  const { userInfo } = authState;
   const { current_expanded_group } = globalState
 
   const trigger = useRef(null);
@@ -267,6 +269,11 @@ function Sidebar({
             </button>
           </div>
         </div> */}
+
+        {
+          userInfo?.plan < 2 &&
+          <WordsUsage isMB={false} />
+        }
       </div>
     </div>
   );
