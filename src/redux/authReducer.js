@@ -10,13 +10,15 @@ export const authSlice = createSlice({
     name: "authentication",
     initialState:{
         loggingIn: false,
+        available_state: false,
         loggedIn: userToken? true: false,
         userToken,
         userInfo,
         registerUserState: false,
         forgotPasswordState: false,
         confirmMailState: false,
-        setPasswordState: false
+        setPasswordState: false,
+        getAvailableState: false
     },
     reducers:{
         loginRequest: state => {
@@ -72,6 +74,16 @@ export const authSlice = createSlice({
         forgotPasswordFailed : state => {
             state.forgotPasswordState =  false;
         },
+        getAvailableRequest: state => {
+            state.getAvailableState = true;
+        },
+        getAvailableSuccess : (state, action) => {
+            state.getAvailableState =  false;
+            state.available_state = action.payload.possible
+        },
+        getAvailableFailed : state => {
+            state.getAvailableState =  false;
+        },
         logoutRequest: state => {
             localStorage.removeItem('user');
             state.loggedIn = false;
@@ -87,6 +99,7 @@ const {
     forgotPasswordFailed, forgotPasswordRequest, forgotPasswordSuccess,
     confirmMailFailed, confirmMailRequest, confirmMailSuccess,
     setPasswordFailed, setPasswordRequest,setPasswordSuccess,
+    getAvailableFailed, getAvailableRequest, getAvailableSuccess,
     logoutRequest
 } = authSlice.actions;
 
@@ -160,6 +173,21 @@ export const forgotPassword = (user) => async (dispatch) => {
         return {status: true, result: payload};
     } catch (error) {
         dispatch(forgotPasswordFailed());
+        // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return {status: false, result: error["message"]};
+    }
+}
+
+export const getAvailable = (user) => async (dispatch) => {
+    dispatch(getAvailableRequest());
+
+    try {
+        var payload = await userService.getAvailable(user);
+        dispatch(getAvailableSuccess(payload));
+        return {status: true, result: payload};
+    } catch (error) {
+        dispatch(getAvailableFailed());
         // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return {status: false, result: error["message"]};

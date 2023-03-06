@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { openSnackBar } from '../../redux/snackBarReducer';
 import { useDispatch, useSelector } from 'react-redux'
-import Validator from 'validator';
 import { useTranslation } from "react-i18next";
 import { setPassword } from '../../redux/authReducer';
 import { useNavigate } from 'react-router-dom'

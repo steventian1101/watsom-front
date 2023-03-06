@@ -2,6 +2,10 @@ import React, { useState, useRef } from 'react';
 import { useTranslation } from "react-i18next";
 import { setOutputCurrentLanguage } from '../../redux/globalReducer';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux'
+import { openSnackBar } from '../../redux/snackBarReducer';
+import { useNavigate } from 'react-router-dom'
+import { getAvailable } from '../../redux/authReducer';
 
 function Footer({
   type,
@@ -9,16 +13,59 @@ function Footer({
   generate,
   count_disable
 }) {
+  const { authState } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { t } = useTranslation();
+  const { userInfo, loggedIn } = authState;
 
   const [showCount, setShowCount] = useState(3);
   const [showLanguage, setShowLanguage] = useState("French");
   const output_count = [1,2,3,4,5];
   const output_language = ["French", "English", "Spanish"]
   
-  const clickGenerate = () => {
-    generate(data, showCount, type, showLanguage)
+  function is_valid_date(){
+    let now_date = Date.now();
+    let plan_start = new Date(userInfo?.plan_start_date).getTime();
+    let plan_finish = new Date(userInfo?.plan_finish_date).getTime();
+  
+    if(now_date <= plan_start){
+      dispatch(openSnackBar({ status: "warning", message: t("please_set_exact_time") }))
+      return false;
+    } else if(now_date >= plan_finish){
+      dispatch(openSnackBar({ status: "warning", message: t("finished_subscription_period") }))
+      return false
+    } else{
+      return true
+    }
+  }
+
+  const clickGenerate = async () => {
+    if(loggedIn == true && userInfo){   //login status
+      if(userInfo?.is_verified){      //confirm mail
+        if(!userInfo?.is_block){       //check blocked acc
+          if(is_valid_date()){      //check in available period
+            if(userInfo?.available_words_count <= 10){    //check usage words count
+              dispatch(openSnackBar({ status: "warning", message: t("limit_usage_word") }))
+            } else if(userInfo?.available_words_count > 10){
+              let res = await dispatch(getAvailable(userInfo))
+              if(res.status == true){
+                generate(data, showCount, type, showLanguage)
+              }else{
+                dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
+              }
+            } 
+          }
+        } else{
+          dispatch(openSnackBar({ status: "warning", message: t("your_acc_was_blocked") }))
+        }
+      } else{
+        dispatch(openSnackBar({ status: "warning", message: t("confirm_mail") }))
+      }
+    }else{
+      dispatch(openSnackBar({ status: "warning", message: t("please_sign_in") }))
+      navigate("/signin")
+    }
   }
 
   const selectOutputLanguage = (lang) => {
