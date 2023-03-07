@@ -15,6 +15,8 @@ function ConfirmMail(props) {
 
   const routeParams = useParams();
   
+  console.log("confirm password : ", routeParams)
+  
   useEffect(() => {
     (async () => {
       try {

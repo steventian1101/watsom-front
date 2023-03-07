@@ -11,7 +11,7 @@ import AuthImage from '../../images/auth-image.jpg';
 import AuthDecoration from '../../images/auth-decoration.png';
 import { Button } from 'flowbite-react';
 
-function Signup() {
+function SetPassword() {
   const { authState } = useSelector((state) => state);
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -20,6 +20,8 @@ function Signup() {
   const { loggedIn } = authState;
 
   const routeParams = useParams();
+
+  console.log("set password : ", routeParams)
 
   useEffect(() => {
     if(loggedIn){
@@ -158,4 +160,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default SetPassword;
