@@ -78,7 +78,7 @@ function DropdownProfile({
       </button>
 
       <Transition
-        className={`origin-top-right z-10 absolute top-full min-w-44 bg-white border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1 ${align === 'right' ? 'right-0' : 'left-0'}`}
+        className={`origin-top-right z-10 absolute top-full min-w-44 bg-white border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1 ${align === 'right' ? 'right-0 w-max' : 'left-0'}`}
         show={dropdownOpen}
         enter="transition ease-out duration-200 transform"
         enterStart="opacity-0 -translate-y-2"
@@ -92,20 +92,26 @@ function DropdownProfile({
           onFocus={() => setDropdownOpen(true)}
           onBlur={() => setDropdownOpen(false)}
         >
-          <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
-            <div className="font-medium text-slate-800">{userInfo?.name}</div>
-            <div className="text-xs text-slate-500 italic">{userInfo?.email}</div>
-          </div>
+          {
+            loggedIn && 
+            <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
+              <div className="font-medium text-slate-800">{userInfo?.name}</div>
+              <div className="text-xs text-slate-500 italic">{userInfo?.email}</div>
+            </div>
+          }
           <ul>
-            <li>
-              <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/settings"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                {t("subscription")}
-              </Link>
-            </li>
+            {
+              loggedIn && 
+              <li>
+                <Link
+                  className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                  to="/settings"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  {t("subscription")}
+                </Link>
+              </li>
+            }
             <li>
               {
                 loggedIn == false ? 
