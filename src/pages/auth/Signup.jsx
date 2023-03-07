@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import AuthImage from '../../images/auth-image.jpg';
 import AuthDecoration from '../../images/auth-decoration.png';
 import { Button } from 'flowbite-react';
+import { setLoading } from '../../redux/globalReducer';
 
 function Signup() {
   const { authState } = useSelector((state) => state);
@@ -66,11 +67,15 @@ function Signup() {
     var validate_result = validate();
 
     if(validate_result){
+      dispatch(setLoading(true));
+
       let res = await dispatch(registerUser(userData))
       if(res.status != false){
+        dispatch(setLoading(false));
         dispatch(openSnackBar({ status: "success", message: t("register_success") }))
         navigate("/signin")
       }else{
+        dispatch(setLoading(false));
         dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
       }
     }
@@ -139,13 +144,13 @@ function Signup() {
                       <span className="text-sm ml-2">Email me about product news.</span>
                     </label> */}
                   </div>
-                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => signup()}>{t("sign_up")}</Button>
+                  <Button className="bg-site_light-100 hover:!bg-blue-800 text-white ml-3 whitespace-nowrap" onClick={() => signup()}>{t("sign_up")}</Button>
                 </div>
               </form>
               {/* Footer */}
               <div className="pt-5 mt-6 border-t border-slate-200">
                 <div className="text-sm">
-                  {t("have_account")} <Link className="font-medium text-indigo-500 hover:text-indigo-600" to="/signin">{t("sign_in")}</Link>
+                  {t("have_account")} <Link className="font-medium text-site_light-100 hover:!text-blue-800" to="/signin">{t("sign_in")}</Link>
                 </div>
               </div>
             </div>

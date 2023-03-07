@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import AuthImage from '../../images/auth-image.jpg';
 import AuthDecoration from '../../images/auth-decoration.png';
 import { Button } from 'flowbite-react';
+import { setLoading } from '../../redux/globalReducer';
 
 function ResetPassword() {
   const { authState } = useSelector((state) => state);
@@ -51,11 +52,14 @@ function ResetPassword() {
     var validate_result = validate();
 
     if(validate_result){
+      dispatch(setLoading(true));
       let res = await dispatch(forgotPassword(userData))
       if(res.status != false){
+        dispatch(setLoading(false));
         dispatch(openSnackBar({ status: "success", message: t("sent_link_success") }))
         navigate("/template")
       }else{
+        dispatch(setLoading(false));
         dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
       }
       console.log("success")
@@ -107,7 +111,7 @@ function ResetPassword() {
                   </div>
                 </div>
                 <div className="flex justify-end mt-6">
-                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => reset_password()}>{t("send_reset_link")}</Button>
+                  <Button className="bg-site_light-100 hover:!bg-blue-800 text-white ml-3 whitespace-nowrap" onClick={() => reset_password()}>{t("send_reset_link")}</Button>
                 </div>
               </form>
             </div>

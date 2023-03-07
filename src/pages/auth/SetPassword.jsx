@@ -10,6 +10,7 @@ import jwt_decode from 'jwt-decode';
 import AuthImage from '../../images/auth-image.jpg';
 import AuthDecoration from '../../images/auth-decoration.png';
 import { Button } from 'flowbite-react';
+import { setLoading } from '../../redux/globalReducer';
 
 function SetPassword() {
   const { authState } = useSelector((state) => state);
@@ -75,11 +76,14 @@ function SetPassword() {
     var validate_result = validate();
 
     if(validate_result){
+      dispatch(setLoading(true));
       let res = await dispatch(setPassword(userData))
       if(res.status != false){
+        dispatch(setLoading(false));
         dispatch(openSnackBar({ status: "success", message: t("register_success") }))
         navigate("/signin")
       }else{
+        dispatch(setLoading(false));
         dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
       }
     }
@@ -140,7 +144,7 @@ function SetPassword() {
                       <span className="text-sm ml-2">Email me about product news.</span>
                     </label> */}
                   </div>
-                  <Button className="bg-indigo-500 hover:bg-indigo-600 text-white ml-3 whitespace-nowrap" onClick={() => set_pass()}>{t("set_new_password")}</Button>
+                  <Button className="bg-site_light-100 hover:!bg-blue-800 text-white ml-3 whitespace-nowrap" onClick={() => set_pass()}>{t("set_new_password")}</Button>
                 </div>
               </form>
             </div>
