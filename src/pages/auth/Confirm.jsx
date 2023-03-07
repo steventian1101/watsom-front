@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from "react-i18next";
 import { confirmMail } from '../../redux/authReducer';
 import { useNavigate } from 'react-router-dom'
+import Loading from '../../components/Loading';
 
 function ConfirmMail(props) {
   const { authState } = useSelector((state) => state);
@@ -37,7 +38,7 @@ function ConfirmMail(props) {
   
   return (
     <main className="bg-white">
-      {t("confirm_mail")}
+      <Loading />
     </main>
   );
 }

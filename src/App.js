@@ -45,7 +45,7 @@ function App() {
     <div className="App">
       {loading && <Loading />}
       {
-        loggedIn && !userInfo?.is_verified && <div><VerifyWarning /></div>
+        loggedIn && !userInfo?.is_verified && <VerifyWarning />
       }
       <Routes>
         <Route path = "/" element ={<Navigate to = "/template"/>} />

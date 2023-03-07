@@ -19,7 +19,7 @@ function DropdownProfile({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { loggedIn } = authState
+  const { loggedIn, userInfo } = authState
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -93,8 +93,8 @@ function DropdownProfile({
           onBlur={() => setDropdownOpen(false)}
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
-            <div className="font-medium text-slate-800">Watsom.ai</div>
-            <div className="text-xs text-slate-500 italic">Administrator</div>
+            <div className="font-medium text-slate-800">{userInfo?.name}</div>
+            <div className="text-xs text-slate-500 italic">{userInfo?.email}</div>
           </div>
           <ul>
             <li>

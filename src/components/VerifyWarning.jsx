@@ -5,18 +5,20 @@ import { HiInformationCircle } from "react-icons/hi"
 function VerifyWarning() {
     const { t } = useTranslation();
     return (
-        <Alert
-            color="failure"
-            icon={HiInformationCircle}
-            className="fixed z-50"
-        >
-            <span>
-                <span className="font-medium">
-                {t("confirm_mail")}!
-                </span>
-                {' ' + t("please_check_your_inbox")}.
-            </span>
-        </Alert>
+            <div className="flex justify-center">
+                <Alert
+                    color="failure"
+                    icon={HiInformationCircle}
+                    className="fixed z-50"
+                >
+                    <span>
+                        <span className="font-medium">
+                        {t("confirm_mail")}!
+                        </span>
+                        {' ' + t("please_check_your_inbox")}.
+                    </span>
+                </Alert>
+            </div>
     );
 }
 
