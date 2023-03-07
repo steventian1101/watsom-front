@@ -159,5 +159,8 @@
     "dont_have_acc": "¿No tienes una cuenta?",
     "create_your_account": "Crea tu cuenta",
     "full_name": "Nombre completo",
-    "have_account": "¿Tienes una cuenta?"
+    "have_account": "¿Tienes una cuenta?",
+    "resend": "reenviar", 
+    "reenvío exitoso": "Reenvío exitoso Confirmar correo electrónico.",
+    "ya verificado": "Tu cuenta ya está verificada."
 }

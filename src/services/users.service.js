@@ -80,6 +80,21 @@ const forgotPassword = async (user) => {
     return await handleResponse(response);
 }
 
+const resendConfirmMail = async (user) => {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+        },
+        body: JSON.stringify(user)
+    };
+
+    const response = fetch(`${API_BASE}/auth/resend_confirm_mail`, requestOptions);
+    return await handleResponse(response);
+}
+
 const getAvailable = async (user) => {
     const requestOptions = {
         method: "POST",
@@ -102,5 +117,6 @@ export const userService = {
     forgotPassword,
     confirmMail,
     setPassword,
-    getAvailable
+    getAvailable,
+    resendConfirmMail
 }

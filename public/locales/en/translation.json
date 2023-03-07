@@ -159,5 +159,8 @@
     "dont_have_acc": "Don't you have an account?",
     "create_your_account": "Create your Account",
     "full_name": "Full Name",
-    "have_account": "Have an account?"
+    "have_account": "Have an account?",
+    "resend": "resend",
+    "resend_success": "Success resend Confirm mail.",
+    "already_verified": "Your account already verified."
 }

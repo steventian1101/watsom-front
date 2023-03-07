@@ -159,5 +159,8 @@
     "dont_have_acc": "Vous n'avez pas de compte ?",
     "create_your_account": "Créez votre compte",
     "full_name": "Nom complet",
-    "have_account": "Avez-vous un compte ?"
+    "have_account": "Avez-vous un compte ?",
+    "resend": "renvoyer", 
+    "resend success": "Réenvoi réussi de la confirmation de l'e-mail.", 
+    "alreadyVerified": "Votre compte a déjà été vérifié."
 }

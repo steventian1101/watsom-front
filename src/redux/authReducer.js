@@ -18,7 +18,8 @@ export const authSlice = createSlice({
         forgotPasswordState: false,
         confirmMailState: false,
         setPasswordState: false,
-        getAvailableState: false
+        getAvailableState: false,
+        resendConfirmMailState: false
     },
     reducers:{
         loginRequest: state => {
@@ -74,6 +75,15 @@ export const authSlice = createSlice({
         forgotPasswordFailed : state => {
             state.forgotPasswordState =  false;
         },
+        resendConfirmMailRequest: state => {
+            state.resendConfirmMailState = true;
+        },
+        resendConfirmMailSuccess : state => {
+            state.resendConfirmMailState =  false;
+        },
+        resendConfirmMailFailed : state => {
+            state.resendConfirmMailState =  false;
+        },
         getAvailableRequest: state => {
             state.getAvailableState = true;
         },
@@ -100,6 +110,7 @@ const {
     confirmMailFailed, confirmMailRequest, confirmMailSuccess,
     setPasswordFailed, setPasswordRequest,setPasswordSuccess,
     getAvailableFailed, getAvailableRequest, getAvailableSuccess,
+    resendConfirmMailFailed, resendConfirmMailRequest, resendConfirmMailSuccess,
     logoutRequest
 } = authSlice.actions;
 
@@ -173,6 +184,21 @@ export const forgotPassword = (user) => async (dispatch) => {
         return {status: true, result: payload};
     } catch (error) {
         dispatch(forgotPasswordFailed());
+        // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return {status: false, result: error["message"]};
+    }
+}
+
+export const resendConfirmMail = (user) => async (dispatch) => {
+    dispatch(resendConfirmMailRequest());
+
+    try {
+        var payload = await userService.resendConfirmMail(user);
+        dispatch(resendConfirmMailSuccess(payload));
+        return {status: true, result: payload};
+    } catch (error) {
+        dispatch(resendConfirmMailFailed());
         // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return {status: false, result: error["message"]};
