@@ -5,17 +5,21 @@ import { AiOutlineCloseCircle } from 'react-icons/ai'
 import ToneSelect from '../ToneSelect';
 import { openSnackBar } from '../../../redux/snackBarReducer';
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom'
 
 import { generateOutline, generateOneOutline } from '../../../redux/template/blog';
+import { getAvailable } from '../../../redux/authReducer';
 import { setLoading } from '../../../redux/globalReducer';
 
 function LongArticle({
   func_SetTitle, func_SetKeywords, func_SetTone, func_SetFirstOutline, func_setOutline
 }) {
-  const { blogState, globalState } = useSelector((state) => state);
+  const { blogState, globalState, authState } = useSelector((state) => state);
   const { generateOutlineState, generateOneOutlineState } = blogState;
   const { loading, output_language } = globalState;
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { userInfo, loggedIn } = authState;
 
   const [title, setTitle] = useState("");
   const [keywords, setKeywords] = useState("");
@@ -24,6 +28,55 @@ function LongArticle({
   const [firstOutline, setFirstOutline] = useState("")
   const [showStep2, setShowStep2] = useState(false)
   const dispatch = useDispatch();
+
+  function is_valid_date(){
+    let now_date = Date.now();
+    let plan_start = new Date(userInfo?.plan_start_date).getTime();
+    let plan_finish = new Date(userInfo?.plan_finish_date).getTime();
+  
+    if(now_date <= plan_start){
+      dispatch(openSnackBar({ status: "warning", message: t("please_set_exact_time") }))
+      return false;
+    } else if(now_date >= plan_finish){
+      dispatch(openSnackBar({ status: "warning", message: t("finished_subscription_period") }))
+      return false
+    } else{
+      return true
+    }
+  }
+
+  async function is_available(){
+    if(loggedIn == true && userInfo){   //login status
+      if(userInfo?.is_verified){      //confirm mail
+        if(!userInfo?.is_block){       //check blocked acc
+          if(is_valid_date()){      //check in available period
+            if(userInfo?.available_words_count <= 10){    //check usage words count
+              dispatch(openSnackBar({ status: "warning", message: t("limit_usage_word") }))
+              return false;
+            } else if(userInfo?.available_words_count > 10){
+              let res = await dispatch(getAvailable(userInfo))
+              if(res.status == true){
+                return true;
+              }else{
+                dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
+                return false;
+              }
+            } 
+          }
+        } else{
+          dispatch(openSnackBar({ status: "warning", message: t("your_acc_was_blocked") }))
+          return false;
+        }
+      } else{
+        dispatch(openSnackBar({ status: "warning", message: t("please_confirm_mail") }))
+        return false;
+      }
+    }else{
+      dispatch(openSnackBar({ status: "warning", message: t("please_sign_in") }))
+      navigate("/signin")
+      return false;
+    }
+  }
 
   // outline list begin
   const changeFirstOutline = (value) => {
@@ -66,35 +119,37 @@ function LongArticle({
     // }
 
     if(!loading){
-      let is_valid = validate()
-
-      if(is_valid){
-        dispatch(setLoading(true));
-
-        const sendData = {
-          title: title,
-          keywords: keywords,
-          tone: tone,
-          lang: output_language
-        }
-
-        let res = await dispatch(generateOutline(sendData))
-        if(res != false){
-          dispatch(setLoading(false));
-          console.log("res", res);
-          const { result } = res
-          
-          let temp = [...outline];
-          if(outline.length == 0){
-            temp = [...temp, result[0]]
-          }else{
-            temp = [...temp, result[2]]
+      if(is_available() == true){
+        let is_valid = validate()
+  
+        if(is_valid){
+          dispatch(setLoading(true));
+  
+          const sendData = {
+            title: title,
+            keywords: keywords,
+            tone: tone,
+            lang: output_language
           }
-          setOutline([...temp])
-          func_setOutline([...temp]);
-        }else{
-          dispatch(setLoading(false));
-          dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+  
+          let res = await dispatch(generateOutline(sendData))
+          if(res != false){
+            dispatch(setLoading(false));
+            console.log("res", res);
+            const { result } = res
+            
+            let temp = [...outline];
+            if(outline.length == 0){
+              temp = [...temp, result[0]]
+            }else{
+              temp = [...temp, result[2]]
+            }
+            setOutline([...temp])
+            func_setOutline([...temp]);
+          }else{
+            dispatch(setLoading(false));
+            dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+          }
         }
       }
     }
@@ -162,31 +217,33 @@ function LongArticle({
 
   const nextOutline = async () => {
     if(!loading){
-      let is_valid = validate()
-
-      if(is_valid){
-        dispatch(setLoading(true));
-
-        const sendData = {
-          title: title,
-          keywords: keywords,
-          tone: tone,
-          lang: output_language
-        }
-
-        let res = await dispatch(generateOutline(sendData))
-        if(res != false){
-          dispatch(setLoading(false));
-          console.log("res", res);
-          const { result } = res
-
-          setOutline(result)
-          func_setOutline(result)
-
-          setShowStep2(true)
-        }else{
-          dispatch(setLoading(false));
-          dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+      if(is_available() == true){
+        let is_valid = validate()
+  
+        if(is_valid){
+          dispatch(setLoading(true));
+  
+          const sendData = {
+            title: title,
+            keywords: keywords,
+            tone: tone,
+            lang: output_language
+          }
+  
+          let res = await dispatch(generateOutline(sendData))
+          if(res != false){
+            dispatch(setLoading(false));
+            console.log("res", res);
+            const { result } = res
+  
+            setOutline(result)
+            func_setOutline(result)
+  
+            setShowStep2(true)
+          }else{
+            dispatch(setLoading(false));
+            dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+          }
         }
       }
     }

@@ -40,31 +40,42 @@ function Footer({
     }
   }
 
-  const clickGenerate = async () => {
+  async function is_available(){
     if(loggedIn == true && userInfo){   //login status
       if(userInfo?.is_verified){      //confirm mail
         if(!userInfo?.is_block){       //check blocked acc
           if(is_valid_date()){      //check in available period
             if(userInfo?.available_words_count <= 10){    //check usage words count
               dispatch(openSnackBar({ status: "warning", message: t("limit_usage_word") }))
+              return false;
             } else if(userInfo?.available_words_count > 10){
               let res = await dispatch(getAvailable(userInfo))
               if(res.status == true){
-                generate(data, showCount, type, showLanguage)
+                return true;
               }else{
                 dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
+                return false;
               }
             } 
           }
         } else{
           dispatch(openSnackBar({ status: "warning", message: t("your_acc_was_blocked") }))
+          return false;
         }
       } else{
         dispatch(openSnackBar({ status: "warning", message: t("please_confirm_mail") }))
+        return false;
       }
     }else{
       dispatch(openSnackBar({ status: "warning", message: t("please_sign_in") }))
       navigate("/signin")
+      return false;
+    }
+  }
+
+  const clickGenerate = async () => {
+    if(is_available() == true){
+      generate(data, showCount, type, showLanguage)
     }
   }
 
