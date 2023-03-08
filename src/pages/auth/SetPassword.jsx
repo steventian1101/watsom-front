@@ -22,7 +22,7 @@ function SetPassword() {
 
   const routeParams = useParams();
 
-  console.log("set password : ", routeParams)
+  // console.log("set password : ", routeParams)
 
   useEffect(() => {
     if(loggedIn){
@@ -36,7 +36,7 @@ function SetPassword() {
         let info = jwt_decode(routeParams.confirm_token);
         setUserData({...userData, email: info._doc.email})
       }catch(error){
-        console.log(error)
+        // console.log(error)
         dispatch(openSnackBar({ status: "error", message: t("invalid_token") }))
         navigate("/template")
       }

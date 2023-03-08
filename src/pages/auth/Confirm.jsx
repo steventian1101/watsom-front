@@ -15,7 +15,7 @@ function ConfirmMail(props) {
 
   const routeParams = useParams();
   
-  console.log("confirm password : ", routeParams)
+  // console.log("confirm password : ", routeParams)
   
   useEffect(() => {
     (async () => {
@@ -33,7 +33,8 @@ function ConfirmMail(props) {
           }
         }
       } catch (err) {
-        console.log('Error occured when fetching data');
+        dispatch(openSnackBar({ status: "error", message: t("error_occured_fetching_data") }))
+        // console.log('Error occured when fetching data.');
       }
     })();
   }, []);

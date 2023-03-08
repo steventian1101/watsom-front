@@ -19,11 +19,11 @@ function VerifyWarning() {
             if(res.status != false){
                 dispatch(setLoading(false));
                 dispatch(openSnackBar({ status: "success", message: t("resend_success") }))
-              }else{
+            }else{
                 dispatch(setLoading(false));
                 dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
-              }
-              console.log("success")
+            }
+            // console.log("success")
         }else{
             dispatch(openSnackBar({ status: "warning", message: t("already_verified") }))
         }

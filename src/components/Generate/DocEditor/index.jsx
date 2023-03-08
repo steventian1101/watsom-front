@@ -22,7 +22,7 @@ export default function DocEditor() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("current:", current_document)
+    // console.log("current:", current_document)
     if(current_document){
       let rawObject = markdownToDraft(current_document);
       let contentState = convertFromRaw(rawObject);

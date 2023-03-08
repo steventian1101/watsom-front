@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { generateOutline, generateOneOutline } from '../../../redux/template/blog';
 import { getAvailable } from '../../../redux/authReducer';
 import { setLoading } from '../../../redux/globalReducer';
+import { updateToken } from '../../../redux/authReducer';
 
 function LongArticle({
   func_SetTitle, func_SetKeywords, func_SetTone, func_SetFirstOutline, func_setOutline
@@ -19,7 +20,7 @@ function LongArticle({
   const { loading, output_language } = globalState;
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { userInfo, loggedIn } = authState;
+  const { userInfo, loggedIn, userToken } = authState;
 
   const [title, setTitle] = useState("");
   const [keywords, setKeywords] = useState("");
@@ -54,10 +55,13 @@ function LongArticle({
               dispatch(openSnackBar({ status: "warning", message: t("limit_usage_word") }))
               return false;
             } else if(userInfo?.available_words_count > 10){
+              dispatch(setLoading(true))
               let res = await dispatch(getAvailable(userInfo))
               if(res.status == true){
+                dispatch(setLoading(false))
                 return true;
               }else{
+                dispatch(setLoading(false))
                 dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
                 return false;
               }
@@ -113,7 +117,7 @@ function LongArticle({
     //       func_setOutline([...temp, result]);
     //     }else{
     //       dispatch(setLoading(false));
-    //       dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+    //       dispatch(openSnackBar({ message: t("server_connection_error"), status: 'error' }));
     //     }
     //   }
     // }
@@ -130,14 +134,17 @@ function LongArticle({
             title: title,
             keywords: keywords,
             tone: tone,
+            token: userToken,
             lang: output_language
           }
   
           let res = await dispatch(generateOutline(sendData))
-          if(res != false){
+          if(res.result == false){
             dispatch(setLoading(false));
-            console.log("res", res);
-            const { result } = res
+            dispatch(openSnackBar({ message: t("server_connection_error") , status: 'error' }));  
+          }else{
+            dispatch(setLoading(false));
+            const { result, token } = res
             
             let temp = [...outline];
             if(outline.length == 0){
@@ -147,9 +154,8 @@ function LongArticle({
             }
             setOutline([...temp])
             func_setOutline([...temp]);
-          }else{
-            dispatch(setLoading(false));
-            dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+
+            dispatch(updateToken(token))
           }
         }
       }
@@ -229,22 +235,23 @@ function LongArticle({
             title: title,
             keywords: keywords,
             tone: tone,
+            token: userToken,
             lang: output_language
           }
   
           let res = await dispatch(generateOutline(sendData))
-          if(res != false){
+          if(res.result == false){
             dispatch(setLoading(false));
-            console.log("res", res);
-            const { result } = res
+            dispatch(openSnackBar({ message: t("server_connection_error") , status: 'error' }));  
+          }else{
+            dispatch(setLoading(false));
+            const { result, token } = res
   
             setOutline(result)
             func_setOutline(result)
   
             setShowStep2(true)
-          }else{
-            dispatch(setLoading(false));
-            dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+            dispatch(updateToken(token))
           }
         }
       }

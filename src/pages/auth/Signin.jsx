@@ -66,7 +66,7 @@ function Signin() {
         dispatch(setLoading(false));
         dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
       }
-      console.log("success")
+      // console.log("success")
     }
   }
 

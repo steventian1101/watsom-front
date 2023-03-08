@@ -83,11 +83,14 @@ export default function LongArticlePage() {
         }
   
         let res = await dispatch(generateLongArticle(sendData));
-        if(res != false){
+        if(res.result == false){
           dispatch(setLoading(false));
-          console.log("res", res);
+          dispatch(openSnackBar({ message: t("server_connection_error") , status: 'error' }));  
+        }else{
+          dispatch(setLoading(false));
+          // console.log("res", res);
           // setResult(res.result)
-          const {intro, conclusion, outline_content} = res
+          const {intro, conclusion, outline_content, token} = res
           let content = "# " + title + "\n"
           content += "## Introduction\n"
           content += intro + "\n";
@@ -105,9 +108,7 @@ export default function LongArticlePage() {
           content += conclusion;
 
           dispatch(setCurrentDocument(content))
-        }else{
-          dispatch(setLoading(false));
-          dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+          dispatch(updateToken(token))
         }
       }
     }

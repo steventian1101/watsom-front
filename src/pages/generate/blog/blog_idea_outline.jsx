@@ -66,7 +66,7 @@ export default function BlogIdeaOutlinePage() {
           }else{
             setResult(res.result)
             dispatch(updateToken(res.token))
-            console.log(res.token)
+            // console.log(res.token)
           }
 
           let tmp_content = customizeBlogIntroParagraph(res.result[0]);
@@ -74,7 +74,7 @@ export default function BlogIdeaOutlinePage() {
           dispatch(setCurrentDocument(tmp_content))
         }else{
           dispatch(setLoading(false));
-          dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+          dispatch(openSnackBar({ message: t("server_connection_error"), status: 'error' }));
         }
       }
     }

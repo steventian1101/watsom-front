@@ -26,7 +26,7 @@ function TemplateSearch(props) {
     setSearch(e.target.value);
     
     if(e.target.value.trim().length > 2){
-      console.log(Search.search(search.trim(), templateData))
+      // console.log(Search.search(search.trim(), templateData))
       let result = Search.search(search.trim(), templateData)
       setSearchResult([...result])
     }else{

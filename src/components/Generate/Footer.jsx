@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { openSnackBar } from '../../redux/snackBarReducer';
 import { useNavigate } from 'react-router-dom'
 import { getAvailable } from '../../redux/authReducer';
+import { setLoading } from '../../redux/globalReducer';
 
 function Footer({
   type,
@@ -49,10 +50,13 @@ function Footer({
               dispatch(openSnackBar({ status: "warning", message: t("limit_usage_word") }))
               return false;
             } else if(userInfo?.available_words_count > 10){
+              dispatch(setLoading(true))
               let res = await dispatch(getAvailable(userInfo))
               if(res.status == true){
+                dispatch(setLoading(false))
                 return true;
               }else{
+                dispatch(setLoading(false))
                 dispatch(openSnackBar({ status: "warning", message: t(res.result) }))
                 return false;
               }

@@ -252,7 +252,7 @@ export const logout = () => async (dispatch) => {
     try {
         await userService.logout();
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         throw new Error(error);
     }

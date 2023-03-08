@@ -44,8 +44,8 @@ export default function ContentImproverPage() {
         dispatch(setLoading(true));
 
         const { contents, tone } = data;
-        console.log("contents", contents)
-        console.log("tone", tone)
+        // console.log("contents", contents)
+        // console.log("tone", tone)
 
         const sendData = {
           output:count,
@@ -59,13 +59,13 @@ export default function ContentImproverPage() {
         let res = await dispatch(contentImprover(sendData));
         if(res != false){
           dispatch(setLoading(false));
-          console.log("res", res);
+          // console.log("res", res);
           if(res.result == false){
             dispatch(openSnackBar({ message: t(res.message) , status: 'error' }));  
           }else{
             setResult(res.result)
             dispatch(updateToken(res.token))
-            console.log(res.token)
+            // console.log(res.token)
           }
         }else{
           dispatch(setLoading(false));

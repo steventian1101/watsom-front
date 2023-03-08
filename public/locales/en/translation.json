@@ -165,5 +165,6 @@
     "already_verified": "Your account already verified.",
     "server_connection_error": "Server Connection Error.",
     "db_connection_error": "Database Connection Error.",
-    "cant_generate_with_your_usage": "Can't generate content with your words usage."
+    "cant_generate_with_your_usage": "Can't generate content with your words usage.",
+    "error_occured_fetching_data": "Error occured when fetching data."
 }

@@ -64,11 +64,11 @@ export default function AmazonProductDescriptionPage() {
           }else{
             setResult(res.result)
             dispatch(updateToken(res.token))
-            console.log(res.token)
+            // console.log(res.token)
           }
         }else{
           dispatch(setLoading(false));
-          dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+          dispatch(openSnackBar({ message: t("server_connection_error"), status: 'error' }));
         }
       }
     }

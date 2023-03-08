@@ -45,8 +45,8 @@ export default function ParaphrasingRewriteQuillbotPage() {
         dispatch(setLoading(true));
 
         const { contents, tone } = data;
-        console.log("contents", contents)
-        console.log("tone", tone)
+        // console.log("contents", contents)
+        // console.log("tone", tone)
 
         const sendData = {
           output:count,
@@ -65,11 +65,11 @@ export default function ParaphrasingRewriteQuillbotPage() {
           }else{
             setResult(res.result)
             dispatch(updateToken(res.token))
-            console.log(res.token)
+            // console.log(res.token)
           }
         }else{
           dispatch(setLoading(false));
-          dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));
+          dispatch(openSnackBar({ message: t("server_connection_error"), status: 'error' }));
         }
       }
     }
