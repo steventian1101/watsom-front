@@ -110,6 +110,21 @@ const getAvailable = async (user) => {
     return await handleResponse(response);
 }
 
+const getToken = async (token) => {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+        },
+        body: JSON.stringify({token})
+    };
+
+    const response = fetch(`${API_BASE}/auth/get_token`, requestOptions);
+    return await handleResponse(response);
+}
+
 export const userService = {
     login,
     logout,
@@ -118,5 +133,6 @@ export const userService = {
     confirmMail,
     setPassword,
     getAvailable,
-    resendConfirmMail
+    resendConfirmMail,
+    getToken
 }

@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { Routes, Route,  Navigate } from 'react-router-dom';
 import Template from './pages/template';
 
@@ -34,12 +35,21 @@ import GoogleAdsPage from './pages/generate/ads/google_ads';
 import "./i18n";
 import Loading from './components/Loading';
 import VerifyWarning from './components/VerifyWarning';
-import { useSelector } from "react-redux";
+import { useDispatch ,useSelector } from "react-redux";
+import { getToken } from './redux/authReducer';
 
 function App() {
   const { globalState, authState } = useSelector((state) => state);
   const { loading } = globalState;
-  const { userInfo, loggedIn } = authState
+  const { userInfo, loggedIn, userToken } = authState
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    if(userToken){
+      dispatch(getToken(userToken))
+    }
+  }, []);
 
   return (
     <div className="App">

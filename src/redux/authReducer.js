@@ -20,7 +20,8 @@ export const authSlice = createSlice({
         setPasswordState: false,
         getAvailableState: false,
         resendConfirmMailState: false,
-        updateTokenState: false
+        updateTokenState: false,
+        getTokenState: false,
     },
     reducers:{
         loginRequest: state => {
@@ -106,6 +107,17 @@ export const authSlice = createSlice({
         updateTokenFailed : state => {
             state.updateTokenState =  false;
         },
+        getTokenRequest: state => {
+            state.getTokenState = true;
+        },
+        getTokenSuccess : (state, action) => {
+            state.getTokenState =  false;
+            state.userToken = action.payload.api_token;
+            state.userInfo = jwt_decode(action.payload.api_token);
+        },
+        getTokenFailed : state => {
+            state.updateTokenState =  false;
+        },
         logoutRequest: state => {
             localStorage.removeItem('user');
             state.loggedIn = false;
@@ -124,6 +136,7 @@ const {
     getAvailableFailed, getAvailableRequest, getAvailableSuccess,
     resendConfirmMailFailed, resendConfirmMailRequest, resendConfirmMailSuccess,
     updateTokenFailed, updateTokenRequest, updateTokenSuccess,
+    getTokenFailed, getTokenRequest, getTokenSuccess,
     logoutRequest
 } = authSlice.actions;
 
@@ -234,12 +247,27 @@ export const getAvailable = (user) => async (dispatch) => {
 }
 
 export const updateToken = (token) => async (dispatch) => {
-    dispatch(getAvailableRequest());
+    dispatch(updateTokenRequest());
 
     try {
         dispatch(updateTokenSuccess(token));
     } catch (error) {
         dispatch(updateTokenFailed());
+        // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return {status: false, result: error["message"]};
+    }
+}
+
+export const getToken = (token) => async (dispatch) => {
+    dispatch(getTokenRequest());
+
+    try {
+        var payload = await userService.getToken(token);
+        dispatch(getTokenSuccess(payload));
+        return { status: true, result: payload }
+    } catch (error) {
+        dispatch(getTokenFailed());
         // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return {status: false, result: error["message"]};
