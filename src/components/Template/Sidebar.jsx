@@ -22,6 +22,7 @@ function Sidebar({
   const [sidebarExpanded, setSidebarExpanded] = useState(storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true');
 
   const { t } = useTranslation();
+  const plan_list = [t("free_trial"), t("essential"), t("pro_month"), t("pro_year")]
 
   // close on click outside
   useEffect(() => {
@@ -110,7 +111,13 @@ function Sidebar({
                 fill="url(#logo-b)"
               />
             </svg>
-            <div className='text-white self-center'>{t("free_plan")}</div>
+            <div className='text-white self-center'>
+              {
+                !userInfo 
+                  ? <span className='text-orange-400'>{t("please_login")}</span>
+                  : userInfo?.plan >= 0 && <span>{plan_list[userInfo.plan]}</span>
+              }
+            </div>
           </NavLink>
         </div>
 

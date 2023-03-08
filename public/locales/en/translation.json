@@ -166,5 +166,9 @@
     "server_connection_error": "Server Connection Error.",
     "db_connection_error": "Database Connection Error.",
     "cant_generate_with_your_usage": "Can't generate content with your words usage.",
-    "error_occured_fetching_data": "Error occured when fetching data."
+    "error_occured_fetching_data": "Error occured when fetching data.",
+    "free_trial": "Free Trial",
+    "essential": "Essential",
+    "pro_month": "Pro - Monthly",
+    "pro_year": "Pro - Yearly"
 }

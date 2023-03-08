@@ -166,5 +166,9 @@
     "server_connection_error": "Erreur de connexion au serveur.",
     "db_connection_error": "Erreur de connexion à la base de données.",
     "cant_generate_with_your_usage": "Impossible de générer du contenu avec l'utilisation de vos mots.",
-    "error_occured_fetching_data": "Une erreur s'est produite lors de la récupération des données."
+    "error_occured_fetching_data": "Une erreur s'est produite lors de la récupération des données.",
+    "free_trial": "Free Trial",
+    "essential": "Essential",
+    "pro_month": "Pro - Monthly",
+    "pro_year": "Pro - Yearly"
 }
