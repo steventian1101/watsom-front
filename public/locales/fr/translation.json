@@ -162,5 +162,8 @@
     "have_account": "Avez-vous un compte ?",
     "resend": "renvoyer", 
     "resend success": "Réenvoi réussi de la confirmation de l'e-mail.", 
-    "alreadyVerified": "Votre compte a déjà été vérifié."
+    "alreadyVerified": "Votre compte a déjà été vérifié.",
+    "server_connection_error": "Erreur de connexion au serveur.",
+    "db_connection_error": "Erreur de connexion à la base de données.",
+    "cant_generate_with_your_usage": "Impossible de générer du contenu avec l'utilisation de vos mots."
 }

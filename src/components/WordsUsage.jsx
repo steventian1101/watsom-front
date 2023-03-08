@@ -12,15 +12,18 @@ function WordsUsage({isMB}) {
 
   const available_words_count = [5000, 100000]
 
+  const progress = 100 - parseInt(userInfo?.available_words_count / available_words_count[userInfo?.plan] * 100);
+
   return (
     <Card className={`${isMB && "mb-24"} justify-end mt-auto cursor-default`}>
       <h5 className="text-xl font-bold tracking-tight text-gray-900">
         {t("words_usage")}
       </h5>
       <Progress 
-        progress={100 - parseInt(userInfo?.available_words_count / available_words_count[userInfo?.plan] * 100)}
+        progress={progress}
+        // color={`${progress> 75 ? "orange" : progress > 90 && "red"}`}
       />
-      <div className='text-gray-400'>{100 - parseInt(userInfo?.available_words_count / available_words_count[userInfo?.plan] * 100)}% {t("of_your_plan")}</div>
+      <div className='text-gray-400'>{progress}% {t("of_your_plan")}</div>
       <Link to="#"><u className='text-blue-700'>{t("upgrade_to_pro")}</u></Link>
     </Card>
   );

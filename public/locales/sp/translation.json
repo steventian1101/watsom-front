@@ -162,5 +162,8 @@
     "have_account": "¿Tienes una cuenta?",
     "resend": "reenviar", 
     "reenvío exitoso": "Reenvío exitoso Confirmar correo electrónico.",
-    "ya verificado": "Tu cuenta ya está verificada."
+    "ya verificado": "Tu cuenta ya está verificada.",
+    "server_connection_error": "Error de conexión del servidor.",
+    "db_connection_error": "Error de conexión a la base de datos.",
+    "cant_generate_with_your_usage": "No puedo generar contenido con el uso de tus palabras."
 }

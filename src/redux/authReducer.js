@@ -19,7 +19,8 @@ export const authSlice = createSlice({
         confirmMailState: false,
         setPasswordState: false,
         getAvailableState: false,
-        resendConfirmMailState: false
+        resendConfirmMailState: false,
+        updateTokenState: false
     },
     reducers:{
         loginRequest: state => {
@@ -94,6 +95,17 @@ export const authSlice = createSlice({
         getAvailableFailed : state => {
             state.getAvailableState =  false;
         },
+        updateTokenRequest: state => {
+            state.updateTokenState = true;
+        },
+        updateTokenSuccess : (state, action) => {
+            state.updateTokenState =  false;
+            state.userToken = action.payload;
+            state.userInfo = jwt_decode(action.payload);
+        },
+        updateTokenFailed : state => {
+            state.updateTokenState =  false;
+        },
         logoutRequest: state => {
             localStorage.removeItem('user');
             state.loggedIn = false;
@@ -111,6 +123,7 @@ const {
     setPasswordFailed, setPasswordRequest,setPasswordSuccess,
     getAvailableFailed, getAvailableRequest, getAvailableSuccess,
     resendConfirmMailFailed, resendConfirmMailRequest, resendConfirmMailSuccess,
+    updateTokenFailed, updateTokenRequest, updateTokenSuccess,
     logoutRequest
 } = authSlice.actions;
 
@@ -214,6 +227,19 @@ export const getAvailable = (user) => async (dispatch) => {
         return {status: true, result: payload};
     } catch (error) {
         dispatch(getAvailableFailed());
+        // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return {status: false, result: error["message"]};
+    }
+}
+
+export const updateToken = (token) => async (dispatch) => {
+    dispatch(getAvailableRequest());
+
+    try {
+        dispatch(updateTokenSuccess(token));
+    } catch (error) {
+        dispatch(updateTokenFailed());
         // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return {status: false, result: error["message"]};

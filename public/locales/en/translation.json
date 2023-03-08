@@ -162,5 +162,8 @@
     "have_account": "Have an account?",
     "resend": "resend",
     "resend_success": "Success resend Confirm mail.",
-    "already_verified": "Your account already verified."
+    "already_verified": "Your account already verified.",
+    "server_connection_error": "Server Connection Error.",
+    "db_connection_error": "Database Connection Error.",
+    "cant_generate_with_your_usage": "Can't generate content with your words usage."
 }

@@ -11,9 +11,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { generateAmazonProductDescription } from '../../../redux/template/amazon';
 import { setLoading, setCurrentDocument } from '../../../redux/globalReducer';
 
+import { updateToken } from '../../../redux/authReducer';
+
 export default function AmazonProductDescriptionPage() {
-  const { globalState } = useSelector((state) => state);
+  const { globalState, authState } = useSelector((state) => state);
   const { loading } = globalState;
+  const { userToken } = authState;
   const { t } = useTranslation();
 
   const [title, setTitle] = useState("");
@@ -48,6 +51,7 @@ export default function AmazonProductDescriptionPage() {
           title:title,
           keywords:keywords,
           tone:tone,
+          token: userToken,
           output:count,
           lang:lang,
         }
@@ -55,8 +59,13 @@ export default function AmazonProductDescriptionPage() {
         let res = await dispatch(generateAmazonProductDescription(sendData));
         if(res != false){
           dispatch(setLoading(false));
-          console.log("res", res);
-          setResult(res.result)
+          if(res.result == false){
+            dispatch(openSnackBar({ message: t(res.message) , status: 'error' }));  
+          }else{
+            setResult(res.result)
+            dispatch(updateToken(res.token))
+            console.log(res.token)
+          }
         }else{
           dispatch(setLoading(false));
           dispatch(openSnackBar({ message: "Server Connection Error", status: 'error' }));

@@ -11,10 +11,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { generateLongArticle } from '../../../redux/template/blog';
 import { setLoading, setCurrentDocument } from '../../../redux/globalReducer';
 
+import { updateToken } from '../../../redux/authReducer';
+
 export default function LongArticlePage() {
-  const { blogState, globalState } = useSelector((state) => state);
+  const { blogState, globalState, authState } = useSelector((state) => state);
   const { generateLongArticleState } = blogState;
   const { loading } = globalState;
+  const { userToken } = authState;
   const { t } = useTranslation();
 
   const [title, setTitle] = useState("");
@@ -72,6 +75,7 @@ export default function LongArticlePage() {
           title:title,
           keywords:keywords,
           tone:tone,
+          token: userToken,
           outline:outline,
           count:count,
           lang:lang,

@@ -74,7 +74,8 @@ function Footer({
   }
 
   const clickGenerate = async () => {
-    if(is_available() == true){
+    let available = await is_available()
+    if(available == true){
       generate(data, showCount, type, showLanguage)
     }
   }

@@ -119,7 +119,8 @@ function LongArticle({
     // }
 
     if(!loading){
-      if(is_available() == true){
+      let available = await is_available()
+      if(available == true){
         let is_valid = validate()
   
         if(is_valid){
@@ -217,7 +218,8 @@ function LongArticle({
 
   const nextOutline = async () => {
     if(!loading){
-      if(is_available() == true){
+      let available = await is_available()
+      if(available == true){
         let is_valid = validate()
   
         if(is_valid){
