@@ -90,77 +90,33 @@ function SetPassword() {
   }
 
   return (
-    <main className="bg-white">
-
-      <div className="relative md:flex">
-
-        {/* Content */}
-        <div className="md:w-1/2">
-          <div className="min-h-screen h-full flex flex-col after:flex-1">
-
-            {/* Header */}
-            <div className="flex-1">
-              <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
-                {/* Logo */}
-                <Link className="block" to="/">
-                  <svg width="32" height="32" viewBox="0 0 32 32">
-                    <defs>
-                      <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">
-                        <stop stopColor="#A5B4FC" stopOpacity="0" offset="0%" />
-                        <stop stopColor="#A5B4FC" offset="100%" />
-                      </linearGradient>
-                      <linearGradient x1="88.638%" y1="29.267%" x2="22.42%" y2="100%" id="logo-b">
-                        <stop stopColor="#38BDF8" stopOpacity="0" offset="0%" />
-                        <stop stopColor="#38BDF8" offset="100%" />
-                      </linearGradient>
-                    </defs>
-                    <rect fill="#6366F1" width="32" height="32" rx="16" />
-                    <path d="M18.277.16C26.035 1.267 32 7.938 32 16c0 8.837-7.163 16-16 16a15.937 15.937 0 01-10.426-3.863L18.277.161z" fill="#4F46E5" />
-                    <path d="M7.404 2.503l18.339 26.19A15.93 15.93 0 0116 32C7.163 32 0 24.837 0 16 0 10.327 2.952 5.344 7.404 2.503z" fill="url(#logo-a)" />
-                    <path d="M2.223 24.14L29.777 7.86A15.926 15.926 0 0132 16c0 8.837-7.163 16-16 16-5.864 0-10.991-3.154-13.777-7.86z" fill="url(#logo-b)" />
-                  </svg>
-                </Link>
+    <section className="bg-gray-50 dark:bg-gray-900">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <Link to="/" className="flex items-center mb-6 text-3xl font-semibold text-gray-900 dark:text-white">
+          {/* <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo"> */}
+          Watsom  ✨  
+        </Link>
+        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            {t("set_new_password")}
+            </h1>
+            <div className="space-y-4 md:space-y-6">
+              <div>
+                <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{t("password")}</label>
+                <input type="password" name="password" id="password" placeholder="••••••••" value={userData.password1} onChange={(e) => handleInputChange("password1", e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
               </div>
+              <div>
+                <label htmlFor="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{t("confirm_password")}</label>
+                <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••" value={userData.password2} onChange={(e) => handleInputChange("password2", e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
+              </div>
+              
+              <button className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={() => set_pass()}>{t("set_new_password")}</button>
             </div>
-
-            <div className="max-w-sm mx-auto px-4 py-8">
-              <h1 className="text-3xl text-slate-800 font-bold mb-6">{t("set_new_password")} ✨</h1>
-              {/* Form */}
-              <form>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="password">{t("password")}</label>
-                    <input id="password" className="form-input w-full" type="password" autoComplete="on" value={userData.password1} onChange={(e) => handleInputChange("password1", e.target.value)} />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="password2">{t("confirm_password")}</label>
-                    <input id="password2" className="form-input w-full" type="password" autoComplete="on" value={userData.password2} onChange={(e) => handleInputChange("password2", e.target.value)} />
-                  </div>
-                </div>
-                <div className="flex items-center justify-between mt-6">
-                  <div className="mr-1">
-                    {/* <label className="flex items-center">
-                      <input type="checkbox" className="form-checkbox" />
-                      <span className="text-sm ml-2">Email me about product news.</span>
-                    </label> */}
-                  </div>
-                  <Button className="bg-site_light-100 hover:!bg-blue-800 text-white ml-3 whitespace-nowrap" onClick={() => set_pass()}>{t("set_new_password")}</Button>
-                </div>
-              </form>
-            </div>
-
           </div>
         </div>
-
-        {/* Image */}
-        <div className="hidden md:block absolute top-0 bottom-0 right-0 md:w-1/2" aria-hidden="true">
-          <img className="object-cover object-center w-full h-full" src={AuthImage} width="760" height="1024" alt="Authentication" />
-          <img className="absolute top-1/4 left-0 -translate-x-1/2 ml-8 hidden lg:block" src={AuthDecoration} width="218" height="224" alt="Authentication decoration" />
-        </div>
-
       </div>
-
-    </main>
+    </section>
   );
 }
 
