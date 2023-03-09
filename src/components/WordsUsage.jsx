@@ -24,7 +24,7 @@ function WordsUsage({isMB}) {
         // color={`${progress> 75 ? "orange" : progress > 90 && "red"}`}
       />
       <div className='text-gray-400'>{progress}% {t("of_your_plan")}</div>
-      <Link to="#"><u className='text-blue-700'>{t("upgrade_to_pro")}</u></Link>
+      <Link to="/subscription"><u className='text-blue-700'>{t("upgrade_to_pro")}</u></Link>
     </Card>
   );
 }

@@ -172,5 +172,18 @@
     "pro_month": "Pro - Mensual",
     "pro_year": "Pro - Anual",
     "sign_in_to_your_acc": "Inicia sesión en tu cuenta",
-    "please_login": "Iniciar sesión"
+    "please_login": "Iniciar sesión",
+    "month": "mes",
+    "year": "año",
+    "generate_5000_words_week": "Generar 5000 palabras en 7 días",
+    "generate_100000_words_month": "Generar 100,000 palabras en un mes",
+    "generate_unlimited_content": "Generar contenido ilimitado",
+    "access_10_tones": "Accede a más de 10 tonos",
+    "access_to_all_writing_tools": "Acceso a todas las herramientas de escritura",
+    "long_form_editor_keywords": "Editor de formato largo y asistente de palabras clave",
+    "write_3_language": "Escribir en 3 idiomas",
+    "24_7_priority_support": "Soporte prioritario 24/7",
+    "lock_low_price": "Fijar el precio bajo para siempre",
+    "cancel_any_time": "Cancelar en cualquier momento",
+    "choose_plan": "Elegir plan"
 }

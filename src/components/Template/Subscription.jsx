@@ -2,6 +2,7 @@ import { Button, Modal } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import swal from "sweetalert2";
 import { openSnackBar } from "../../redux/snackBarReducer";
 
@@ -12,15 +13,19 @@ function Subscription() {
 
     useEffect(() => { }, []);
 
+    const gotoSubsciption = () => {
+
+    }
+
     return (
         <>
-            <div className="flex items-center pr-4">
+            <Link className="flex items-center pr-4" to="/subscription" >
                 <div
                     className="w-full font-medium p-1  text-sm inline-flex items-center justify-center border-2 border-transparent rounded-lg leading-5 shadow-sm transition duration-150 ease-in-out bg-site_light-100 hover:!bg-site_light-100 text-white cursor-pointer"
                 >
                     <span className="hidden md:block py-1 px-2">{t("try")} WatSom {t("pro")}</span>
                 </div>
-            </div>
+            </Link>
         </>
     );
 }
