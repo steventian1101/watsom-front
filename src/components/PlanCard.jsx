@@ -12,6 +12,10 @@ function PlanCard({plan}) {
   const { authState } = useSelector((state) => state);
   const { t } = useTranslation();
 	const dispatch = useDispatch();
+	
+	const plan_essential = PLAN_ESSENTIAL;
+	const plan_pro_month = PLAN_PRO_MONTH;
+	const plan_pro_year = PLAN_PRO_YEAR;
 
   const { userInfo, loggedIn } = authState;
   const plan_list = [t("free_trial"), t("essential"), t("pro_month"), t("pro_year")]
@@ -29,7 +33,7 @@ function PlanCard({plan}) {
 		t("cancel_any_time")
 	]
 
-	const plan_id = ["Free", PLAN_ESSENTIAL, PLAN_PRO_MONTH, PLAN_PRO_YEAR]
+	const plan_id = ["Free", plan_essential, plan_pro_month, plan_pro_year]
 
 	const paypalSubscribe = (data, actions) => {
 			return actions.subscription.create({
