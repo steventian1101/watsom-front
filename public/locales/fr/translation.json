@@ -186,5 +186,6 @@
     "lock_low_price": "Verrouillez le prix bas pour toujours",
     "cancel_any_time": "Annuler à tout moment",
     "choose_plan": "Choisir un forfait",
-    "your_subscription": "Votre abonnement"
+    "your_subscription": "Votre abonnement",
+    "upgrade_plan_success": "Plan de mise à niveau réussi."
 }

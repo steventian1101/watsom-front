@@ -186,5 +186,6 @@
     "lock_low_price": "Lock in low price forever",
     "cancel_any_time": "Cancel any time",
     "choose_plan": "Choose Plan",
-    "your_subscription": "Your Subscription"
+    "your_subscription": "Your Subscription",
+    "upgrade_plan_success": "Upgrade Plan Success."
 }

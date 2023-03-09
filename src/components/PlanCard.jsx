@@ -5,6 +5,9 @@ import { Card } from 'flowbite-react'
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from 'react-redux'
 import PayPalBtn from './Paypal/PaypalButton';
+import { upgradePlan } from '../redux/authReducer';
+import { openSnackBar } from '../redux/snackBarReducer';
+import { useNavigate } from 'react-router-dom'
 
 import { PLAN_ESSENTIAL, PLAN_PRO_MONTH, PLAN_PRO_YEAR, SECRET_KEY } from '../config/constants';
 
@@ -12,12 +15,13 @@ function PlanCard({plan}) {
   const { authState } = useSelector((state) => state);
   const { t } = useTranslation();
 	const dispatch = useDispatch();
+  const navigate = useNavigate();
 	
 	const plan_essential = PLAN_ESSENTIAL;
 	const plan_pro_month = PLAN_PRO_MONTH;
 	const plan_pro_year = PLAN_PRO_YEAR;
 
-  const { userInfo, loggedIn } = authState;
+  const { userToken, loggedIn } = authState;
   const plan_list = [t("free_trial"), t("essential"), t("pro_month"), t("pro_year")]
 	const plan_cost = [ 0, 9, 49, 348 ]
 	const plan_period = [t("month"), t("month"), t("month"), t("year")]
@@ -45,23 +49,18 @@ function PlanCard({plan}) {
 			console.log("Error")
 	}
 
-	const paypalOnApprove = (data, detail) => {
+	const paypalOnApprove = async (data, detail) => {
 			// call the backend api to store transaction details
 			console.log("Payapl approved")
 			console.log(data.subscriptionID)
 
-			let payload = {...userInfo, new_plan: plan}
-
-			// jwt.sign(
-			// 	payload,
-			// 	SECRET_KEY, {
-			// 			expiresIn: 31556926 // 1 year in seconds
-			// 	},
-			// 	(err, token) => {
-			// 		// dispatch(upgradePlan(token))
-			// 	}
-			// );
-
+			let res = await dispatch(upgradePlan(userToken + "%%" + plan))
+			if(res.status != false){
+        dispatch(openSnackBar({ status: "success", message: t("upgrade_plan_success") }))
+        navigate("/template")
+      }else{
+        dispatch(openSnackBar({ status: "error", message: t(res.result) }))
+      }
 	};
 
   return (

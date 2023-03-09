@@ -7,9 +7,6 @@ import { useTranslation } from "react-i18next";
 import { registerUser } from '../../redux/authReducer';
 import { useNavigate } from 'react-router-dom'
 
-import AuthImage from '../../images/auth-image.jpg';
-import AuthDecoration from '../../images/auth-decoration.png';
-import { Button } from 'flowbite-react';
 import { setLoading } from '../../redux/globalReducer';
 
 function Signup() {

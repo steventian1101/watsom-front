@@ -125,6 +125,21 @@ const getToken = async (token) => {
     return await handleResponse(response);
 }
 
+const upgradePlan = async (token) => {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+        },
+        body: JSON.stringify({token})
+    };
+
+    const response = fetch(`${API_BASE}/auth/upgrade_plan`, requestOptions);
+    return await handleResponse(response);
+}
+
 export const userService = {
     login,
     logout,
@@ -134,5 +149,6 @@ export const userService = {
     setPassword,
     getAvailable,
     resendConfirmMail,
-    getToken
+    getToken,
+    upgradePlan
 }

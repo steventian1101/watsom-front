@@ -7,9 +7,6 @@ import { setPassword } from '../../redux/authReducer';
 import { useNavigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode';
 
-import AuthImage from '../../images/auth-image.jpg';
-import AuthDecoration from '../../images/auth-decoration.png';
-import { Button } from 'flowbite-react';
 import { setLoading } from '../../redux/globalReducer';
 
 function SetPassword() {

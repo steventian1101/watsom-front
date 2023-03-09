@@ -22,6 +22,7 @@ export const authSlice = createSlice({
         resendConfirmMailState: false,
         updateTokenState: false,
         getTokenState: false,
+        upgradePlanState: false,
     },
     reducers:{
         loginRequest: state => {
@@ -118,6 +119,17 @@ export const authSlice = createSlice({
         getTokenFailed : state => {
             state.updateTokenState =  false;
         },
+        upgradePlanRequest: state => {
+            state.upgradePlanState = true;
+        },
+        upgradePlanSuccess : (state, action) => {
+            state.upgradePlanState =  false;
+            state.userToken = action.payload.api_token;
+            state.userInfo = jwt_decode(action.payload.api_token);
+        },
+        upgradePlanFailed : state => {
+            state.upgradePlanState =  false;
+        },
         logoutRequest: state => {
             localStorage.removeItem('user');
             state.loggedIn = false;
@@ -137,6 +149,7 @@ const {
     resendConfirmMailFailed, resendConfirmMailRequest, resendConfirmMailSuccess,
     updateTokenFailed, updateTokenRequest, updateTokenSuccess,
     getTokenFailed, getTokenRequest, getTokenSuccess,
+    upgradePlanFailed, upgradePlanRequest, upgradePlanSuccess,
     logoutRequest
 } = authSlice.actions;
 
@@ -268,6 +281,21 @@ export const getToken = (token) => async (dispatch) => {
         return { status: true, result: payload }
     } catch (error) {
         dispatch(getTokenFailed());
+        // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return {status: false, result: error["message"]};
+    }
+}
+
+export const upgradePlan = (token) => async (dispatch) => {
+    dispatch(upgradePlanRequest());
+
+    try {
+        var payload = await userService.upgradePlan(token);
+        dispatch(upgradePlanSuccess(payload));
+        return { status: true, result: payload }
+    } catch (error) {
+        dispatch(upgradePlanFailed());
         // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return {status: false, result: error["message"]};
