@@ -22,12 +22,12 @@ function SubScription() {
         <div className='flex justify-center min-h-screen pt-[30px] px-[40px]'>
             <div className="w-3/5">
                 <p className="text-[#00153B] text-[20px] leading-[40px] font-semibold">
-                    Your Subscription
+                    {t("your_subscription")}
                 </p>
 
                 <div>
                     <p className="text-[#717F87] text-[15px] leading-[27px] font-medium">
-                        Aliquam sagittis sapien in nibh tincidunt fermentum. Morbi eleifend faucibus.
+                        {/* Aliquam sagittis sapien in nibh tincidunt fermentum. Morbi eleifend faucibus. */}
                     </p>
                 </div>
 
