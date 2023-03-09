@@ -13,7 +13,7 @@ function Sidebar({
   const location = useLocation();
   const { pathname } = location;
 
-  const { userInfo, uesrToken } = authState;
+  const { userInfo, loggedIn } = authState;
 
   const trigger = useRef(null);
   const sidebar = useRef(null);
@@ -113,7 +113,7 @@ function Sidebar({
             </svg>
             <div className='text-white self-center'>
               {
-                !uesrToken 
+                loggedIn == false 
                   ? <span className='text-orange-400'>{t("please_login")}</span>
                   : userInfo?.plan >= 0 && <span>{plan_list[userInfo.plan]}</span>
               }
