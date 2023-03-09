@@ -7,26 +7,14 @@ import { BrowserRouter } from 'react-router-dom';
 import {Provider} from 'react-redux';
 import SnackBar from './components/SnackBarComponent';
 import store from './redux/store';
-import {
-	PayPalScriptProvider,
-} from "@paypal/react-paypal-js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
     <BrowserRouter>
         <Provider store = {store}>
-          {/* <PayPalScriptProvider
-            options={{
-              "client-id": "test",
-              components: "buttons",
-              intent: "subscription",
-              vault: true,
-            }}
-          > */}
-            <App />
-            <SnackBar/>
-          {/* </PayPalScriptProvider> */}
+          <App />
+          <SnackBar/>
         </Provider>
     </BrowserRouter>
   // </React.StrictMode>

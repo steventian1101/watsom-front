@@ -3,14 +3,17 @@ import { Link } from 'react-router-dom';
 import { Card } from 'flowbite-react'
 
 import { useTranslation } from "react-i18next";
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import PayPalBtn from './Paypal/PaypalButton';
-import { PLAN_ESSENTIAL, PLAN_PRO_MONTH, PLAN_PRO_YEAR } from '../config/constants';
+
+import { PLAN_ESSENTIAL, PLAN_PRO_MONTH, PLAN_PRO_YEAR, SECRET_KEY } from '../config/constants';
 
 function PlanCard({plan}) {
   const { authState } = useSelector((state) => state);
   const { t } = useTranslation();
-  const { userInfo } = authState;
+	const dispatch = useDispatch();
+
+  const { userInfo, loggedIn } = authState;
   const plan_list = [t("free_trial"), t("essential"), t("pro_month"), t("pro_year")]
 	const plan_cost = [ 0, 9, 49, 348 ]
 	const plan_period = [t("month"), t("month"), t("month"), t("year")]
@@ -26,7 +29,7 @@ function PlanCard({plan}) {
 		t("cancel_any_time")
 	]
 
-	const plan_id = ["Free", "P-1G033716R3091215MMQEZF4Y", "P-69269433PG5605120MQEZIVQ", "P-5CE20011H51435542MQEZJ2Y"]
+	const plan_id = ["Free", PLAN_ESSENTIAL, PLAN_PRO_MONTH, PLAN_PRO_YEAR]
 
 	const paypalSubscribe = (data, actions) => {
 			return actions.subscription.create({
@@ -42,6 +45,19 @@ function PlanCard({plan}) {
 			// call the backend api to store transaction details
 			console.log("Payapl approved")
 			console.log(data.subscriptionID)
+
+			let payload = {...userInfo, new_plan: plan}
+
+			// jwt.sign(
+			// 	payload,
+			// 	SECRET_KEY, {
+			// 			expiresIn: 31556926 // 1 year in seconds
+			// 	},
+			// 	(err, token) => {
+			// 		// dispatch(upgradePlan(token))
+			// 	}
+			// );
+
 	};
 
   return (
@@ -124,15 +140,18 @@ function PlanCard({plan}) {
 				
 			</ul>
 			{/* <PayPalButton type="subscription" /> */}
-			<PayPalBtn
-				amount = {plan_cost[plan]}
-				currency = "USD"
-				createSubscription={paypalSubscribe}
-				onApprove={paypalOnApprove}
-				catchError={paypalOnError}
-				onError={paypalOnError}
-				onCancel={paypalOnError}
-			/>
+			{
+				loggedIn == true &&
+				<PayPalBtn
+					amount = {plan_cost[plan]}
+					currency = "USD"
+					createSubscription={paypalSubscribe}
+					onApprove={paypalOnApprove}
+					catchError={paypalOnError}
+					onError={paypalOnError}
+					onCancel={paypalOnError}
+				/>
+			}
 			{/* <button
 				type="button"
 				className="inline-flex w-full justify-center rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900"
