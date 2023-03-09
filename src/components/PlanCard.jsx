@@ -26,11 +26,11 @@ function PlanCard({plan}) {
 		t("cancel_any_time")
 	]
 
-	const plan_id = ["Free", PLAN_ESSENTIAL, PLAN_PRO_MONTH, PLAN_PRO_YEAR]
+	const plan_id = ["Free", "P-1G033716R3091215MMQEZF4Y", "P-69269433PG5605120MQEZIVQ", "P-5CE20011H51435542MQEZJ2YS"]
 
 	const paypalSubscribe = (data, actions) => {
 			return actions.subscription.create({
-					'plan_id': plan_id[plan],
+					'plan_id': plan_id[plan]
 			});
 	};
 
