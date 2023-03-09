@@ -45,7 +45,6 @@ function App() {
   const { userInfo, loggedIn, userToken } = authState
   const dispatch = useDispatch()
 
-
   useEffect(() => {
     if(userToken){
       dispatch(getToken(userToken))

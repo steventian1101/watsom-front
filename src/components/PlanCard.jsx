@@ -4,6 +4,8 @@ import { Card } from 'flowbite-react'
 
 import { useTranslation } from "react-i18next";
 import { useSelector } from 'react-redux'
+import PayPalBtn from './Paypal/PaypalButton';
+import { PLAN_ESSENTIAL, PLAN_PRO_MONTH, PLAN_PRO_YEAR } from '../config/constants';
 
 function PlanCard({plan}) {
   const { authState } = useSelector((state) => state);
@@ -23,6 +25,24 @@ function PlanCard({plan}) {
 		t("lock_low_price"),
 		t("cancel_any_time")
 	]
+
+	const plan_id = ["Free", PLAN_ESSENTIAL, PLAN_PRO_MONTH, PLAN_PRO_YEAR]
+
+	const paypalSubscribe = (data, actions) => {
+			return actions.subscription.create({
+					'plan_id': plan_id[plan],
+			});
+	};
+
+	const paypalOnError = (err) => {
+			console.log("Error")
+	}
+
+	const paypalOnApprove = (data, detail) => {
+			// call the backend api to store transaction details
+			console.log("Payapl approved")
+			console.log(data.subscriptionID)
+	};
 
   return (
     <Card>
@@ -103,12 +123,22 @@ function PlanCard({plan}) {
 				</li> */}
 				
 			</ul>
-			<button
+			{/* <PayPalButton type="subscription" /> */}
+			<PayPalBtn
+				amount = {plan_cost[plan]}
+				currency = "USD"
+				createSubscription={paypalSubscribe}
+				onApprove={paypalOnApprove}
+				catchError={paypalOnError}
+				onError={paypalOnError}
+				onCancel={paypalOnError}
+			/>
+			{/* <button
 				type="button"
 				className="inline-flex w-full justify-center rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900"
 			>
 				{t("choose_plan")}
-			</button>
+			</button> */}
 		</Card>
   );
 }

@@ -6,6 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/lab": "^4.0.0-alpha.61",
+    "@paypal/react-paypal-js": "^7.8.2",
     "@reduxjs/toolkit": "^1.8.6",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -25,6 +26,7 @@
     "react-draft-wysiwyg": "^1.15.0",
     "react-i18next": "^12.1.5",
     "react-icons": "^4.7.1",
+    "react-paypal-button-v2": "^2.6.3",
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2",
     "react-scripts": "^5.0.1",
