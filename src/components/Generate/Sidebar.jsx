@@ -16,6 +16,7 @@ import Search from "search-json"
 import { templateData } from '../Template/TemplateData';
 
 import { setExpandGroup } from '../../redux/globalReducer';
+import LogoTextDark from '../../images/logo-text-dark.png';
 
 function Sidebar({
   sidebarOpen,
@@ -136,7 +137,8 @@ function Sidebar({
           {/* Logo */}
           <div className="flex gap-20">
             <NavLink end to="/" className="flex col-span-10">
-              <div className='text-white self-center font-bold text-2xl'>WatSom.ai</div>
+              <img className="object-cover object-center h-10" src={LogoTextDark} alt="Authentication" />
+              {/* <div className='text-white self-center font-bold text-2xl'>WatSom.ai</div> */}
             </NavLink>
             <UserMenu align="right" removeText={true} />
           </div>

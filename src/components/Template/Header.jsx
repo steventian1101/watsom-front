@@ -7,6 +7,7 @@ import UserMenu from '../theme/DropdownProfile';
 import Subscription from './Subscription';
 import { useTranslation } from "react-i18next";
 import { Link } from 'react-router-dom';
+import LogoText from '../../images/logo-text.png';
 
 function Header({
   sidebarOpen,
@@ -38,7 +39,9 @@ function Header({
                 <rect x="4" y="17" width="16" height="2" />
               </svg>
             </button>
-            <Link to="/" className='font-bold text-2xl'>WatSom.ai</Link>
+            <Link to="/">          
+              <img className="object-cover object-center h-16" src={LogoText} alt="Authentication" />
+            </Link>
           </div>
 
           {/* Header: Right side */}
