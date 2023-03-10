@@ -140,6 +140,51 @@ const upgradePlan = async (token) => {
     return await handleResponse(response);
 }
 
+const updateFullName = async (user) => {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+        },
+        body: JSON.stringify(user)
+    };
+
+    const response = fetch(`${API_BASE}/auth/update_fullname`, requestOptions);
+    return await handleResponse(response);
+}
+
+const updateEmail = async (user) => {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+        },
+        body: JSON.stringify(user)
+    };
+
+    const response = fetch(`${API_BASE}/auth/update_email`, requestOptions);
+    return await handleResponse(response);
+}
+
+const updatePassword = async (user) => {
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+        },
+        body: JSON.stringify(user)
+    };
+
+    const response = fetch(`${API_BASE}/auth/update_password`, requestOptions);
+    return await handleResponse(response);
+}
+
 export const userService = {
     login,
     logout,
@@ -150,5 +195,8 @@ export const userService = {
     getAvailable,
     resendConfirmMail,
     getToken,
-    upgradePlan
+    upgradePlan,
+    updateEmail,
+    updatePassword,
+    updateFullName
 }

@@ -23,6 +23,9 @@ export const authSlice = createSlice({
         updateTokenState: false,
         getTokenState: false,
         upgradePlanState: false,
+        updateFullNameState: false,
+        updateEmailState: false,
+        updatePasswordState: false,
     },
     reducers:{
         loginRequest: state => {
@@ -130,6 +133,39 @@ export const authSlice = createSlice({
         upgradePlanFailed : state => {
             state.upgradePlanState =  false;
         },
+        updateFullNameRequest: state => {
+            state.updateFullNameState = true;
+        },
+        updateFullNameSuccess : (state, action) => {
+            state.updateFullNameState =  false;
+            state.userToken = action.payload.api_token;
+            state.userInfo = jwt_decode(action.payload.api_token);
+        },
+        updateFullNameFailed : state => {
+            state.updateFullNameState =  false;
+        },
+        updateEmailRequest: state => {
+            state.updateEmailState = true;
+        },
+        updateEmailSuccess : (state, action) => {
+            state.updateEmailState =  false;
+            state.userToken = action.payload.api_token;
+            state.userInfo = jwt_decode(action.payload.api_token);
+        },
+        updateEmailFailed : state => {
+            state.updateEmailState =  false;
+        },
+        updatePasswordRequest: state => {
+            state.updatePasswordState = true;
+        },
+        updatePasswordSuccess : (state, action) => {
+            state.updatePasswordState =  false;
+            // state.userToken = action.payload.api_token;
+            // state.userInfo = jwt_decode(action.payload.api_token);
+        },
+        updatePasswordFailed : state => {
+            state.updatePasswordState =  false;
+        },
         logoutRequest: state => {
             localStorage.removeItem('user');
             state.loggedIn = false;
@@ -150,6 +186,9 @@ const {
     updateTokenFailed, updateTokenRequest, updateTokenSuccess,
     getTokenFailed, getTokenRequest, getTokenSuccess,
     upgradePlanFailed, upgradePlanRequest, upgradePlanSuccess,
+    updateEmailFailed, updateEmailRequest, updateEmailSuccess,
+    updateFullNameFailed, updateFullNameRequest, updateFullNameSuccess,
+    updatePasswordFailed, updatePasswordRequest, updatePasswordSuccess,
     logoutRequest
 } = authSlice.actions;
 
@@ -296,6 +335,51 @@ export const upgradePlan = (token) => async (dispatch) => {
         return { status: true, result: payload }
     } catch (error) {
         dispatch(upgradePlanFailed());
+        // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return {status: false, result: error["message"]};
+    }
+}
+
+export const updateFullName = (user) => async (dispatch) => {
+    dispatch(updateFullNameRequest());
+
+    try {
+        var payload = await userService.updateFullName(user);
+        dispatch(updateFullNameSuccess(payload));
+        return { status: true, result: payload }
+    } catch (error) {
+        dispatch(updateFullNameFailed());
+        // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return {status: false, result: error["message"]};
+    }
+}
+
+export const updateEmail = (user) => async (dispatch) => {
+    dispatch(updateEmailRequest());
+
+    try {
+        var payload = await userService.updateEmail(user);
+        dispatch(updateEmailSuccess(payload));
+        return { status: true, result: payload }
+    } catch (error) {
+        dispatch(updateEmailFailed());
+        // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
+        // throw new Error(error);
+        return {status: false, result: error["message"]};
+    }
+}
+
+export const updatePassword = (user) => async (dispatch) => {
+    dispatch(updatePasswordRequest());
+
+    try {
+        var payload = await userService.updatePassword(user);
+        dispatch(updatePasswordSuccess(payload));
+        return { status: true, result: payload }
+    } catch (error) {
+        dispatch(updatePasswordFailed());
         // dispatch(openSnackBar({ message: error["message"], status: 'error' }));
         // throw new Error(error);
         return {status: false, result: error["message"]};
