@@ -187,5 +187,17 @@
     "cancel_any_time": "Cancel any time",
     "choose_plan": "Choose Plan",
     "your_subscription": "Your Subscription",
-    "upgrade_plan_success": "Upgrade Plan Success."
+    "upgrade_plan_success": "Upgrade Plan Success.",
+    "setting": "Setting",
+    "my_account": "My Account",
+    "new_name": "New Name",
+    "update_full_name": "Update Full Name",
+    "new_email": "New Email",
+    "update_email": "Update Email",
+    "old_password": "Old Password",
+    "new_password": "New Password",
+    "update_password": "Update Password",
+    "you_created_acc_on": "You created your account on",
+    "you_currently_on": "You are currently on",
+    "your_expiry_date": "Your expiry date is"
 }

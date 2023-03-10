@@ -40,9 +40,9 @@ function PlanCard({plan}) {
 	const plan_id = ["Free", plan_essential, plan_pro_month, plan_pro_year]
 
 	const paypalSubscribe = (data, actions) => {
-			return actions.subscription.create({
-					'plan_id': plan_id[plan]
-			});
+		return actions.subscription.create({
+				'plan_id': plan_id[plan]
+		});
 	};
 
 	const paypalOnError = (err) => {
@@ -63,8 +63,8 @@ function PlanCard({plan}) {
       }
 	};
 
-  return (
-    <Card>
+  	return (
+    	<Card>
 			<h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
 				{plan_list[plan]}
 			</h5>
@@ -162,7 +162,7 @@ function PlanCard({plan}) {
 				{t("choose_plan")}
 			</button> */}
 		</Card>
-  );
+  	);
 }
 
 export default PlanCard;

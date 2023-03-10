@@ -16,9 +16,14 @@ function WordsUsage({isMB}) {
 
   return (
     <Card className={`${isMB && "mb-24"} justify-end mt-auto cursor-default`}>
-      <h5 className="text-xl font-bold tracking-tight text-gray-900">
-        {t("words_usage")}
-      </h5>
+      <div className='flex justify-between'>
+        <h5 className="text-xl font-bold tracking-tight text-gray-900">
+          {t("words_usage")}
+        </h5>
+        <h5 className="text-xl font-bold tracking-tight text-gray-900">
+          {available_words_count[userInfo?.plan] - userInfo?.available_words_count}/{available_words_count[userInfo?.plan]}
+        </h5>
+      </div>
       <Progress 
         progress={progress}
         // color={`${progress> 75 ? "orange" : progress > 90 && "red"}`}

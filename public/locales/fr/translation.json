@@ -187,5 +187,17 @@
     "cancel_any_time": "Annuler à tout moment",
     "choose_plan": "Choisir un forfait",
     "your_subscription": "Votre abonnement",
-    "upgrade_plan_success": "Plan de mise à niveau réussi."
+    "upgrade_plan_success": "Plan de mise à niveau réussi.",
+    "setting": "Paramètre",
+    "my_account": "Mon compte",
+    "new_name": "Nouveau nom",
+    "update_full_name": "Mettre à jour le nom complet",
+    "new_email": "Nouvel e-mail",
+    "update_email": "Mettre à jour l'e-mail",
+    "old_password": "Ancien mot de passe",
+    "new_password": "Nouveau mot de passe",
+    "update_password": "Mettre à jour le mot de passe",
+    "you_created_acc_on": "Vous avez créé votre compte le",
+    "you_currently_on": "Vous êtes actuellement sur",
+    "your_expiry_date": "Votre date d'expiration est"
 }
