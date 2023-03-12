@@ -13,3 +13,33 @@
     font-size: revert;
     font-weight: revert;
 }
+
+.public-DraftEditor-content {
+    padding: 25px;
+    padding-top: 0px;
+}
+.wrapperClassName { display: flex; flex-direction: column; }
+.editorClassName { order: 1; }
+.toolbarClassName { order: 2; }
+
+.toolbarClassName {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.editorClassName {
+    position: relative;
+    height: calc(100vh - 8rem);
+    width: 100%;
+    border-width: 1px;
+    background-color: white;
+}
+
+.titleClassName {
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    height: 3rem;
+    background-color: white;
+    border-width: 1px;
+    padding: 10px;
+}

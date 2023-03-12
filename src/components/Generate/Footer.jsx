@@ -91,13 +91,13 @@ function Footer({
 
   return (
     <div style={{textAlign:"-webkit-center", height:"5rem", borderTopWidth: "1px"}} className="pt-4 border-gray-300">
-      <div className='w-11/12 flex justify-between items-center'>
-        <div className="flex gap-4">
-          <div className="text-xl p-2 font-bold tracking-tight text-gray-900">
-            {t("output")}
+      <div className='w-11/12 flex justify-between items-center grid grid-cols-12'>
+        <div className= "col-span-3 flex gap-2">
+          <div className="text-xl py-2 font-bold tracking-tight text-gray-900">
+            N = 
           </div>
 
-          <select className='rounded-lg w-24 disabled:cursor-not-allowed' onChange={(e)=>setShowCount(e.target.value)} defaultValue={count_disable ? 1 : showCount} disabled = {count_disable} >
+          <select className='rounded-lg w-20 disabled:cursor-not-allowed' onChange={(e)=>setShowCount(e.target.value)} defaultValue={count_disable ? 1 : showCount} disabled = {count_disable} >
             {
               output_count.map((data,index)=>
                 <option value={data} key={index}>{data}</option>
@@ -106,12 +106,12 @@ function Footer({
           </select>
         </div>
 
-        <div className="flex gap-4">
-          <div className="text-xl p-2 font-bold tracking-tight text-gray-900">
-            {t("language")}
+        <div className="col-span-5 flex gap-2">
+          <div className="text-xl py-2 font-bold tracking-tight text-gray-900">
+            lang = 
           </div>
 
-          <select className='rounded-lg w-36 disabled:cursor-not-allowed' onChange={(e)=>selectOutputLanguage(e.target.value)} defaultValue={showLanguage}>
+          <select className='rounded-lg w-32 disabled:cursor-not-allowed' onChange={(e)=>selectOutputLanguage(e.target.value)} defaultValue={showLanguage}>
             {
               output_language.map((data,index)=>
                 <option value={data} key={index}>{data}</option>
@@ -120,7 +120,7 @@ function Footer({
           </select>
         </div>
 
-        <div className="flex items-center">
+        <div className="col-span-4 flex items-center">
           <div
               className="w-full font-medium p-1  text-sm inline-flex items-center justify-center border-2 border-transparent rounded-lg leading-5 shadow-sm transition duration-150 ease-in-out bg-site_light-100 hover:!bg-blue-800 text-white cursor-pointer"
           >

@@ -58,10 +58,10 @@ function AmazonProductFeature({
   }
 
   return (
-    <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-gray-100" style={{height: " calc(100vh - 10rem) "}}>
+    <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-gray-100" style={{height: " calc(100vh - 12rem) "}}>
       <div className="pb-8">
         <div style={{textAlign: "-webkit-center"}}>
-          <div className='w-2/3 text-start'>
+          <div className='w-4/5 text-start'>
             <div className='grid grid-cols-12 py-4'>
               <div className='col-span-3'>
                 {t("product_name")}

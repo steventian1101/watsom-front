@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../../../components/Generate/Header';
 import Sidebar from '../../../components/Generate/Sidebar';
-import DocEditor from '../../../components/Generate/DocEditor'
+import DocEditor from '../../../components/Generate/DocEditor/updated'
 import Footer from '../../../components/Generate/Footer';
 
 import OpinionPieceColumn from '../../../components/Generate/SocialMedia/OpinionPieceColumn';
@@ -81,13 +81,13 @@ export default function OpinionPieceColumnPage() {
 
   return (
     <div>
-      <div className='grid grid-cols-12 h-full'>
+      <div className='grid grid-cols-12 h-full bg-gray-100'>
         <div className='col-span-2'>
           <Sidebar/>
         </div>
         <div className='col-span-10'>
-          <div className='grid grid-cols-5'>
-            <div className='col-span-3 border-gray-300' style={{borderRightWidth: "1px"}}>
+          <div className='grid grid-cols-12'>
+            <div className='col-span-5 border-gray-300 my-4 ml-8 bg-white' style={{borderWidth: "1px", borderRadius: '25px'}}>
               <Header 
                 title={t("opinion_piece_column")}
                 content={t("opinion_piece_column_content")}
@@ -105,7 +105,7 @@ export default function OpinionPieceColumnPage() {
                 generate = {generate}
               />
             </div>
-            <div className='col-span-2'>
+            <div className='col-span-7'>
               <DocEditor />
             </div>
           </div>
