@@ -11,7 +11,8 @@ import LogoText from '../../images/logo-text.png';
 
 function Header({
   sidebarOpen,
-  setSidebarOpen
+  setSidebarOpen,
+  isLogo
 }) {
   const { t } = useTranslation();
 
@@ -39,9 +40,12 @@ function Header({
                 <rect x="4" y="17" width="16" height="2" />
               </svg>
             </button>
-            <Link to="/">          
-              <img className="object-cover object-center h-16" src={LogoText} alt="Authentication" />
-            </Link>
+            {
+              isLogo == true &&
+              <Link to="/">          
+                <img className="object-cover object-center h-16" src={LogoText} alt="Authentication" />
+              </Link>
+            }
           </div>
 
           {/* Header: Right side */}

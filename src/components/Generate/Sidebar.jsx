@@ -115,7 +115,7 @@ function Sidebar({
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-full lg:w-full lg:sidebar-expanded:!w-full 2xl:!w-full shrink-0 bg-slate-800 p-4 transition-all duration-200 ease-in-out ${
+        className={`bg-black flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-full lg:w-full lg:sidebar-expanded:!w-full 2xl:!w-full shrink-0 bg-slate-800 p-4 transition-all duration-200 ease-in-out ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-64'
         }`}
       >
@@ -186,7 +186,7 @@ function Sidebar({
                   }`}
                 >
                   <div className="flex items-center">
-                    <span className="text-md font-medium ml-3">{t("template")}</span>
+                    <span className="text-md font-medium ml-3">{t("templates")}</span>
                   </div>
                 </NavLink>
               </li>
