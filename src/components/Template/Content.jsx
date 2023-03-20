@@ -17,12 +17,12 @@ function Content({
       <TemplateSearch setTemplateGroup = {setTemplateGroup} />
 
       <div style={{textAlign: "-webkit-center"}}>
-        <div className="pt-8 w-4/5">
-          <div className='flex text-2xl'>
-            {t("templates")} - &nbsp;<div className='font-bold'>{group_name[template_group]}</div>
+        <div className="pt-8 mx-10">
+          <div className='flex text-xl'>
+            {t("templates")} - &nbsp;<div className='font-bold text-lg'>{group_name[template_group]}</div>
           </div>
 
-          <div className='grid grid-cols-3 gap-8 pt-8'>
+          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 pt-8'>
             {
               templateData.map((data, index) => (template_group == 0 || data.group == template_group) &&
                 <TemplateCard 

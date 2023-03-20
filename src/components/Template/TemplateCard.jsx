@@ -27,37 +27,37 @@ function TemplateCard({title, content, link, icon}) {
 
   return (
     <div className="col-span-1" style={{minHeight: "50px"}}>
-      <Card className="text-start cursor-pointer h-full" onClick={()=>clickCard(link, icon)}>
+      <div className="rounded-xl shadow-md overflow-hidden md:max-w-2xl p-5 text-start cursor-pointer h-full" onClick={()=>clickCard(link, icon)}>
         {
           icon == "all" ? 
           <HiOutlineSquares2X2 
-            className="w-12 h-12"
+            className="w-6 lg:w-10 h-6 lg:h-10"
           /> : icon == "youtube" ?
           <AiOutlineYoutube 
-            className="w-12 h-12"
+            className="w-6 lg:w-10 h-6 lg:h-10"
           /> : icon == "blog" ?
           <ImBlog 
-            className="w-12 h-12"
+            className="w-6 lg:w-10 h-6 lg:h-10"
           /> : icon == "amazon" ?
           <AiOutlineAmazon 
-            className="w-12 h-12"
+            className="w-6 lg:w-10 h-6 lg:h-10"
           /> : icon == "ads" ?
           <FcAdvertising 
-            className="w-12 h-12"
+            className="w-6 lg:w-10 h-6 lg:h-10"
           /> : icon == "social_media" &&
           <HiOutlineHashtag 
-            className="w-12 h-12"
+            className="w-6 lg:w-10 h-6 lg:h-10"
           />
         }
-        <div className='px-2'>
-          <h5 className="text-2xl pb-2 font-bold tracking-tight text-gray-900">
+        <div className='px-2 mt-2'>
+          <h5 className="pb-2 font-bold tracking-tight text-gray-900 text-lg">
             {title}
           </h5>
-          <p className="font-bold text-xl text-gray-400">
+          <p className="font-bold text-gray-400 text-sm">
             {content}
           </p>
         </div>
-      </Card>
+      </div>
     </div>
   );
 }
