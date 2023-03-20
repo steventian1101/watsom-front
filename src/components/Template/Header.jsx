@@ -40,16 +40,16 @@ function Header({
                 <rect x="4" y="17" width="16" height="2" />
               </svg>
             </button>
-            {
+            {/* {
               isLogo == true &&
               <Link to="/">          
-                <img className="object-cover object-center h-16" src={LogoText} alt="Authentication" />
+                <img className="object-cover object-center h-10" src={LogoText} alt="Authentication" />
               </Link>
-            }
+            } */}
           </div>
 
           {/* Header: Right side */}
-          <div className="flex items-center space-x-3">
+          <div className="flex justify-between items-center w-full">
             {/* <div>
               <button
                 className={`w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-slate-200 transition duration-150 rounded-full ml-3 ${searchModalOpen && 'bg-slate-200'}`}
@@ -66,11 +66,12 @@ function Header({
             </div> */}
             {/* <Notifications align="right" /> */}
             <Subscription />
+            <div className='flex'>
             <Language align="right" />
             {/*  Divider */}
             <hr className="w-px h-6 bg-slate-200 mx-3" />
             <UserMenu align="right" />
-
+            </div>
           </div>
 
         </div>
